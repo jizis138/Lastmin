@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/nav_graph_main"
+            app:startDestination="@id/searchFragment"
+>
+    <fragment android:id="@+id/searchFragment"
+              android:name="ru.vsibi.presentation.screens.search.SearchFragment"
+              android:label="SearchFragment"
+    >
+        <action
+                android:id="@+id/action_searchFragment_to_travellersFragment"
+                app:destination="@id/travellersFragment"/>
+    </fragment>
+    <fragment android:id="@+id/travellersFragment"
+              android:name="ru.vsibi.presentation.screens.search.travallers.TravellersFragment"
+              android:label="TravellersFragment"
+    />
+
+    <fragment android:id="@+id/fligthsFragment"
+              android:name="ru.vsibi.presentation.screens.flights.FlightsFragment"
+              android:label="FlightsFragment">
+    </fragment>
+    <fragment android:id="@+id/hotelsFragment"
+              android:name="ru.vsibi.presentation.screens.hotels.HotelsFragment"
+              android:label="HotelsFragment"
+    />
+
+    <fragment android:id="@+id/savedFragment"
+              android:name="ru.vsibi.presentation.screens.saved.SavedFragment"
+              android:label="SavedFragment">
+    </fragment>
+    <fragment android:id="@+id/profileFragment"
+              android:name="ru.vsibi.presentation.screens.profile.ProfileFragment"
+              android:label="ProfileFragment">
+    </fragment>
+</navigation>

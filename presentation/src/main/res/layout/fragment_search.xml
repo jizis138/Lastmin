@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="@drawable/ic_back"
+        >
+
+    <LinearLayout
+            android:id="@+id/lin_origin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="@dimen/large_margin"
+            android:layout_marginEnd="@dimen/large_margin"
+            android:layout_marginTop="@dimen/medium_margin"
+            >
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_origin"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/origin"
+                android:orientation="horizontal"
+                android:background="@drawable/shape_search_card"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:startIconDrawable="@drawable/ic_icon_travel_flight_flight_takeoff_24_px"
+                app:startIconTint="@color/black"
+                >
+
+            <AutoCompleteTextView
+                    android:id="@+id/tv_origin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:clickable="true"
+                    />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/lin_destination"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="@dimen/large_margin"
+            android:layout_marginEnd="@dimen/large_margin"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_below="@+id/lin_origin"
+            >
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_destination"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/destination"
+                android:orientation="horizontal"
+                android:background="@drawable/shape_search_card"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:startIconDrawable="@drawable/ic_icon_travel_location_on_black"
+                app:startIconTint="@color/black"
+                >
+
+            <AutoCompleteTextView
+                    android:id="@+id/tv_destionation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:clickable="true"
+                    />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/lin_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="@dimen/large_margin"
+            android:layout_marginEnd="@dimen/large_margin"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_below="@+id/lin_destination"
+            >
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_date"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/date"
+                android:orientation="horizontal"
+                android:background="@drawable/shape_search_card"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:startIconDrawable="@drawable/ic_icon_travel_date_range"
+                app:startIconTint="@color/black"
+                >
+
+            <AutoCompleteTextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:clickable="true"
+                    />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="@dimen/large_margin"
+            android:layout_marginEnd="@dimen/large_margin"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_below="@+id/lin_date"
+            android:background="@drawable/shape_search_card"
+            >
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_travellers"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/travellers"
+                android:orientation="horizontal"
+                android:background="@drawable/shape_search_card"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:startIconDrawable="@drawable/ic_icon_travel_person_outline_24_px"
+                app:startIconTint="@color/black"
+                >
+
+            <AutoCompleteTextView
+                    android:id="@+id/tv_travellers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:clickable="true"
+                    />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </LinearLayout>
+
+    <Button
+            android:id="@+id/btn_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/large_margin"
+            android:text="@string/search"
+            android:backgroundTint="@color/pink"
+            android:textColor="@color/white"
+            />
+</RelativeLayout>

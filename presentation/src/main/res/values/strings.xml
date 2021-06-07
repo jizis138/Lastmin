@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="search">Search</string>
+    <string name="flights">Flights</string>
+    <string name="saved">Saved</string>
+    <string name="profile">Profile</string>
+    <string name="hotels">Hotels</string>
+    <string name="origin">origin</string>
+    <string name="travellers">Travellers</string>
+    <string name="adults">Adults</string>
+    <string name="childs">Childs</string>
+    <string name="children">Children</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="date">Date</string>
+    <string name="destination">Destination</string>
+    <string name="sign_in">Sign In</string>
+    <string name="letsstarted">Let’s get started</string>
+    <string name="login_desc">Sign in to see deals up to 50%, easy manage your current bookings, and so much more…</string>
+    <string name="sign_with_facebook">Sign in with facebook</string>
+    <string name="sign_with_google">Sign in with Google</string>
+    <string name="sign_with_email">Sign in with Email</string>
+    <string name="or">Or</string>
+    <string name="create_account">Create your account</string>
+</resources>
