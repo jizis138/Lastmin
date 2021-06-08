@@ -1,15 +1,21 @@
-package ru.vsibi.presentation.screens.search
+package ru.vsibi.presentation.screens.search.main
 
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.setFragmentResultListener
+import androidx.fragment.app.viewModels
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentSearchBinding
+import ru.vsibi.presentation.screens.hotels.main.HotelsAction
+import ru.vsibi.presentation.screens.hotels.main.HotelsViewState
 import ru.vsibi.presentation.screens.search.travallers.TravellersFragment
 import ru.vsibi.presentation.screens.search.travallers.TravellersModel
 
 
 class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding::inflate, R.layout.fragment_search) {
+
+    private val viewModel : SearchViewModel by viewModels()
 
     override fun initViews() {
 
@@ -32,6 +38,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
             tvTravellers.setOnClickListener {
                 router.navigateToTravellers()
             }
+            btnSearch.setOnClickListener {
+                viewModel.obtainEvent(SearchEvent.StartSearch())
+            }
         }
     }
 
@@ -40,8 +49,26 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
     }
 
     override fun initObservers() {
-        super.initObservers()
+        viewModel.viewStates().observe(viewLifecycleOwner) { bindViewState(it) }
+        viewModel.viewActions().observe(viewLifecycleOwner) { bindViewActions(it) }
     }
+
+    private fun bindViewState(state: SearchViewState) {
+        when (state) {
+            is SearchViewState.Loading -> {
+                binding.progress.visibility = View.VISIBLE
+                binding.btnSearch.alpha = 0.5f
+            }
+            is SearchViewState.Loaded -> {
+                binding.progress.visibility = View.GONE
+                binding.btnSearch.alpha = 1f
+                router.navigateHotels()
+            }
+        }
+    }
+
+    private fun bindViewActions(action: SearchAction?) {}
+
 
 
 //    private fun initSpiner(flag: Int) {

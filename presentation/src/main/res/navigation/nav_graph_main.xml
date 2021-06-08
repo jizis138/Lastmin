@@ -5,12 +5,15 @@
             app:startDestination="@id/searchFragment"
 >
     <fragment android:id="@+id/searchFragment"
-              android:name="ru.vsibi.presentation.screens.search.SearchFragment"
+              android:name="ru.vsibi.presentation.screens.search.main.SearchFragment"
               android:label="SearchFragment"
     >
         <action
                 android:id="@+id/action_searchFragment_to_travellersFragment"
                 app:destination="@id/travellersFragment"/>
+        <action
+                android:id="@+id/action_searchFragment_to_hotelsFragment"
+                app:destination="@id/hotelsFragment"/>
     </fragment>
     <fragment android:id="@+id/travellersFragment"
               android:name="ru.vsibi.presentation.screens.search.travallers.TravellersFragment"
