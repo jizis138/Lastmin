@@ -4,6 +4,16 @@
             android:id="@+id/nav_graph_main"
             app:startDestination="@id/searchFragment"
 >
+    <fragment
+            android:id="@+id/purchaseFormFragment"
+            android:name="ru.vsibi.presentation.screens.hotels.purchase.PurchaseFormFragment"
+            android:label="PurchaseFormFragment"
+            >
+        <argument
+                android:name="hotel"
+                app:argType="ru.vsibi.presentation.screens.hotels.main.HotelsModel"/>
+
+    </fragment>
     <fragment android:id="@+id/searchFragment"
               android:name="ru.vsibi.presentation.screens.search.main.SearchFragment"
               android:label="SearchFragment"
@@ -41,6 +51,9 @@
         <argument
                 android:name="hotel"
                 app:argType="ru.vsibi.presentation.screens.hotels.main.HotelsModel"/>
+        <action
+                android:id="@+id/action_hotelsInfoFragment_to_purchaseFormFragment"
+                app:destination="@id/purchaseFormFragment"/>
     </fragment>
 
     <fragment android:id="@+id/savedFragment"

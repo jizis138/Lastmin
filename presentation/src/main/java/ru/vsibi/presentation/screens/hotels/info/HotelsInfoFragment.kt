@@ -38,6 +38,9 @@ class HotelsInfoFragment :
             fabBack.setOnClickListener {
                 popBack()
             }
+            btnBook.setOnClickListener {
+                viewModel.hotel?.let { it1 -> router.navigatePurchaseForm(it1) }
+            }
         }
     }
 

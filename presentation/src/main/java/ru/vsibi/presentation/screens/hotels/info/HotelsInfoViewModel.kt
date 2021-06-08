@@ -5,7 +5,7 @@ import ru.vsibi.presentation.screens.hotels.main.HotelsModel
 
 class HotelsInfoViewModel : BaseViewModel<HotelsInfoState, HotelsInfoAction, HotelsInfoEvent>() {
 
-    private var hotel : HotelsModel? = null
+    var hotel : HotelsModel? = null
 
     override fun obtainEvent(viewEvent: HotelsInfoEvent) {
         when(viewEvent){

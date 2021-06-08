@@ -2,6 +2,7 @@ package ru.vsibi.presentation.helpers
 
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import ru.vsibi.presentation.screens.hotels.info.HotelsInfoFragmentDirections
 import ru.vsibi.presentation.screens.hotels.main.HotelsFragmentDirections
 import ru.vsibi.presentation.screens.hotels.main.HotelsModel
 import ru.vsibi.presentation.screens.main.MainFragmentDirections
@@ -32,6 +33,10 @@ class Router {
 
     fun navigateHotels() {
         childNavController?.navigate(SearchFragmentDirections.actionSearchFragmentToHotelsFragment())
+    }
+
+    fun navigatePurchaseForm(hotelsModel: HotelsModel) {
+        childNavController?.navigate(HotelsInfoFragmentDirections.actionHotelsInfoFragmentToPurchaseFormFragment(hotelsModel))
     }
 
 }

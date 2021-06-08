@@ -29,4 +29,10 @@
     <string name="boarding">Boarding</string>
     <string name="room_type">Room type</string>
     <string name="transfer">Transfer</string>
+    <string name="adult">Adult</string>
+    <string name="pay_with">Pay with</string>
+    <string name="pay_method">Payment method</string>
+    <string name="add">Add</string>
+    <string name="kid">Kid</string>
+    <string name="customer_purchase_form">Customer purchase form</string>
 </resources>
