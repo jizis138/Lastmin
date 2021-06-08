@@ -1,7 +1,9 @@
-package ru.movemove.presentation.helpers
+package ru.vsibi.presentation.helpers
 
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import ru.vsibi.presentation.screens.hotels.main.HotelsFragmentDirections
+import ru.vsibi.presentation.screens.hotels.main.HotelsModel
 import ru.vsibi.presentation.screens.main.MainFragmentDirections
 import ru.vsibi.presentation.screens.search.SearchFragmentDirections
 
@@ -22,6 +24,10 @@ class Router {
 
     fun navigateToLogin() {
         parentNavController?.navigate(MainFragmentDirections.actionMainFragmentToLoginFragment())
+    }
+
+    fun navigateToHotelsInfo(hotelsModel: HotelsModel) {
+        childNavController?.navigate(HotelsFragmentDirections.actionHotelsFragmentToHotelsInfoFragment(hotelsModel))
     }
 
 }

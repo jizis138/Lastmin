@@ -1,4 +1,4 @@
-package ru.vsibi.presentation.screens.hotels
+package ru.vsibi.presentation.screens.hotels.main
 
 import android.os.Bundle
 import android.view.View
@@ -13,7 +13,9 @@ import ru.vsibi.presentation.databinding.FragmentHotelsBinding
 class HotelsFragment : BaseFragment<FragmentHotelsBinding>(FragmentHotelsBinding::inflate, R.layout.fragment_hotels) {
 
     private val viewModel : HotelsViewModel by viewModels()
-    private val itemsClickListener: (HotelsModel, Boolean) -> Unit = { hotel, bool -> }
+    private val itemsClickListener: (HotelsModel) -> Unit = { hotel ->
+        router.navigateToHotelsInfo(hotel)
+    }
     private val adapter = HotelsAdapter(itemsClickListener)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

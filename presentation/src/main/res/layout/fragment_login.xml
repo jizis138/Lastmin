@@ -24,7 +24,7 @@
             android:layout_centerHorizontal="true"
             android:gravity="center_horizontal"
             android:layout_marginTop="@dimen/big_margin"
-            style="@style/white_text_big"
+            style="@style/WhiteText.Big"
             />
 
     <TextView
@@ -35,7 +35,7 @@
             android:layout_below="@+id/tv_lets"
             android:layout_centerHorizontal="true"
             android:gravity="center_horizontal"
-            style="@style/white_text_small"
+            style="@style/WhiteText.Small"
             android:layout_marginTop="@dimen/min_margin"
             android:layout_marginStart="@dimen/big_margin"
             android:layout_marginEnd="@dimen/big_margin"
@@ -92,7 +92,7 @@
             android:layout_below="@+id/lin_btns"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            style="@style/white_text_medium"
+            style="@style/WhiteText.Medium"
             android:layout_above="@+id/btn_create"
             />
 

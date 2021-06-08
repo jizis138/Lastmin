@@ -16,12 +16,12 @@
 
     <TextView
             android:id="@+id/tv_title"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="123"
             android:layout_toEndOf="@+id/image"
-            android:layout_toStartOf="@+id/lin_1"
-            style="@style/dark_text"
+            android:layout_toStartOf="@+id/rel_cost"
+            style="@style/DarkText"
             />
 
     <TextView
@@ -33,47 +33,18 @@
             android:layout_below="@+id/tv_title"
             android:layout_alignBottom="@+id/image"
             android:gravity="bottom"
-            style="@style/normal_text"
+            style="@style/NormalText"
+            android:layout_toStartOf="@+id/rel_cost"
             />
 
-    <LinearLayout
-            android:id="@+id/lin_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
+    <include
+            android:id="@+id/rel_cost"
+            layout="@layout/layout_cost"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="@dimen/medium_margin"
-            android:gravity="center_vertical"
-            >
-        <TextView
-                android:id="@+id/tv_cost"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/pink_text"
-                android:text="123"
-                />
-        <ImageButton
-                android:id="@+id/ib_favorite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_icon_action_favorite_border"
-                android:background="@android:color/transparent"
-                android:layout_marginStart="@dimen/def_margin"
-                />
-    </LinearLayout>
-
-    <TextView
-            android:id="@+id/tv_date"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="123"
-            android:layout_below="@+id/lin_1"
-            android:layout_alignStart="@+id/lin_1"
-            android:layout_marginTop="@dimen/min_margin"
+            android:layout_width="wrap_content"
             android:layout_marginEnd="@dimen/medium_margin"
-            style="@style/small_text"
             />
-
 
     <View
             android:layout_width="match_parent"

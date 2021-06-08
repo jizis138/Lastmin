@@ -22,9 +22,23 @@
               android:label="FlightsFragment">
     </fragment>
     <fragment android:id="@+id/hotelsFragment"
-              android:name="ru.vsibi.presentation.screens.hotels.HotelsFragment"
+              android:name="ru.vsibi.presentation.screens.hotels.main.HotelsFragment"
               android:label="HotelsFragment"
-    />
+    >
+        <action
+                android:id="@+id/action_hotelsFragment_to_hotelsInfoFragment"
+                app:destination="@id/hotelsInfoFragment">
+
+        </action>
+    </fragment>
+    <fragment android:id="@+id/hotelsInfoFragment"
+              android:name="ru.vsibi.presentation.screens.hotels.info.HotelsInfoFragment"
+              android:label="HotelsInfoFragment"
+    >
+        <argument
+                android:name="hotel"
+                app:argType="ru.vsibi.presentation.screens.hotels.main.HotelsModel"/>
+    </fragment>
 
     <fragment android:id="@+id/savedFragment"
               android:name="ru.vsibi.presentation.screens.saved.SavedFragment"

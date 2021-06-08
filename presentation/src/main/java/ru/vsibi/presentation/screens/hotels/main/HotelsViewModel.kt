@@ -1,4 +1,4 @@
-package ru.vsibi.presentation.screens.hotels
+package ru.vsibi.presentation.screens.hotels.main
 
 import ru.vsibi.presentation.base.BaseViewModel
 

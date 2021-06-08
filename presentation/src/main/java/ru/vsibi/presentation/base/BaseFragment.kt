@@ -13,8 +13,7 @@ import androidx.navigation.Navigator
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
-import ru.movemove.presentation.helpers.Router
-import ru.vsibi.presentation.databinding.FragmentSearchBinding
+import ru.vsibi.presentation.helpers.Router
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
 
