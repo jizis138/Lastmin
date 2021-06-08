@@ -1,4 +1,4 @@
-package ru.vsibi.presentation.screens.hotels
+package ru.vsibi.presentation.screens.hotels.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,8 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.databinding.CellHotelsBinding
+import ru.vsibi.presentation.helpers.Lastmin
 
-class HotelsAdapter(private var itemClickListener: ((HotelsModel, Boolean) -> Unit)? = null) :
+class HotelsAdapter(private var itemClickListener: ((HotelsModel) -> Unit)? = null) :
     RecyclerView.Adapter<HotelsAdapter.HotelsViewHolder>() {
 
     private val hotels = mutableListOf<HotelsModel>()
@@ -36,15 +37,18 @@ class HotelsAdapter(private var itemClickListener: ((HotelsModel, Boolean) -> Un
         fun bind(position: Int) {
             val item = hotels[position]
             binding.apply {
-                Glide.with(root.context).load(item.image).into(image)
+                Glide.with(root.context).load(item.image).apply(Lastmin.listRequestOpts).into(image)
                 tvTitle.text = item.title
                 tvDescription.text = item.description
-                tvDate.text = item.dateStart + " - " + item.dateEnd
-                tvCost.text = item.currency + " " + item.cost
+                relCost.tvDate.text = item.dateStart + " - " + item.dateEnd
+                relCost.tvCost.text = item.currency + " " + item.cost
                 if(item.isFavorite){
-                    ibFavorite.setImageResource(R.drawable.ic_icon_action_favorite_pink)
+                    relCost.ibFavorite.setImageResource(R.drawable.ic_icon_action_favorite_pink)
                 }else{
-                    ibFavorite.setImageResource(R.drawable.ic_icon_action_favorite_border)
+                    relCost.ibFavorite.setImageResource(R.drawable.ic_icon_action_favorite_border)
+                }
+                root.setOnClickListener {
+                    itemClickListener?.invoke(item)
                 }
             }
         }

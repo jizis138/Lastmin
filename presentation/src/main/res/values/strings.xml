@@ -22,4 +22,11 @@
     <string name="sign_with_email">Sign in with Email</string>
     <string name="or">Or</string>
     <string name="create_account">Create your account</string>
+    <string name="example_destination">15 km</string>
+    <string name="more_dates">More Dates To This Hotel</string>
+    <string name="book">Book</string>
+    <string name="flights_details">Flight details</string>
+    <string name="boarding">Boarding</string>
+    <string name="room_type">Room type</string>
+    <string name="transfer">Transfer</string>
 </resources>
