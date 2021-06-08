@@ -49,4 +49,7 @@
         <item name="android:background">@color/grey</item>
     </style>
 
+    <style name="progress">
+        <item name="colorAccent">@color/white</item>
+    </style>
 </resources>

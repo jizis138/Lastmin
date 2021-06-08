@@ -157,14 +157,31 @@
 
     </LinearLayout>
 
-    <Button
-            android:id="@+id/btn_search"
+    <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_margin="@dimen/large_margin"
-            android:text="@string/search"
-            android:backgroundTint="@color/pink"
-            android:textColor="@color/white"
-            />
+            >
+        <Button
+                android:id="@+id/btn_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/search"
+                android:backgroundTint="@color/pink"
+                android:textColor="@color/white"
+                />
+        <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="50dp"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/white"
+                android:indeterminateTintMode="src_in"
+                android:elevation="2dp"
+                android:visibility="gone"
+                />
+    </RelativeLayout>
 </RelativeLayout>
