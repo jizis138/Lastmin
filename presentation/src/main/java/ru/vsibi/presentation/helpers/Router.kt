@@ -1,5 +1,7 @@
 package ru.vsibi.presentation.helpers
 
+import android.app.Activity
+import android.content.Intent
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import ru.vsibi.presentation.screens.hotels.info.HotelsInfoFragmentDirections
@@ -53,5 +55,10 @@ class Router {
     fun navigateToMainFromEmailLogin() {
         parentNavController?.navigate(LoginPasswordFragmentDirections.actionLoginPasswordFragmentToMainFragment())
     }
+
+    fun reopenApp() {
+        parentNavController?.navigate(MainFragmentDirections.actionMainFragmentSelf())
+    }
+
 
 }
