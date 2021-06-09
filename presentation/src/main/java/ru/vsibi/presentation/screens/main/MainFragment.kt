@@ -32,9 +32,9 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
 
     override fun initFragment() {
         if (viewModel.isAuth) {
-            binding.bottomNavigationView.menu.getItem(4).title = getString(R.string.profile)
+            binding.bottomNavigationView.menu.getItem(3).title = getString(R.string.profile)
         } else {
-            binding.bottomNavigationView.menu.getItem(4).title = getString(R.string.sign_in)
+            binding.bottomNavigationView.menu.getItem(3).title = getString(R.string.sign_in)
 
             binding.bottomNavigationView.setOnNavigationItemSelectedListener {
                 when (it.itemId) {

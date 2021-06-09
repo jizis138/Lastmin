@@ -10,6 +10,7 @@ class SearchViewModel : BaseViewModel<SearchViewState, SearchAction, SearchEvent
             is SearchEvent.StartSearch -> {
                 startSearch()
             }
+            is SearchEvent.Default -> viewState = SearchViewState.Default()
         }
     }
 

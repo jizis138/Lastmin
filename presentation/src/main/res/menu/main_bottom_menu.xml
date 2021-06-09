@@ -13,11 +13,11 @@
         android:icon="@drawable/ic_icon_travel_flight_24_px"
     />
 
-    <item
-        android:id="@+id/hotelsFragment"
-        android:title="@string/hotels"
-        android:icon="@drawable/ic_icon_travel_bed_24_px"
-        />
+<!--    <item-->
+<!--        android:id="@+id/hotelsFragment"-->
+<!--        android:title="@string/hotels"-->
+<!--        android:icon="@drawable/ic_icon_travel_bed_24_px"-->
+<!--        />-->
 
     <item
         android:id="@+id/savedFragment"
