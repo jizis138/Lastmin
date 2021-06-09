@@ -16,6 +16,7 @@ import ru.vsibi.presentation.screens.main.MainFragmentDirections
 import ru.vsibi.presentation.screens.profile.main.ProfileFragmentDirections
 import ru.vsibi.presentation.screens.profile.orders.info.OrdersDetailFragmentDirections
 import ru.vsibi.presentation.screens.profile.orders.main.OrdersFragmentDirections
+import ru.vsibi.presentation.screens.saved.SavedFragmentDirections
 import ru.vsibi.presentation.screens.search.main.SearchFragmentDirections
 
 class Router {
@@ -83,6 +84,10 @@ class Router {
 
     fun navigateToOrdersDetail(hotel: HotelsModel) {
         childNavController?.navigate(OrdersFragmentDirections.actionOrdersFragmentToOrdersDetailFragment(hotel))
+    }
+
+    fun navigateToOrdersDetailFromSaved(hotel: HotelsModel) {
+        childNavController?.navigate(SavedFragmentDirections.actionSavedFragmentToHotelsInfoFragment(hotel))
     }
 
     fun navigateToTicket() {
