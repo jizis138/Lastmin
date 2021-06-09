@@ -18,6 +18,7 @@ class LoginPasswordViewModel @Inject constructor(
         when (viewEvent) {
             is LoginPasswordEvent.ConfigureArgs -> configureArgs(viewEvent.data)
             is LoginPasswordEvent.SignIn -> signIn()
+            is LoginPasswordEvent.Default -> viewState = LoginPasswordViewState.Default()
         }
     }
 

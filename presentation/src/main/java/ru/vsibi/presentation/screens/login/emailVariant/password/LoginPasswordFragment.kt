@@ -27,13 +27,16 @@ class LoginPasswordFragment : BaseFragment<FragmentLoginPasswordBinding>(Fragmen
     }
 
     override fun initFragment() {
-        super.initFragment()
+        viewModel.obtainEvent(LoginPasswordEvent.Default())
     }
 
     override fun initListeners() {
         binding.apply {
             btnSignIn.setOnClickListener {
                 viewModel.obtainEvent(LoginPasswordEvent.SignIn())
+            }
+            btnForgotPass.setOnClickListener {
+                router.navigateForgotPass(args.email)
             }
         }
     }
@@ -50,6 +53,7 @@ class LoginPasswordFragment : BaseFragment<FragmentLoginPasswordBinding>(Fragmen
     private fun bindViewState(state: LoginPasswordViewState) {
         when (state) {
             is LoginPasswordViewState.Loaded -> updateViews(state.data)
+            is LoginPasswordViewState.Default -> {}
             is LoginPasswordViewState.LoggedIn -> router.navigateToMainFromEmailLogin()
         }
     }

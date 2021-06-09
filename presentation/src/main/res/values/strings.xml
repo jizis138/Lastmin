@@ -49,4 +49,13 @@
     <string name="change_pass">Change Password</string>
     <string name="sign_out">Sign out</string>
     <string name="message_sign_out">You are signed out</string>
+    <string name="forgot_pass_desc">No problem! We’ll send you a link to reset it. Enter the email address you use to sign in to Lastmin Club.</string>
+    <string name="send_reset_link">Send reset link</string>
+    <string name="app_name">Lastmin Club</string>
+    <string name="create_password">Create a password</string>
+    <string name="pass_char">Has as least 10 characters</string>
+    <string name="pass_number">Contains at least one number</string>
+    <string name="pass_upper">Contains at least one uppercase latter</string>
+    <string name="pass_lower">Contains at least one lowercase latter</string>
+    <string name="confirm_password">Confirm password</string>
 </resources>

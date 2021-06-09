@@ -44,5 +44,28 @@
                 app:popUpTo="@+id/nav_graph_launch"
                 app:popUpToInclusive="true"
                 />
+        <action
+                android:id="@+id/action_loginPasswordFragment_to_forgotPassFragment"
+                app:destination="@id/forgotPassFragment"/>
+    </fragment>
+    <fragment android:id="@+id/forgotPassFragment"
+              android:name="ru.vsibi.presentation.screens.login.emailVariant.forgotPassword.ForgotPassFragment"
+              android:label="ForgotPassFragment">
+        <action
+                android:id="@+id/action_forgotPassFragment_to_createPassFragment"
+                app:destination="@id/createPassFragment"/>
+        <argument
+                android:name="email"
+                app:argType="string"/>
+    </fragment>
+    <fragment android:id="@+id/createPassFragment"
+              android:name="ru.vsibi.presentation.screens.login.emailVariant.createPassword.CreatePassFragment"
+              android:label="CreatePassFragment">
+        <action
+                android:id="@+id/action_createPassFragment_to_mainFragment"
+                app:destination="@id/mainFragment"
+                app:launchSingleTop="true"
+                app:popUpTo="@+id/nav_graph_launch"
+                app:popUpToInclusive="true"/>
     </fragment>
 </navigation>
