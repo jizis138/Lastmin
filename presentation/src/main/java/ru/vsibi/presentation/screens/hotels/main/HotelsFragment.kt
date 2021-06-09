@@ -20,7 +20,11 @@ class HotelsFragment : BaseFragment<FragmentHotelsBinding>(FragmentHotelsBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.hotels)
+        (activity as AppCompatActivity).supportActionBar?.apply {
+            title = getString(R.string.hotels)
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
     }
 
     override fun initViews() {

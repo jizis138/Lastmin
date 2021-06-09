@@ -7,8 +7,6 @@ import androidx.fragment.app.viewModels
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentSearchBinding
-import ru.vsibi.presentation.screens.hotels.main.HotelsAction
-import ru.vsibi.presentation.screens.hotels.main.HotelsViewState
 import ru.vsibi.presentation.screens.search.travallers.TravellersFragment
 import ru.vsibi.presentation.screens.search.travallers.TravellersModel
 
@@ -18,7 +16,11 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
     private val viewModel : SearchViewModel by viewModels()
 
     override fun initViews() {
-
+        (activity as AppCompatActivity).supportActionBar?.apply {
+            title = getString(R.string.search)
+            setDisplayHomeAsUpEnabled(false)
+            setDisplayShowHomeEnabled(false)
+        }
     }
 
     override fun initArguments() {
@@ -26,7 +28,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
     }
 
     override fun initFragment() {
-        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.search)
+
     }
 
     override fun initListeners() {
@@ -63,6 +65,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
                 binding.progress.visibility = View.GONE
                 binding.btnSearch.alpha = 1f
                 router.navigateHotels()
+                viewModel.obtainEvent(SearchEvent.Default())
+            }
+            is SearchViewState.Default -> {
             }
         }
     }
