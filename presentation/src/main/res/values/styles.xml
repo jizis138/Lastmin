@@ -76,4 +76,8 @@
     <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
         <item name="endIconTint">@android:color/transparent</item>
     </style>
+
+    <style name="GreenText">
+        <item name="android:textColor">@color/main_green</item>
+    </style>
 </resources>

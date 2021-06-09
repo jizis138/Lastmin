@@ -64,4 +64,5 @@
               android:name="ru.vsibi.presentation.screens.profile.ProfileFragment"
               android:label="ProfileFragment">
     </fragment>
+
 </navigation>

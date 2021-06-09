@@ -43,4 +43,10 @@
     <string name="enter_password_desc">Enter your Lastmin Club password for</string>
     <string name="password">Password</string>
     <string name="forgot_pass">Forgot your password?</string>
+    <string name="my_orders">My Orders</string>
+    <string name="personal_data">Personal Data</string>
+    <string name="co_travellers">Co-Travellers</string>
+    <string name="change_pass">Change Password</string>
+    <string name="sign_out">Sign out</string>
+    <string name="message_sign_out">You are signed out</string>
 </resources>
