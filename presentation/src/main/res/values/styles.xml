@@ -72,4 +72,8 @@
         <item name="cornerFamilyBottomRight">rounded</item>
         <item name="cornerSize">5dp</item>
     </style>
+
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+        <item name="endIconTint">@android:color/transparent</item>
+    </style>
 </resources>
