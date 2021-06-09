@@ -40,7 +40,7 @@
     <string name="enter_email">Enter your email address</string>
     <string name="next">Continue</string>
     <string name="enter_password">Enter your password</string>
-    <string name="enter_password_desc">Enter your Lastmin Club password for </string>
+    <string name="enter_password_desc">Enter your Lastmin Club password for</string>
     <string name="password">Password</string>
     <string name="forgot_pass">Forgot your password?</string>
 </resources>
