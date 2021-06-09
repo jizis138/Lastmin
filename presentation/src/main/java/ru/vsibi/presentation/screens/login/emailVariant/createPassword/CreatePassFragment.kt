@@ -1,14 +1,21 @@
 package ru.vsibi.presentation.screens.login.emailVariant.createPassword
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentCreatePasswordBinding
+import ru.vsibi.presentation.screens.login.emailVariant.password.LoginPasswordAction
+import ru.vsibi.presentation.screens.login.emailVariant.password.LoginPasswordViewState
 
+@AndroidEntryPoint
 class CreatePassFragment : BaseFragment<FragmentCreatePasswordBinding>(
     FragmentCreatePasswordBinding::inflate,
     R.layout.fragment_create_password
 ) {
+
+    private val viewModel : CreatePassViewModel by viewModels()
 
     override fun initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
@@ -29,7 +36,7 @@ class CreatePassFragment : BaseFragment<FragmentCreatePasswordBinding>(
     override fun initListeners() {
         binding.apply {
             btnCreatePass.setOnClickListener {
-                router.navigateToMainFromCreatePass()
+                viewModel.obtainEvent(CreatePassEvent.SignIn())
             }
         }
     }
@@ -38,7 +45,20 @@ class CreatePassFragment : BaseFragment<FragmentCreatePasswordBinding>(
         super.initData()
     }
 
+
     override fun initObservers() {
-        super.initObservers()
+        viewModel.viewStates().observe(viewLifecycleOwner) { bindViewState(it) }
+        viewModel.viewActions().observe(viewLifecycleOwner) { bindViewActions(it) }
     }
+
+    private fun bindViewState(state: CreatePassState) {
+        when (state) {
+            is CreatePassState.Default -> {}
+            is CreatePassState.LoggedIn -> router.navigateToMainFromCreatePass()
+        }
+    }
+
+
+    private fun bindViewActions(action: CreatePassAction?) {}
+
 }

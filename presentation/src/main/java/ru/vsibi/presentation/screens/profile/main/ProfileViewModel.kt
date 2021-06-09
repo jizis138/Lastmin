@@ -1,4 +1,4 @@
-package ru.vsibi.presentation.screens.profile
+package ru.vsibi.presentation.screens.profile.main
 
 import dagger.hilt.android.lifecycle.HiltViewModel
 import ru.vsibi.presentation.R

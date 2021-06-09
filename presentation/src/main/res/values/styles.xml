@@ -80,4 +80,6 @@
     <style name="GreenText">
         <item name="android:textColor">@color/main_green</item>
     </style>
+
+    <style name="BottomSheetDialogStyle"></style>
 </resources>
