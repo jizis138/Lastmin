@@ -11,7 +11,21 @@
                 app:destination="@id/loginFragment"/>
     </fragment>
     <fragment android:id="@+id/loginFragment"
-              android:name="ru.vsibi.presentation.screens.LoginFragment"
+              android:name="ru.vsibi.presentation.screens.login.LoginFragment"
               android:label="LoginFragment">
+        <action
+                android:id="@+id/action_loginFragment_to_loginEmailFragment"
+                app:destination="@id/loginEmailFragment"/>
+    </fragment>
+    <fragment android:id="@+id/loginEmailFragment"
+              android:name="ru.vsibi.presentation.screens.login.email.LoginEmailFragment"
+              android:label="LoginEmailFragment">
+        <action
+                android:id="@+id/action_loginEmailFragment_to_loginPasswordFragment"
+                app:destination="@id/loginPasswordFragment"/>
+    </fragment>
+    <fragment android:id="@+id/loginPasswordFragment"
+              android:name="ru.vsibi.presentation.screens.login.email.LoginPasswordFragment"
+              android:label="LoginPasswordFragment">
     </fragment>
 </navigation>

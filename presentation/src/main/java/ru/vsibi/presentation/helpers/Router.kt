@@ -5,6 +5,8 @@ import androidx.navigation.fragment.NavHostFragment
 import ru.vsibi.presentation.screens.hotels.info.HotelsInfoFragmentDirections
 import ru.vsibi.presentation.screens.hotels.main.HotelsFragmentDirections
 import ru.vsibi.presentation.screens.hotels.main.HotelsModel
+import ru.vsibi.presentation.screens.login.LoginFragmentDirections
+import ru.vsibi.presentation.screens.login.email.LoginEmailFragmentDirections
 import ru.vsibi.presentation.screens.main.MainFragmentDirections
 import ru.vsibi.presentation.screens.search.main.SearchFragmentDirections
 
@@ -37,6 +39,14 @@ class Router {
 
     fun navigatePurchaseForm(hotelsModel: HotelsModel) {
         childNavController?.navigate(HotelsInfoFragmentDirections.actionHotelsInfoFragmentToPurchaseFormFragment(hotelsModel))
+    }
+
+    fun navigateToLoginWithEmail() {
+        parentNavController?.navigate(LoginFragmentDirections.actionLoginFragmentToLoginEmailFragment())
+    }
+
+    fun navigateToLoginPassword() {
+        parentNavController?.navigate(LoginEmailFragmentDirections.actionLoginEmailFragmentToLoginPasswordFragment())
     }
 
 }

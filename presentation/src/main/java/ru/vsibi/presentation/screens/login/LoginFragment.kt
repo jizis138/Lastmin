@@ -1,4 +1,4 @@
-package ru.vsibi.presentation.screens
+package ru.vsibi.presentation.screens.login
 
 import androidx.appcompat.app.AppCompatActivity
 import ru.vsibi.presentation.R
@@ -25,7 +25,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     }
 
     override fun initListeners() {
-        super.initListeners()
+        binding.apply {
+            btnEmail.setOnClickListener {
+                router.navigateToLoginWithEmail()
+            }
+        }
     }
 
     override fun initData() {
