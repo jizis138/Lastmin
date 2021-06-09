@@ -6,7 +6,8 @@ import ru.vsibi.presentation.screens.hotels.info.HotelsInfoFragmentDirections
 import ru.vsibi.presentation.screens.hotels.main.HotelsFragmentDirections
 import ru.vsibi.presentation.screens.hotels.main.HotelsModel
 import ru.vsibi.presentation.screens.login.LoginFragmentDirections
-import ru.vsibi.presentation.screens.login.email.LoginEmailFragmentDirections
+import ru.vsibi.presentation.screens.login.emailVariant.email.LoginEmailFragmentDirections
+import ru.vsibi.presentation.screens.login.emailVariant.password.LoginPasswordFragmentDirections
 import ru.vsibi.presentation.screens.main.MainFragmentDirections
 import ru.vsibi.presentation.screens.search.main.SearchFragmentDirections
 
@@ -45,8 +46,12 @@ class Router {
         parentNavController?.navigate(LoginFragmentDirections.actionLoginFragmentToLoginEmailFragment())
     }
 
-    fun navigateToLoginPassword() {
-        parentNavController?.navigate(LoginEmailFragmentDirections.actionLoginEmailFragmentToLoginPasswordFragment())
+    fun navigateToLoginPassword(data: String) {
+        parentNavController?.navigate(LoginEmailFragmentDirections.actionLoginEmailFragmentToLoginPasswordFragment(data))
+    }
+
+    fun navigateToMainFromEmailLogin() {
+        parentNavController?.navigate(LoginPasswordFragmentDirections.actionLoginPasswordFragmentToMainFragment())
     }
 
 }

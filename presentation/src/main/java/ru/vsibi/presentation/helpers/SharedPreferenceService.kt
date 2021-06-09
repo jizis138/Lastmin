@@ -6,7 +6,7 @@ class SharedPreferenceService (context: Context) {
 
     var mSettings = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
 
-    fun setSpString(key: String, value: String) = mSettings.edit().putString(key, value).apply()
+    fun setSpString(key: String, value: String?) = mSettings.edit().putString(key, value).apply()
 
     fun getSpString(key: String): String? = mSettings.getString(key, null)
 
@@ -21,6 +21,7 @@ class SharedPreferenceService (context: Context) {
         const val APP_PREFERENCES = "my_settings"
         const val KEY_ACCESS_TOKEN = "key_access_token"
         const val KEY_AUTH = "key_access_token"
+        const val KEY_EMAIL = "key_access_token"
     }
 
 }

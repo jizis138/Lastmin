@@ -18,14 +18,24 @@
                 app:destination="@id/loginEmailFragment"/>
     </fragment>
     <fragment android:id="@+id/loginEmailFragment"
-              android:name="ru.vsibi.presentation.screens.login.email.LoginEmailFragment"
+              android:name="ru.vsibi.presentation.screens.login.emailVariant.email.LoginEmailFragment"
               android:label="LoginEmailFragment">
         <action
                 android:id="@+id/action_loginEmailFragment_to_loginPasswordFragment"
                 app:destination="@id/loginPasswordFragment"/>
     </fragment>
     <fragment android:id="@+id/loginPasswordFragment"
-              android:name="ru.vsibi.presentation.screens.login.email.LoginPasswordFragment"
+              android:name="ru.vsibi.presentation.screens.login.emailVariant.password.LoginPasswordFragment"
               android:label="LoginPasswordFragment">
+        <argument
+                android:name="email"
+                app:argType="string"/>
+        <action
+                android:id="@+id/action_loginPasswordFragment_to_mainFragment"
+                app:destination="@id/mainFragment"
+                app:launchSingleTop="true"
+                app:popUpTo="@+id/nav_graph_launch"
+                app:popUpToInclusive="true"
+                />
     </fragment>
 </navigation>
