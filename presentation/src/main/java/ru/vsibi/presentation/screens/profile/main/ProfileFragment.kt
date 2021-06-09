@@ -1,16 +1,12 @@
-package ru.vsibi.presentation.screens.profile
+package ru.vsibi.presentation.screens.profile.main
 
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
-import ru.vsibi.presentation.databinding.FragmentHotelsBinding
 import ru.vsibi.presentation.databinding.FragmentProfileBinding
-import ru.vsibi.presentation.screens.search.main.SearchAction
-import ru.vsibi.presentation.screens.search.main.SearchViewState
 
 @AndroidEntryPoint
 class ProfileFragment :
@@ -38,6 +34,9 @@ class ProfileFragment :
         binding.apply {
             linSignout.setOnClickListener {
                 viewModel.obtainEvent(ProfileEvent.LogOut())
+            }
+            relOrders.setOnClickListener {
+                router.navigateToMyOrders()
             }
         }
     }

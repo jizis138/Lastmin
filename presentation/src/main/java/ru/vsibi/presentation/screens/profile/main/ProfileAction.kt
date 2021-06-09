@@ -1,4 +1,4 @@
-package ru.vsibi.presentation.screens.profile
+package ru.vsibi.presentation.screens.profile.main
 
 import androidx.annotation.StringRes
 

@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.LayoutRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigator
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
+import ru.vsibi.presentation.R
 import ru.vsibi.presentation.helpers.Router
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
@@ -35,12 +37,21 @@ open class BaseFragment<Binding : ViewBinding>(private val inflate: Inflate<Bind
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        initDefaultToolbar()
         initViews()
         initArguments()
         initFragment()
         initListeners()
         initData()
         initObservers()
+    }
+
+    private fun initDefaultToolbar() {
+        (activity as AppCompatActivity).supportActionBar?.apply {
+            title = getString(R.string.app_name)
+            setDisplayHomeAsUpEnabled(false)
+            setDisplayShowHomeEnabled(false)
+        }
     }
 
     open fun initViews() {

@@ -61,8 +61,34 @@
               android:label="SavedFragment">
     </fragment>
     <fragment android:id="@+id/profileFragment"
-              android:name="ru.vsibi.presentation.screens.profile.ProfileFragment"
+              android:name="ru.vsibi.presentation.screens.profile.main.ProfileFragment"
               android:label="ProfileFragment">
+        <action
+                android:id="@+id/action_profileFragment_to_ordersFragment"
+                app:destination="@id/ordersFragment"/>
     </fragment>
+
+    <fragment android:id="@+id/ordersFragment"
+              android:name="ru.vsibi.presentation.screens.profile.orders.main.OrdersFragment"
+              android:label="OrdersFragment">
+        <action
+                android:id="@+id/action_ordersFragment_to_ordersDetailFragment"
+                app:destination="@id/ordersDetailFragment"/>
+    </fragment>
+
+    <fragment android:id="@+id/ordersDetailFragment"
+              android:name="ru.vsibi.presentation.screens.profile.orders.info.OrdersDetailFragment"
+              android:label="OrdersDetailFragment">
+        <argument
+                android:name="hotel"
+                app:argType="ru.vsibi.presentation.screens.hotels.main.HotelsModel"/>
+        <action
+                android:id="@+id/action_ordersDetailFragment_to_ticketFragment"
+                app:destination="@id/ticketFragment"/>
+    </fragment>
+    <fragment android:id="@+id/ticketFragment"
+              android:name="ru.vsibi.presentation.screens.profile.orders.ticket.TicketFragment"
+              android:label="TicketFragment">
+   </fragment>
 
 </navigation>

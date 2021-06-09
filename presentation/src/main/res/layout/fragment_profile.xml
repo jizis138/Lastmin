@@ -28,12 +28,13 @@
                     android:layout_height="wrap_content"
                     style="@style/DarkText.Big"
                     android:layout_gravity="center_vertical"
-                    android:text="123"
+                    android:text="@string/example_profile_name"
                     android:layout_marginStart="@dimen/medium_margin"
                     />
         </LinearLayout>
 
         <RelativeLayout
+                android:id="@+id/rel_orders"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/big_margin"

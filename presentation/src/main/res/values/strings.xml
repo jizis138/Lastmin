@@ -58,4 +58,21 @@
     <string name="pass_upper">Contains at least one uppercase latter</string>
     <string name="pass_lower">Contains at least one lowercase latter</string>
     <string name="confirm_password">Confirm password</string>
+    <string name="example_profile_name">Ingrīda Sokolova</string>
+    <string name="example_order_ref">Order Ref # 134256</string>
+    <string name="travel_docs">Travel Documents</string>
+    <string name="order_confirmation">Lastmin Order Confirmation</string>
+    <string name="order_invoice">Lastmin Invoice</string>
+    <string name="order_vaucher">Kaya Palazzo Vaucher</string>
+    <string name="order_ticket_1">RIX - AYT 21.05.21 Tickets</string>
+    <string name="order_ticket_2">AYT - RIX 28.05.21 Tickets</string>
+    <string name="order_transfer_confirmation">Transfer Order Confirmation</string>
+    <string name="order_insurance_police">BTA Insurance police</string>
+    <string name="social">Social</string>
+    <string name="share">Share</string>
+    <string name="delete">Delete</string>
+    <string name="copy">Copy</string>
+    <string name="save_to_files">Save to Files</string>
+    <string name="print">Print</string>
+    <string name="send">Send</string>
 </resources>
