@@ -1,20 +1,20 @@
-package ru.vsibi.presentation.screens.hotels.info
+package ru.vsibi.presentation.screens.tours.info
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentHotelsInfoBinding
-import ru.vsibi.presentation.screens.hotels.main.HotelsModel
+import ru.vsibi.presentation.screens.tours.info.more.TourMoreFragmentArgs
+import ru.vsibi.presentation.screens.tours.main.TourModel
 
-class HotelsInfoFragment :
+class ToursInfoFragment :
     BaseFragment<FragmentHotelsInfoBinding>(FragmentHotelsInfoBinding::inflate, R.layout.fragment_hotels_info) {
 
-    private val args: HotelsInfoFragmentArgs by navArgs()
-    private val viewModel: HotelsInfoViewModel by viewModels()
+    private val args : TourMoreFragmentArgs by navArgs()
+    private val viewModel: ToursInfoViewModel by viewModels()
 
     override fun onResume() {
         super.onResume()
@@ -26,7 +26,7 @@ class HotelsInfoFragment :
     }
 
     override fun initArguments() {
-        viewModel.obtainEvent(HotelsInfoEvent.ConfigureArgs(args.hotel))
+        viewModel.obtainEvent(ToursInfoEvent.ConfigureArgs(args.tour))
     }
 
     override fun initFragment() {
@@ -39,7 +39,10 @@ class HotelsInfoFragment :
                 popBack()
             }
             btnBook.setOnClickListener {
-                viewModel.hotel?.let { it1 -> router.navigatePurchaseForm(it1) }
+                viewModel.tour?.let { it1 -> router.navigatePurchaseForm(it1) }
+            }
+            tvMore.setOnClickListener {
+                router.navigateTourMore(viewModel.tour)
             }
         }
     }
@@ -53,18 +56,18 @@ class HotelsInfoFragment :
         viewModel.viewActions().observe(viewLifecycleOwner) { bindViewActions(it) }
     }
 
-    private fun bindViewState(state: HotelsInfoState) {
+    private fun bindViewState(state: ToursInfoState) {
         when (state) {
-            is HotelsInfoState.Loaded -> updateViews(state.data)
+            is ToursInfoState.Loaded -> updateViews(state.data)
         }
     }
 
 
-    private fun bindViewActions(action: HotelsInfoAction?) {
+    private fun bindViewActions(action: ToursInfoAction?) {
 
     }
 
-    private fun updateViews(data: HotelsModel) {
+    private fun updateViews(data: TourModel) {
         binding.apply {
             tvTitle.text = data.title
             tvLocation.text = data.location
@@ -75,7 +78,6 @@ class HotelsInfoFragment :
 
     override fun onStop() {
         super.onStop()
-        (activity as AppCompatActivity?)?.supportActionBar?.show()
     }
 
 }

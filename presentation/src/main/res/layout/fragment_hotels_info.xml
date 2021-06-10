@@ -21,7 +21,7 @@
             <com.google.android.material.appbar.CollapsingToolbarLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+                    app:layout_scrollFlags="scroll"
 
                     >
 
@@ -181,12 +181,25 @@
                         android:text="123\n123\n123"
                         style="@style/DarkText"
                         android:maxLines="3"
+                        android:ellipsize="end"
                         android:layout_marginTop="@dimen/def_margin"
                         android:layout_marginStart="@dimen/medium_margin"
                         android:layout_marginEnd="@dimen/medium_margin"
-
                         />
 
+                <TextView
+                        android:id="@+id/tv_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/more"
+                        style="@style/GreenText"
+                        android:layout_gravity="end"
+                        android:layout_marginEnd="@dimen/medium_margin"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:layout_marginTop="@dimen/min_margin"
+                        app:drawableTint="@color/main_green"
+                        app:drawableRightCompat="@drawable/ic_baseline_arrow_right_24"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/til_flight_details"
@@ -392,6 +405,7 @@
                         style="@style/PinkText.Big"
                         android:text="€1025"
                         />
+
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

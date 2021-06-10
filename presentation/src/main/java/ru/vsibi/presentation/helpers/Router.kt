@@ -1,12 +1,9 @@
 package ru.vsibi.presentation.helpers
 
-import android.app.Activity
-import android.content.Intent
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import ru.vsibi.presentation.screens.hotels.info.HotelsInfoFragmentDirections
-import ru.vsibi.presentation.screens.hotels.main.HotelsFragmentDirections
-import ru.vsibi.presentation.screens.hotels.main.HotelsModel
+import ru.vsibi.presentation.screens.tours.main.HotelsFragmentDirections
+import ru.vsibi.presentation.screens.tours.main.TourModel
 import ru.vsibi.presentation.screens.login.LoginFragmentDirections
 import ru.vsibi.presentation.screens.login.emailVariant.createPassword.CreatePassFragmentDirections
 import ru.vsibi.presentation.screens.login.emailVariant.email.LoginEmailFragmentDirections
@@ -18,6 +15,8 @@ import ru.vsibi.presentation.screens.profile.orders.info.OrdersDetailFragmentDir
 import ru.vsibi.presentation.screens.profile.orders.main.OrdersFragmentDirections
 import ru.vsibi.presentation.screens.saved.SavedFragmentDirections
 import ru.vsibi.presentation.screens.search.main.SearchFragmentDirections
+import ru.vsibi.presentation.screens.tours.info.ToursInfoFragment
+import ru.vsibi.presentation.screens.tours.info.ToursInfoFragmentDirections
 
 class Router {
 
@@ -25,10 +24,10 @@ class Router {
         val instance = Router()
     }
 
-    var parentNavController : NavController? = null
-    var parentNavHostFragment : NavHostFragment? = null
-    var childNavHostFragment : NavHostFragment? = null
-    var childNavController : NavController? = null
+    var parentNavController: NavController? = null
+    var parentNavHostFragment: NavHostFragment? = null
+    var childNavHostFragment: NavHostFragment? = null
+    var childNavController: NavController? = null
 
     fun navigateToTravellers() {
         childNavController?.navigate(SearchFragmentDirections.actionSearchFragmentToTravellersFragment())
@@ -38,7 +37,7 @@ class Router {
         parentNavController?.navigate(MainFragmentDirections.actionMainFragmentToLoginFragment())
     }
 
-    fun navigateToHotelsInfo(hotelsModel: HotelsModel) {
+    fun navigateToHotelsInfo(hotelsModel: TourModel) {
         childNavController?.navigate(HotelsFragmentDirections.actionHotelsFragmentToHotelsInfoFragment(hotelsModel))
     }
 
@@ -46,8 +45,8 @@ class Router {
         childNavController?.navigate(SearchFragmentDirections.actionSearchFragmentToHotelsFragment())
     }
 
-    fun navigatePurchaseForm(hotelsModel: HotelsModel) {
-        childNavController?.navigate(HotelsInfoFragmentDirections.actionHotelsInfoFragmentToPurchaseFormFragment(hotelsModel))
+    fun navigatePurchaseForm(hotelsModel: TourModel) {
+        childNavController?.navigate(ToursInfoFragmentDirections.actionHotelsInfoFragmentToPurchaseFormFragment(hotelsModel))
     }
 
     fun navigateToLoginWithEmail() {
@@ -70,8 +69,12 @@ class Router {
         parentNavController?.navigate(ForgotPassFragmentDirections.actionForgotPassFragmentToCreatePassFragment())
     }
 
-    fun navigateForgotPass(email : String) {
-        parentNavController?.navigate(LoginPasswordFragmentDirections.actionLoginPasswordFragmentToForgotPassFragment(email))
+    fun navigateForgotPass(email: String) {
+        parentNavController?.navigate(
+            LoginPasswordFragmentDirections.actionLoginPasswordFragmentToForgotPassFragment(
+                email
+            )
+        )
     }
 
     fun navigateToMainFromCreatePass() {
@@ -82,16 +85,21 @@ class Router {
         childNavController?.navigate(ProfileFragmentDirections.actionProfileFragmentToOrdersFragment())
     }
 
-    fun navigateToOrdersDetail(hotel: HotelsModel) {
+    fun navigateToOrdersDetail(hotel: TourModel) {
         childNavController?.navigate(OrdersFragmentDirections.actionOrdersFragmentToOrdersDetailFragment(hotel))
     }
 
-    fun navigateToOrdersDetailFromSaved(hotel: HotelsModel) {
+    fun navigateToOrdersDetailFromSaved(hotel: TourModel) {
         childNavController?.navigate(SavedFragmentDirections.actionSavedFragmentToHotelsInfoFragment(hotel))
     }
 
     fun navigateToTicket() {
         childNavController?.navigate(OrdersDetailFragmentDirections.actionOrdersDetailFragmentToTicketFragment())
+    }
+
+    fun navigateTourMore(tour: TourModel?) {
+        if (tour == null) return
+        childNavController?.navigate(ToursInfoFragmentDirections.actionHotelsInfoFragmentToTourMoreFragment(tour))
     }
 
 

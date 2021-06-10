@@ -12,6 +12,7 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.Lastmin"
             android:name=".App"
+            android:usesCleartextTraffic="true"
             >
         <activity android:name=".MainActivity"
                 android:screenOrientation="portrait"

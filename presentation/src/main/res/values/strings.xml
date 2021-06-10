@@ -75,4 +75,11 @@
     <string name="save_to_files">Save to Files</string>
     <string name="print">Print</string>
     <string name="send">Send</string>
+    <string name="more">More</string>
+    <string name="main_info">Main info</string>
+    <string name="tour_general">• opened 2002, last renovated 2014 – 2017  \n\n• local classification: 5 *  \n\n• area 186 000 m2  \n\n• There are 770 rooms in the two main buildings and in the villas on the 2 to 3 floors  \n\n• 6 lifts</string>
+    <string name="general">General</string>
+    <string name="restaraunts">Restaurants</string>
+    <string name="tour_restaurants">• 6 à la carte restaurants, 4 of which are available for an additional fee  \n\n• 9 bars, 2 of them for guests staying in villas  \n\n• appetizer restaurant, cafe, ice cream parlor</string>
+    <string name="hotel_desc">Hotel description</string>
 </resources>

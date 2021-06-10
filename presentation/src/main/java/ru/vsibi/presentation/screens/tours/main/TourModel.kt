@@ -1,10 +1,10 @@
-package ru.vsibi.presentation.screens.hotels.main
+package ru.vsibi.presentation.screens.tours.main
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class HotelsModel(
+data class TourModel(
     val image: String,
     val title: String,
     val description: String,

@@ -5,6 +5,7 @@
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:paddingBottom="@dimen/large_margin"
+        android:layout_marginTop="?android:actionBarSize"
         >
 
     <LinearLayout

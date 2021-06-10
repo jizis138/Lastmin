@@ -6,19 +6,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
-import ru.vsibi.presentation.databinding.FragmentHotelsBinding
 import ru.vsibi.presentation.databinding.FragmentSavedBinding
-import ru.vsibi.presentation.screens.hotels.main.HotelsAdapter
-import ru.vsibi.presentation.screens.hotels.main.HotelsModel
-import ru.vsibi.presentation.screens.profile.orders.main.OrdersAction
-import ru.vsibi.presentation.screens.profile.orders.main.OrdersEvent
-import ru.vsibi.presentation.screens.profile.orders.main.OrdersViewModel
-import ru.vsibi.presentation.screens.profile.orders.main.OrdersViewState
+import ru.vsibi.presentation.screens.tours.main.HotelsAdapter
+import ru.vsibi.presentation.screens.tours.main.TourModel
 
 class SavedFragment : BaseFragment<FragmentSavedBinding>(FragmentSavedBinding::inflate, R.layout.fragment_saved) {
 
     private val viewModel: SavedViewModel by viewModels()
-    private val itemsClickListener: (HotelsModel) -> Unit = { hotel ->
+    private val itemsClickListener: (TourModel) -> Unit = { hotel ->
         router.navigateToOrdersDetailFromSaved(hotel)
     }
     private val adapter = HotelsAdapter(itemsClickListener)
