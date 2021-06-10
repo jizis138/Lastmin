@@ -5,6 +5,19 @@
             app:startDestination="@id/searchFragment"
 >
     <fragment
+            android:id="@+id/flightsListFragment"
+            android:name="ru.vsibi.presentation.screens.tours.info.flights.main.FlightsListFragment"
+            android:label="FlightsListFragment">
+        <action
+                android:id="@+id/action_flightsListFragment_to_flightsInfoFragment"
+                app:destination="@id/flightsInfoFragment"/>
+    </fragment>
+    <fragment
+            android:id="@+id/flightsInfoFragment"
+            android:name="ru.vsibi.presentation.screens.tours.info.flights.info.FlightsInfoFragment"
+            android:label="FlightsInfoFragment">
+   </fragment>
+    <fragment
             android:id="@+id/purchaseFormFragment"
             android:name="ru.vsibi.presentation.screens.tours.purchase.PurchaseFormFragment"
             android:label="PurchaseFormFragment"
@@ -57,6 +70,9 @@
         <argument
                 android:name="tour"
                 app:argType="ru.vsibi.presentation.screens.tours.main.TourModel"/>
+        <action
+                android:id="@+id/action_tourInfoFragment_to_flightsListFragment"
+                app:destination="@id/flightsListFragment"/>
     </fragment>
 
     <fragment android:id="@+id/tourMoreFragment"
