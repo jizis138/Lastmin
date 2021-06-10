@@ -44,6 +44,9 @@ class ToursInfoFragment :
             tvMore.setOnClickListener {
                 router.navigateTourMore(viewModel.tour)
             }
+            tvFlightDetails.setOnClickListener {
+                router.navigateToFlightDetails()
+            }
         }
     }
 

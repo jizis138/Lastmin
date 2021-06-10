@@ -17,6 +17,7 @@ import ru.vsibi.presentation.screens.saved.SavedFragmentDirections
 import ru.vsibi.presentation.screens.search.main.SearchFragmentDirections
 import ru.vsibi.presentation.screens.tours.info.ToursInfoFragment
 import ru.vsibi.presentation.screens.tours.info.ToursInfoFragmentDirections
+import ru.vsibi.presentation.screens.tours.info.flights.main.FlightsListFragmentDirections
 
 class Router {
 
@@ -100,6 +101,14 @@ class Router {
     fun navigateTourMore(tour: TourModel?) {
         if (tour == null) return
         childNavController?.navigate(ToursInfoFragmentDirections.actionHotelsInfoFragmentToTourMoreFragment(tour))
+    }
+
+    fun navigateToFlightDetails() {
+        childNavController?.navigate(ToursInfoFragmentDirections.actionTourInfoFragmentToFlightsListFragment())
+    }
+
+    fun navigateToFlightInfo() {
+        childNavController?.navigate(FlightsListFragmentDirections.actionFlightsListFragmentToFlightsInfoFragment())
     }
 
 
