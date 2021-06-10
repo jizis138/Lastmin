@@ -1,4 +1,4 @@
-package ru.vsibi.presentation.screens.hotels.purchase
+package ru.vsibi.presentation.screens.tours.purchase
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
@@ -9,14 +9,13 @@ import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentPurchaseFormBinding
 import ru.vsibi.presentation.helpers.Lastmin
-import ru.vsibi.presentation.screens.hotels.info.HotelsInfoFragmentArgs
-import ru.vsibi.presentation.screens.hotels.main.HotelsModel
+import ru.vsibi.presentation.screens.tours.main.TourModel
 
 class PurchaseFormFragment :
     BaseFragment<FragmentPurchaseFormBinding>(FragmentPurchaseFormBinding::inflate, R.layout.fragment_purchase_form) {
 
     private val viewModel: PurchaseFormViewModel by viewModels()
-    private val args: HotelsInfoFragmentArgs by navArgs()
+    private val args: PurchaseFormFragmentArgs by navArgs()
 
     override fun initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
@@ -27,7 +26,7 @@ class PurchaseFormFragment :
     }
 
     override fun initArguments() {
-        viewModel.obtainEvent(PurchaseFormEvent.ConfigureArgs(args.hotel))
+        viewModel.obtainEvent(PurchaseFormEvent.ConfigureArgs(args.tour))
     }
 
     override fun initFragment() {
@@ -58,7 +57,7 @@ class PurchaseFormFragment :
     }
 
     @SuppressLint("SetTextI18n")
-    private fun updateViews(data: HotelsModel) {
+    private fun updateViews(data: TourModel) {
         binding.apply {
             hotel.tvTitle.text = data.title
             hotel.tvDescription.text = data.location

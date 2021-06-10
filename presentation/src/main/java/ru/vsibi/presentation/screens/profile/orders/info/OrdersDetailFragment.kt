@@ -4,7 +4,7 @@ import androidx.navigation.fragment.navArgs
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentOrdersDetailBinding
-import ru.vsibi.presentation.screens.hotels.main.HotelsModel
+import ru.vsibi.presentation.screens.tours.main.TourModel
 
 class OrdersDetailFragment : BaseFragment<FragmentOrdersDetailBinding>(FragmentOrdersDetailBinding::inflate, R.layout.fragment_orders_detail) {
 
@@ -15,7 +15,7 @@ class OrdersDetailFragment : BaseFragment<FragmentOrdersDetailBinding>(FragmentO
     }
 
     override fun initArguments() {
-        updateViews(args.hotel)
+        updateViews(args.tour)
     }
 
     override fun initFragment() {
@@ -39,7 +39,7 @@ class OrdersDetailFragment : BaseFragment<FragmentOrdersDetailBinding>(FragmentO
         super.initObservers()
     }
 
-    private fun updateViews(hotel: HotelsModel) {
+    private fun updateViews(hotel: TourModel) {
         binding.apply {
             tvTitle.text = hotel.title
             tvLocation.text = hotel.location

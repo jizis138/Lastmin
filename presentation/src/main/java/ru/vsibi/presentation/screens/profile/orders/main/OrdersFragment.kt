@@ -7,12 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentOrdersBinding
-import ru.vsibi.presentation.screens.hotels.main.*
+import ru.vsibi.presentation.screens.tours.main.*
 
 class OrdersFragment : BaseFragment<FragmentOrdersBinding>(FragmentOrdersBinding::inflate, R.layout.fragment_orders) {
 
     private val viewModel: OrdersViewModel by viewModels()
-    private val itemsClickListener: (HotelsModel) -> Unit = { hotel ->
+    private val itemsClickListener: (TourModel) -> Unit = { hotel ->
         router.navigateToOrdersDetail(hotel)
     }
     private val adapter = HotelsAdapter(itemsClickListener)

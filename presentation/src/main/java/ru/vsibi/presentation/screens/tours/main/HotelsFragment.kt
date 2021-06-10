@@ -1,7 +1,5 @@
-package ru.vsibi.presentation.screens.hotels.main
+package ru.vsibi.presentation.screens.tours.main
 
-import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,10 +11,17 @@ import ru.vsibi.presentation.databinding.FragmentHotelsBinding
 class HotelsFragment : BaseFragment<FragmentHotelsBinding>(FragmentHotelsBinding::inflate, R.layout.fragment_hotels) {
 
     private val viewModel : HotelsViewModel by viewModels()
-    private val itemsClickListener: (HotelsModel) -> Unit = { hotel ->
+
+
+    private val itemsClickListener: (TourModel) -> Unit = { hotel ->
         router.navigateToHotelsInfo(hotel)
     }
     private val adapter = HotelsAdapter(itemsClickListener)
+
+    override fun onResume() {
+        super.onResume()
+        (activity as AppCompatActivity?)?.supportActionBar?.show()
+    }
 
     override fun initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {

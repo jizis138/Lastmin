@@ -1,4 +1,4 @@
-package ru.vsibi.presentation.screens.hotels.main
+package ru.vsibi.presentation.screens.tours.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,12 +8,12 @@ import ru.vsibi.presentation.R
 import ru.vsibi.presentation.databinding.CellHotelsBinding
 import ru.vsibi.presentation.helpers.Lastmin
 
-class HotelsAdapter(private var itemClickListener: ((HotelsModel) -> Unit)? = null) :
+class HotelsAdapter(private var itemClickListener: ((TourModel) -> Unit)? = null) :
     RecyclerView.Adapter<HotelsAdapter.HotelsViewHolder>() {
 
-    private val hotels = mutableListOf<HotelsModel>()
+    private val hotels = mutableListOf<TourModel>()
 
-    fun setupAdapter(hotels: List<HotelsModel>) {
+    fun setupAdapter(hotels: List<TourModel>) {
         this.hotels.clear()
         this.hotels.addAll(hotels)
         notifyDataSetChanged()

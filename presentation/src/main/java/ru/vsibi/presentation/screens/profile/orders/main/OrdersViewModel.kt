@@ -1,7 +1,7 @@
 package ru.vsibi.presentation.screens.profile.orders.main
 
 import ru.vsibi.presentation.base.BaseViewModel
-import ru.vsibi.presentation.screens.hotels.main.HotelsMockFactory
+import ru.vsibi.presentation.screens.tours.main.HotelsMockFactory
 
 class OrdersViewModel : BaseViewModel<OrdersViewState, OrdersAction, OrdersEvent>() {
 
