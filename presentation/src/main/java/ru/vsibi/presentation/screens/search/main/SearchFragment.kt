@@ -20,14 +20,19 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
 
     private var picker: MaterialDatePicker<Pair<Long, Long>>? = null
     private val viewModel: SearchViewModel by viewModels()
+
+    override fun onResume() {
+        super.onResume()
+        initOriginSpinner()
+        initDestinationSpinner()
+    }
+
     override fun initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.search)
             setDisplayHomeAsUpEnabled(false)
             setDisplayShowHomeEnabled(false)
         }
-        initOriginSpinner()
-        initDestinationSpinner()
         initRangeDatePicker()
     }
 
@@ -49,9 +54,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
             tvTravellers.setOnClickListener {
                 router.navigateToTravellers()
             }
-//            btnSearch.setOnClickListener {
-//                viewModel.obtainEvent(SearchEvent.StartSearch())
-//            }
+            btnSearch.setOnClickListener {
+                viewModel.obtainEvent(SearchEvent.StartSearch())
+            }
         }
     }
 

@@ -3,19 +3,25 @@ package ru.vsibi.presentation.screens.search.travallers
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentTravellersBinding
 
-class TravellersFragment : BaseFragment<FragmentTravellersBinding>(FragmentTravellersBinding::inflate, R.layout.fragment_travellers) {
+class TravellersFragment :
+    BaseFragment<FragmentTravellersBinding>(FragmentTravellersBinding::inflate, R.layout.fragment_travellers) {
 
     companion object {
         const val KEY_TRAVELLERS = "key_travellers"
     }
 
+    private val viewModel: TravellersViewModel by viewModels()
+    private val adapter = ChildsAdapter()
     override fun initViews() {
         binding.apply {
-
+            rvChilds.configure()
         }
     }
 
@@ -29,8 +35,32 @@ class TravellersFragment : BaseFragment<FragmentTravellersBinding>(FragmentTrave
 
     override fun initListeners() {
         binding.apply {
+            ibAdultMinus.setOnClickListener {
+                viewModel.minusAdult()
+            }
+            ibAdultPlus.setOnClickListener {
+                viewModel.plusAdult()
+            }
+            ibChildMinus.setOnClickListener {
+                viewModel.minusChild()
+                adapter.removeLast()
+            }
+            ibChildPlus.setOnClickListener {
+                viewModel.plusChild()
+                adapter.add(2)
+            }
             btnOk.setOnClickListener {
-                setFragmentResult(KEY_TRAVELLERS, Bundle().apply { putParcelable(KEY_TRAVELLERS, TravellersModel(2, 3)) })
+                setFragmentResult(
+                    KEY_TRAVELLERS,
+                    Bundle().apply {
+                        putParcelable(
+                            KEY_TRAVELLERS,
+                            TravellersModel(
+                                binding.tvAdultCount.text.toString().toInt(),
+                                binding.tvChildCount.text.toString().toInt()
+                            )
+                        )
+                    })
                 popBack()
             }
             btnCancel.setOnClickListener {
@@ -44,6 +74,17 @@ class TravellersFragment : BaseFragment<FragmentTravellersBinding>(FragmentTrave
     }
 
     override fun initObservers() {
-        super.initObservers()
+        viewModel.adultsCountLiveData.observe(this) {
+            binding.tvAdultCount.text = it.toString()
+        }
+        viewModel.childsCountLiveData.observe(this) {
+            binding.tvChildCount.text = it.toString()
+        }
+    }
+
+    private fun RecyclerView.configure() {
+        adapter = this@TravellersFragment.adapter
+        layoutManager = LinearLayoutManager(requireContext())
     }
 }
+
