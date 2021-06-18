@@ -81,6 +81,7 @@ class ToursInfoFragment :
 
     override fun onStop() {
         super.onStop()
+        (activity as AppCompatActivity?)?.supportActionBar?.show()
     }
 
 }

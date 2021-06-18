@@ -10,6 +10,10 @@ import ru.vsibi.presentation.databinding.FragmentTourMoreBinding
 class TourMoreFragment :
     BaseFragment<FragmentTourMoreBinding>(FragmentTourMoreBinding::inflate, R.layout.fragment_tour_more) {
 
+    override fun onResume() {
+        super.onResume()
+        (activity as AppCompatActivity?)?.supportActionBar?.hide()
+    }
     override fun initViews() {
         binding.apply {
             toolbar.setNavigationOnClickListener {
@@ -18,4 +22,8 @@ class TourMoreFragment :
         }
     }
 
+    override fun onStop() {
+        super.onStop()
+        (activity as AppCompatActivity?)?.supportActionBar?.show()
+    }
 }
