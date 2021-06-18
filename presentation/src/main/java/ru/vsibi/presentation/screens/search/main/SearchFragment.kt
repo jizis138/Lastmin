@@ -1,11 +1,14 @@
 package ru.vsibi.presentation.screens.search.main
 
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.util.Pair
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
+import com.google.android.material.datepicker.MaterialDatePicker
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentSearchBinding
@@ -15,8 +18,8 @@ import ru.vsibi.presentation.screens.search.travallers.TravellersModel
 
 class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding::inflate, R.layout.fragment_search) {
 
+    private var picker: MaterialDatePicker<Pair<Long, Long>>? = null
     private val viewModel: SearchViewModel by viewModels()
-
     override fun initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.search)
@@ -25,6 +28,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
         }
         initOriginSpinner()
         initDestinationSpinner()
+        initRangeDatePicker()
     }
 
 
@@ -45,9 +49,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
             tvTravellers.setOnClickListener {
                 router.navigateToTravellers()
             }
-            btnSearch.setOnClickListener {
-                viewModel.obtainEvent(SearchEvent.StartSearch())
-            }
+//            btnSearch.setOnClickListener {
+//                viewModel.obtainEvent(SearchEvent.StartSearch())
+//            }
         }
     }
 
@@ -109,5 +113,22 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
             }
         }
     }
+
+    private fun initRangeDatePicker() {
+        val builder = MaterialDatePicker.Builder.dateRangePicker()
+
+        picker = builder.build()
+        binding.tvDate.setOnClickListener {
+            picker?.show(childFragmentManager, picker.toString())
+            picker?.addOnPositiveButtonClickListener {
+                binding.tvDate.setText(picker?.headerText)
+                Log.d(
+                    "DatePicker Activity",
+                    "Date String = ${picker?.headerText}::  Date epoch values::${it.first}:: to :: ${it.second}"
+                )
+            }
+        }
+    }
+
 }
 
