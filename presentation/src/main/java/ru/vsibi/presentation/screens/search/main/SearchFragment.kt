@@ -1,6 +1,8 @@
 package ru.vsibi.presentation.screens.search.main
 
 import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
@@ -13,7 +15,7 @@ import ru.vsibi.presentation.screens.search.travallers.TravellersModel
 
 class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding::inflate, R.layout.fragment_search) {
 
-    private val viewModel : SearchViewModel by viewModels()
+    private val viewModel: SearchViewModel by viewModels()
 
     override fun initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
@@ -21,7 +23,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
             setDisplayHomeAsUpEnabled(false)
             setDisplayShowHomeEnabled(false)
         }
+        initOriginSpinner()
+        initDestinationSpinner()
     }
+
 
     override fun initArguments() {
 
@@ -32,7 +37,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
     }
 
     override fun initListeners() {
-        setFragmentResultListener(TravellersFragment.KEY_TRAVELLERS){requestKey, bundle ->
+        setFragmentResultListener(TravellersFragment.KEY_TRAVELLERS) { requestKey, bundle ->
             val travellersModel = bundle.getParcelable(TravellersFragment.KEY_TRAVELLERS) as? TravellersModel
             binding.tvTravellers.setText("" + travellersModel?.adultsCount + " Adults, " + travellersModel?.childsCount + " Kids")
         }
@@ -75,44 +80,34 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
     private fun bindViewActions(action: SearchAction?) {}
 
 
+    private fun initOriginSpinner() {
+        val adapter = ArrayAdapter(
+            requireContext(),
+            R.layout.cell_spinner, SearchFactory.getCountryList()
+        )
+        val editTextFilledExposedDropdown = binding.tvOrigin
+        editTextFilledExposedDropdown.setAdapter(adapter)
+        editTextFilledExposedDropdown.setOnClickListener {
+            it as AutoCompleteTextView
+            if (!it.isShown) {
+                it.showDropDown()
+            }
+        }
+    }
 
-//    private fun initSpiner(flag: Int) {
-//        val list = ArrayList<String>()
-//        list.add("за день")
-//        list.add("за неделю")
-//        list.add("за месяц")
-//        list.add("за всё время")
-//        val sAdapter = ArrayAdapter(
-//            this,
-//            R.layout.item_graph_spinner, R.id.text1, list
-//        )
-//        spinner.setPopupBackgroundDrawable(
-//            ViewUtils.generateBackgroundWithShadow(
-//                spinner, R.color.white,
-//                15.dp.toFloat(), R.color.grey_dark_card, 10.dp
-//            )
-//        )
-//        sAdapter.notifyDataSetChanged()
-//        sAdapter.setDropDownViewResource(R.layout.item_spinner_custom)
-//        spinner.adapter = sAdapter
-//        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-//            override fun onNothingSelected(parent: AdapterView<*>?) {
-//
-//            }
-//
-//            override fun onItemSelected(
-//                parent: AdapterView<*>?,
-//                view: View?,
-//                position: Int,
-//                id: Long
-//            ) {
-//                chart.clear()
-//                isNeedClear = true
-//                spinnerPosition = position
-//                initData(spinnerPosition)
-//            }
-//
-//        }
-//    }
+    private fun initDestinationSpinner() {
+        val adapter = ArrayAdapter(
+            requireContext(),
+            R.layout.cell_spinner, SearchFactory.getCountryList()
+        )
+        val editTextFilledExposedDropdown = binding.tvDestionation
+        editTextFilledExposedDropdown.setAdapter(adapter)
+        editTextFilledExposedDropdown.setOnClickListener {
+            it as AutoCompleteTextView
+            if (!it.isShown) {
+                it.showDropDown()
+            }
+        }
+    }
 }
 
