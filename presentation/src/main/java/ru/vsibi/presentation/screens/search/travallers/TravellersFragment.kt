@@ -19,7 +19,13 @@ class TravellersFragment :
 
     private val viewModel: TravellersViewModel by viewModels()
     private val adapter = ChildsAdapter()
+
     override fun initViews() {
+        (activity as AppCompatActivity).supportActionBar?.apply {
+            title = getString(R.string.travellers)
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
         binding.apply {
             rvChilds.configure()
         }

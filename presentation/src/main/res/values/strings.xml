@@ -122,4 +122,6 @@
     <string name="child_period">2 - 17 years old</string>
     <string name="child_1">1st Child’s Age</string>
     <string name="childs_age">Child’s Age</string>
+    <string name="flights_search_opts">Flight Search Options</string>
+    <string name="example_date_range">21.05.-27.05</string>
 </resources>
