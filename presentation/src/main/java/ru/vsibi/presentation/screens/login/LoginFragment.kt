@@ -27,7 +27,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     override fun initListeners() {
         binding.apply {
             btnEmail.setOnClickListener {
-                router.navigateToLoginWithEmail()
+                router.navigateToLoginWithEmail(isLogin = true)
+            }
+            btnCreate.setOnClickListener {
+                router.navigateToLoginWithEmail(isLogin = false)
             }
         }
     }

@@ -2,14 +2,16 @@ package ru.vsibi.presentation.screens.login.emailVariant.email
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentLoginEmailBinding
 
-class LoginEmailFragment : BaseFragment<FragmentLoginEmailBinding>(FragmentLoginEmailBinding::inflate, R.layout.fragment_login_email) {
+class LoginEmailFragment :
+    BaseFragment<FragmentLoginEmailBinding>(FragmentLoginEmailBinding::inflate, R.layout.fragment_login_email) {
 
-    private val viewModel : LoginEmailViewModel by viewModels()
-
+    private val viewModel: LoginEmailViewModel by viewModels()
+    private val args: LoginEmailFragmentArgs by navArgs()
     override fun initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.enter_email)
@@ -19,7 +21,11 @@ class LoginEmailFragment : BaseFragment<FragmentLoginEmailBinding>(FragmentLogin
     }
 
     override fun initArguments() {
-        super.initArguments()
+        if (args.isLogin) {
+            binding.btnContinue.text = getString(R.string.next)
+        } else {
+            binding.btnContinue.text = getString(R.string.sign_up)
+        }
     }
 
     override fun initFragment() {
@@ -45,7 +51,13 @@ class LoginEmailFragment : BaseFragment<FragmentLoginEmailBinding>(FragmentLogin
 
     private fun bindViewState(state: LoginEmailViewState) {
         when (state) {
-            is LoginEmailViewState.OnLoginEntered -> router.navigateToLoginPassword(state.data)
+            is LoginEmailViewState.OnLoginEntered -> {
+                if (args.isLogin) {
+                    router.navigateToLoginPassword(state.data)
+                } else {
+                    router.navigateToCreatePassFromSignup(state.data)
+                }
+            }
         }
     }
 

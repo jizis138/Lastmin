@@ -52,8 +52,10 @@ class Router {
         childNavController?.navigate(ToursInfoFragmentDirections.actionHotelsInfoFragmentToPurchaseFormFragment(hotelsModel))
     }
 
-    fun navigateToLoginWithEmail() {
-        parentNavController?.navigate(LoginFragmentDirections.actionLoginFragmentToLoginEmailFragment())
+    fun navigateToLoginWithEmail(isLogin: Boolean) {
+        val directions = LoginFragmentDirections.actionLoginFragmentToLoginEmailFragment()
+        directions.isLogin = isLogin
+        parentNavController?.navigate(directions)
     }
 
     fun navigateToLoginPassword(data: String) {
@@ -127,6 +129,10 @@ class Router {
 
     fun navigateToChangePass() {
         childNavController?.navigate(ProfileFragmentDirections.actionProfileFragmentToChangePasswordFragment())
+    }
+
+    fun navigateToCreatePassFromSignup(data: String) {
+        parentNavController?.navigate(LoginEmailFragmentDirections.actionLoginEmailFragmentToCreatePassFragment())
     }
 
 
