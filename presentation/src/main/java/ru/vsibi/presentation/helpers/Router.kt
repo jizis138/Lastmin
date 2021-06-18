@@ -2,6 +2,7 @@ package ru.vsibi.presentation.helpers
 
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import ru.vsibi.presentation.models.PersonalDataModel
 import ru.vsibi.presentation.screens.tours.main.HotelsFragmentDirections
 import ru.vsibi.presentation.screens.tours.main.TourModel
 import ru.vsibi.presentation.screens.login.LoginFragmentDirections
@@ -10,6 +11,7 @@ import ru.vsibi.presentation.screens.login.emailVariant.email.LoginEmailFragment
 import ru.vsibi.presentation.screens.login.emailVariant.forgotPassword.ForgotPassFragmentDirections
 import ru.vsibi.presentation.screens.login.emailVariant.password.LoginPasswordFragmentDirections
 import ru.vsibi.presentation.screens.main.MainFragmentDirections
+import ru.vsibi.presentation.screens.profile.coTravellers.CoTravallersFragmentDirections
 import ru.vsibi.presentation.screens.profile.main.ProfileFragmentDirections
 import ru.vsibi.presentation.screens.profile.orders.info.OrdersDetailFragmentDirections
 import ru.vsibi.presentation.screens.profile.orders.main.OrdersFragmentDirections
@@ -109,6 +111,22 @@ class Router {
 
     fun navigateToFlightInfo() {
         childNavController?.navigate(FlightsListFragmentDirections.actionFlightsListFragmentToFlightsInfoFragment())
+    }
+
+    fun navigateToPersonalData(){
+        childNavController?.navigate(ProfileFragmentDirections.actionProfileFragmentToPersonalDataFragment(null))
+    }
+
+    fun navigateToCoTravellers() {
+        childNavController?.navigate(ProfileFragmentDirections.actionProfileFragmentToCoTravallersFragment())
+    }
+
+    fun navigateToPersonalDataFromCoTravellers(person: PersonalDataModel?) {
+        childNavController?.navigate(CoTravallersFragmentDirections.actionCoTravallersFragmentToPersonalDataFragment(person))
+    }
+
+    fun navigateToChangePass() {
+        childNavController?.navigate(ProfileFragmentDirections.actionProfileFragmentToChangePasswordFragment())
     }
 
 

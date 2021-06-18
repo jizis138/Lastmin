@@ -1,12 +1,22 @@
 package ru.vsibi.presentation.screens.profile.main
 
+import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.MultiTransformation
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.load.resource.bitmap.FitCenter
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.BitmapImageViewTarget
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentProfileBinding
+
 
 @AndroidEntryPoint
 class ProfileFragment :
@@ -20,6 +30,9 @@ class ProfileFragment :
             setDisplayHomeAsUpEnabled(false)
             setDisplayShowHomeEnabled(false)
         }
+        Glide.with(requireContext()).load(R.drawable.profile)
+            .into(binding.profilePhoto)
+
     }
 
     override fun initArguments() {
@@ -37,6 +50,15 @@ class ProfileFragment :
             }
             relOrders.setOnClickListener {
                 router.navigateToMyOrders()
+            }
+            relPersonalData.setOnClickListener {
+                router.navigateToPersonalData()
+            }
+            relCoTravellers.setOnClickListener {
+                router.navigateToCoTravellers()
+            }
+            relChangePass.setOnClickListener {
+                router.navigateToChangePass()
             }
         }
     }
