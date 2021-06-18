@@ -13,7 +13,7 @@
             >
 
         <TextView
-                android:id="@+id/tv_adults"
+                android:id="@+id/tv_checked"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/adults"
@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_alignParentEnd="true"
-                android:layout_alignBottom="@+id/tv_adults"
+                android:layout_alignBottom="@+id/tv_checked"
                 android:weightSum="3"
                 android:gravity="bottom"
                 android:layout_marginEnd="@dimen/big_margin"
