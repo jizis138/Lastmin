@@ -1,5 +1,6 @@
 package ru.vsibi.presentation.screens.profile.orders.info
 
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.navArgs
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
@@ -11,7 +12,11 @@ class OrdersDetailFragment : BaseFragment<FragmentOrdersDetailBinding>(FragmentO
     private val args : OrdersDetailFragmentArgs by navArgs()
 
     override fun initViews() {
-        super.initViews()
+        (activity as AppCompatActivity).supportActionBar?.apply {
+            title = getString(R.string.my_orders)
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
     }
 
     override fun initArguments() {

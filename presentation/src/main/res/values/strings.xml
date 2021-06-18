@@ -94,4 +94,16 @@
     <string name="example_stops">Stops: 2</string>
     <string name="example_abb_stops">FRA, LAX</string>
     <string name="example_adult_kid">2 Adults, 1 Kid</string>
+    <string name="name">Name</string>
+    <string name="dob">Date of Birth</string>
+    <string name="phone">Phone number</string>
+    <string name="passport">Passport</string>
+    <string name="number">Number</string>
+    <string name="country">Issue Country</string>
+    <string name="doe">Date of expiry</string>
+    <string name="save">Save</string>
+    <string name="add_new">Add New</string>
+    <string name="current">Current</string>
+    <string name="pass_new">New</string>
+    <string name="change">Change</string>
 </resources>
