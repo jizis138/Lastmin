@@ -2,8 +2,11 @@ package ru.vsibi.presentation.screens.search.main
 
 import android.os.Handler
 import ru.vsibi.presentation.base.BaseViewModel
+import ru.vsibi.presentation.models.SearchModel
 
 class SearchViewModel : BaseViewModel<SearchViewState, SearchAction, SearchEvent>() {
+
+    private var search = SearchModel()
 
     override fun obtainEvent(viewEvent: SearchEvent) {
         when(viewEvent){
@@ -11,6 +14,9 @@ class SearchViewModel : BaseViewModel<SearchViewState, SearchAction, SearchEvent
                 startSearch()
             }
             is SearchEvent.Default -> viewState = SearchViewState.Default()
+            is SearchEvent.UpdateDate -> search.date = viewEvent.data
+            is SearchEvent.UpdateCountry -> search.country = viewEvent.data
+            is SearchEvent.UpdatePersonsDesc -> search.personsDesc = viewEvent.data
         }
     }
 
@@ -20,4 +26,6 @@ class SearchViewModel : BaseViewModel<SearchViewState, SearchAction, SearchEvent
             viewState = SearchViewState.Loaded()
         }, 500)
     }
+
+    fun getSearchModel() = search
 }

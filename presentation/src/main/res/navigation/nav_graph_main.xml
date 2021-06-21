@@ -9,6 +9,10 @@
             android:name="ru.vsibi.presentation.screens.profile.changePass.ChangePasswordFragment"
             android:label="ChangePasswordFragment"/>
     <fragment
+            android:id="@+id/toursSettingsFragment"
+            android:name="ru.vsibi.presentation.screens.tours.main.settings.ToursSettingsFragment"
+            android:label="ToursSettingsFragment"/>
+    <fragment
             android:id="@+id/coTravallersFragment"
             android:name="ru.vsibi.presentation.screens.profile.coTravellers.CoTravallersFragment"
             android:label="CoTravallersFragment">
@@ -72,7 +76,7 @@
               android:label="FlightsFragment">
     </fragment>
     <fragment android:id="@+id/hotelsFragment"
-              android:name="ru.vsibi.presentation.screens.tours.main.HotelsFragment"
+              android:name="ru.vsibi.presentation.screens.tours.main.ToursFragment"
               android:label="HotelsFragment"
     >
         <action
@@ -80,6 +84,11 @@
                 app:destination="@id/tourInfoFragment">
 
         </action>
+        <argument android:name="search"
+                  app:argType="ru.vsibi.presentation.models.SearchModel"/>
+        <action
+                android:id="@+id/action_hotelsFragment_to_toursSettingsFragment"
+                app:destination="@id/toursSettingsFragment"/>
     </fragment>
     <fragment android:id="@+id/tourInfoFragment"
               android:name="ru.vsibi.presentation.screens.tours.info.ToursInfoFragment"

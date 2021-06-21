@@ -75,7 +75,7 @@ class ToursInfoFragment :
             tvTitle.text = data.title
             tvLocation.text = data.location
             tvDescription.text = data.description
-            Glide.with(requireContext()).load(data.image).into(image)
+            Glide.with(requireContext()).load(data.bigImage).into(image)
         }
     }
 

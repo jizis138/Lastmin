@@ -33,7 +33,7 @@
             android:layout_below="@+id/tv_title"
             android:layout_alignBottom="@+id/image"
             android:gravity="bottom"
-            style="@style/NormalText"
+            style="@style/SmallText"
             android:layout_toStartOf="@+id/rel_cost"
             />
 

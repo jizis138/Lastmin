@@ -6,6 +6,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class TourModel(
     val image: String,
+    val bigImage: String,
     val title: String,
     val description: String,
     val location: String,

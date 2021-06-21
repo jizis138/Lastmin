@@ -49,12 +49,14 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
         setFragmentResultListener(TravellersFragment.KEY_TRAVELLERS) { requestKey, bundle ->
             val travellersModel = bundle.getParcelable(TravellersFragment.KEY_TRAVELLERS) as? TravellersModel
             binding.tvTravellers.setText("" + travellersModel?.adultsCount + " Adults, " + travellersModel?.childsCount + " Kids")
+            viewModel.obtainEvent(SearchEvent.UpdatePersonsDesc("" + travellersModel?.adultsCount + " + " + travellersModel?.childsCount))
         }
         binding.apply {
             tvTravellers.setOnClickListener {
                 router.navigateToTravellers()
             }
             btnSearch.setOnClickListener {
+                viewModel.obtainEvent(SearchEvent.UpdateCountry(tvDestionation.text.toString().trim()))
                 viewModel.obtainEvent(SearchEvent.StartSearch())
             }
         }
@@ -78,7 +80,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
             is SearchViewState.Loaded -> {
                 binding.progress.visibility = View.GONE
                 binding.btnSearch.alpha = 1f
-                router.navigateHotels()
+                router.navigateHotels(viewModel.getSearchModel())
                 viewModel.obtainEvent(SearchEvent.Default())
             }
             is SearchViewState.Default -> {
@@ -127,6 +129,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
             picker?.show(childFragmentManager, picker.toString())
             picker?.addOnPositiveButtonClickListener {
                 binding.tvDate.setText(picker?.headerText)
+                picker?.headerText?.let { date->
+                    viewModel.obtainEvent(SearchEvent.UpdateDate(date))
+                }
                 Log.d(
                     "DatePicker Activity",
                     "Date String = ${picker?.headerText}::  Date epoch values::${it.first}:: to :: ${it.second}"
