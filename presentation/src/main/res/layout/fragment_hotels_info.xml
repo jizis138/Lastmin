@@ -271,7 +271,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/til_origin"
+                        android:id="@+id/til_transfer"
                         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -283,7 +283,7 @@
                         >
 
                     <AutoCompleteTextView
-                            android:id="@+id/tv_origin"
+                            android:id="@+id/tv_transfer"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="none"

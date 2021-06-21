@@ -14,6 +14,8 @@ import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentSearchBinding
 import ru.vsibi.presentation.screens.search.travallers.TravellersFragment
 import ru.vsibi.presentation.screens.search.travallers.TravellersModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding::inflate, R.layout.fragment_search) {
@@ -128,10 +130,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
         binding.tvDate.setOnClickListener {
             picker?.show(childFragmentManager, picker.toString())
             picker?.addOnPositiveButtonClickListener {
+                val formatter = SimpleDateFormat("dd.MM");
+                val dateString = formatter.format(Date(it.first));
                 binding.tvDate.setText(picker?.headerText)
-                picker?.headerText?.let { date->
-                    viewModel.obtainEvent(SearchEvent.UpdateDate(date))
-                }
+                viewModel.obtainEvent(SearchEvent.UpdateDate(dateString))
                 Log.d(
                     "DatePicker Activity",
                     "Date String = ${picker?.headerText}::  Date epoch values::${it.first}:: to :: ${it.second}"

@@ -1,5 +1,6 @@
 package ru.vsibi.presentation.screens.tours.main
 
+import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -108,10 +109,19 @@ class ToursFragment : BaseFragment<FragmentToursBinding>(FragmentToursBinding::i
 
     private fun displayBigSize() {
         adapter.displayBigSize()
+        binding.rvHotels.setPadding(0, 0, 0, getDp(64f).toInt())
     }
 
     private fun displaySmallSize() {
         adapter.displaySmallSize()
+        binding.rvHotels.setPadding(0, getDp(20f).toInt(), 0, getDp(64f).toInt())
+    }
+
+    private fun getDp(float : Float) : Float{
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP, float,
+            requireContext().resources.displayMetrics
+        )
     }
 }
 
