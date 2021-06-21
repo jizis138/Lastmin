@@ -18,7 +18,7 @@ class SavedFragment : BaseFragment<FragmentSavedBinding>(FragmentSavedBinding::i
     }
     private val adapter = HotelsAdapter(itemsClickListener)
 
-    override fun initViews() {
+    override fun FragmentSavedBinding.initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.saved)
             setDisplayHomeAsUpEnabled(false)

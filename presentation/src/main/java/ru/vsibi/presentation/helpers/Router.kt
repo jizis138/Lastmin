@@ -20,6 +20,7 @@ import ru.vsibi.presentation.screens.search.main.SearchFragmentDirections
 import ru.vsibi.presentation.screens.tours.info.ToursInfoFragment
 import ru.vsibi.presentation.screens.tours.info.ToursInfoFragmentDirections
 import ru.vsibi.presentation.screens.tours.info.flights.main.FlightsListFragmentDirections
+import ru.vsibi.presentation.screens.tours.purchase.PurchaseFormFragmentDirections
 
 class Router {
 
@@ -133,6 +134,10 @@ class Router {
 
     fun navigateToCreatePassFromSignup(data: String) {
         parentNavController?.navigate(LoginEmailFragmentDirections.actionLoginEmailFragmentToCreatePassFragment())
+    }
+
+    fun navigateToPersonalDataFromPurchaseForm(person: PersonalDataModel) {
+        childNavController?.navigate(PurchaseFormFragmentDirections.actionPurchaseFormFragmentToPersonalDataFragment(person))
     }
 
 

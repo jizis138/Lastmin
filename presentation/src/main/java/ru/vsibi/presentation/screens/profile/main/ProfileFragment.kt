@@ -1,16 +1,8 @@
 package ru.vsibi.presentation.screens.profile.main
 
-import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.MultiTransformation
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
-import com.bumptech.glide.load.resource.bitmap.FitCenter
-import com.bumptech.glide.request.RequestOptions
-import com.bumptech.glide.request.target.BitmapImageViewTarget
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import ru.vsibi.presentation.R
@@ -24,7 +16,7 @@ class ProfileFragment :
 
     private val viewModel: ProfileViewModel by viewModels()
 
-    override fun initViews() {
+    override fun FragmentProfileBinding.initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.profile)
             setDisplayHomeAsUpEnabled(false)
@@ -43,7 +35,7 @@ class ProfileFragment :
         super.initFragment()
     }
 
-    override fun initListeners() {
+    override fun FragmentProfileBinding.initListeners() {
         binding.apply {
             linSignout.setOnClickListener {
                 viewModel.obtainEvent(ProfileEvent.LogOut())

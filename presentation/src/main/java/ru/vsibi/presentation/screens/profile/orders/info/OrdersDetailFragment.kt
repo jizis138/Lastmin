@@ -11,7 +11,7 @@ class OrdersDetailFragment : BaseFragment<FragmentOrdersDetailBinding>(FragmentO
 
     private val args : OrdersDetailFragmentArgs by navArgs()
 
-    override fun initViews() {
+    override fun FragmentOrdersDetailBinding.initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.my_orders)
             setDisplayHomeAsUpEnabled(true)
@@ -27,7 +27,7 @@ class OrdersDetailFragment : BaseFragment<FragmentOrdersDetailBinding>(FragmentO
         super.initFragment()
     }
 
-    override fun initListeners() {
+    override fun FragmentOrdersDetailBinding.initListeners() {
         binding.relTicket1.setOnClickListener {
             router.navigateToTicket()
         }

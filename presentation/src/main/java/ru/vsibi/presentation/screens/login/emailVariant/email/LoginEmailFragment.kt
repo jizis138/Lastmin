@@ -12,7 +12,7 @@ class LoginEmailFragment :
 
     private val viewModel: LoginEmailViewModel by viewModels()
     private val args: LoginEmailFragmentArgs by navArgs()
-    override fun initViews() {
+    override fun FragmentLoginEmailBinding.initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.enter_email)
             setDisplayHomeAsUpEnabled(true)
@@ -32,7 +32,7 @@ class LoginEmailFragment :
         super.initFragment()
     }
 
-    override fun initListeners() {
+    override fun FragmentLoginEmailBinding.initListeners() {
         binding.apply {
             btnContinue.setOnClickListener {
                 viewModel.obtainEvent(LoginEmailEvent.ContinueWithEmail(tietEmail.text.toString().trim()))

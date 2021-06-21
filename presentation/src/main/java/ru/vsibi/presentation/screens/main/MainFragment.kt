@@ -15,7 +15,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
 
     private val viewModel: MainViewModel by viewModels()
 
-    override fun initViews() {
+    override fun FragmentMainBinding.initViews() {
         navHostFragment = childFragmentManager.findFragmentById(R.id.navHostMain) as NavHostFragment
         router.childNavController = navHostFragment?.navController
         router.childNavHostFragment = navHostFragment

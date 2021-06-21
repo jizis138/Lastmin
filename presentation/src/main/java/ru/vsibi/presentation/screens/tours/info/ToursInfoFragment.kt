@@ -21,7 +21,7 @@ class ToursInfoFragment :
         (activity as AppCompatActivity?)?.supportActionBar?.hide()
     }
 
-    override fun initViews() {
+    override fun FragmentHotelsInfoBinding.initViews() {
 
     }
 
@@ -33,7 +33,7 @@ class ToursInfoFragment :
         super.initFragment()
     }
 
-    override fun initListeners() {
+    override fun FragmentHotelsInfoBinding.initListeners() {
         binding.apply {
             fabBack.setOnClickListener {
                 popBack()

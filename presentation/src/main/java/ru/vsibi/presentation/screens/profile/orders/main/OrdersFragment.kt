@@ -17,7 +17,7 @@ class OrdersFragment : BaseFragment<FragmentOrdersBinding>(FragmentOrdersBinding
     }
     private val adapter = HotelsAdapter(itemsClickListener)
 
-    override fun initViews() {
+    override fun FragmentOrdersBinding.initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.my_orders)
             setDisplayHomeAsUpEnabled(true)

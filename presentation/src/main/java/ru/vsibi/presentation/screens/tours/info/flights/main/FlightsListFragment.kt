@@ -7,10 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentFligthsListBinding
-import ru.vsibi.presentation.screens.tours.main.HotelsAction
-import ru.vsibi.presentation.screens.tours.main.HotelsAdapter
-import ru.vsibi.presentation.screens.tours.main.HotelsViewState
-import ru.vsibi.presentation.screens.tours.main.TourModel
 
 class FlightsListFragment :
     BaseFragment<FragmentFligthsListBinding>(FragmentFligthsListBinding::inflate, R.layout.fragment_fligths_list) {
@@ -25,7 +21,7 @@ class FlightsListFragment :
     }
     private val adapter = FlightsAdapter(itemsClickListener)
 
-    override fun initViews(){
+    override fun FragmentFligthsListBinding.initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.flights_details)
             setDisplayHomeAsUpEnabled(true)

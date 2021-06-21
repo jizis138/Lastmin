@@ -12,8 +12,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         super.onResume()
         (activity as AppCompatActivity?)?.supportActionBar?.hide()
     }
-    override fun initViews() {
-        super.initViews()
+    override fun FragmentLoginBinding.initViews() {
     }
 
     override fun initArguments() {
@@ -24,7 +23,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         super.initFragment()
     }
 
-    override fun initListeners() {
+    override fun FragmentLoginBinding.initListeners() {
         binding.apply {
             btnEmail.setOnClickListener {
                 router.navigateToLoginWithEmail(isLogin = true)

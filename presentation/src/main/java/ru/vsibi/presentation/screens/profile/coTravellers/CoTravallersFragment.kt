@@ -1,6 +1,5 @@
 package ru.vsibi.presentation.screens.profile.coTravellers
 
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.setFragmentResultListener
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -22,7 +21,7 @@ class CoTravallersFragment :
     }
     private val adapter = CoTravellersAdapter(itemsClickListener)
 
-    override fun initViews() {
+    override fun FragmentSoTravellersBinding.initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.co_travellers)
             setDisplayHomeAsUpEnabled(true)
@@ -40,7 +39,7 @@ class CoTravallersFragment :
 
     }
 
-    override fun initListeners() {
+    override fun FragmentSoTravellersBinding.initListeners() {
         setFragmentResultListener(KEY_PERSONAL_DATA) { requestKey, bundle ->
             val person = bundle.getParcelable(KEY_PERSONAL_DATA) as? PersonalDataModel
             adapter.add(person)

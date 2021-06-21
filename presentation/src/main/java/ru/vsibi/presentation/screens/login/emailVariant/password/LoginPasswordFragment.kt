@@ -14,7 +14,7 @@ class LoginPasswordFragment : BaseFragment<FragmentLoginPasswordBinding>(Fragmen
     private val args : LoginPasswordFragmentArgs by navArgs()
     private val viewModel : LoginPasswordViewModel by viewModels()
 
-    override fun initViews() {
+    override fun FragmentLoginPasswordBinding.initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.enter_password)
             setDisplayHomeAsUpEnabled(true)
@@ -30,7 +30,7 @@ class LoginPasswordFragment : BaseFragment<FragmentLoginPasswordBinding>(Fragmen
         viewModel.obtainEvent(LoginPasswordEvent.Default())
     }
 
-    override fun initListeners() {
+    override fun FragmentLoginPasswordBinding.initListeners() {
         binding.apply {
             btnSignIn.setOnClickListener {
                 viewModel.obtainEvent(LoginPasswordEvent.SignIn())
