@@ -3,7 +3,7 @@ package ru.vsibi.presentation.helpers
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import ru.vsibi.presentation.models.PersonalDataModel
-import ru.vsibi.presentation.screens.tours.main.HotelsFragmentDirections
+import ru.vsibi.presentation.models.SearchModel
 import ru.vsibi.presentation.screens.tours.main.TourModel
 import ru.vsibi.presentation.screens.login.LoginFragmentDirections
 import ru.vsibi.presentation.screens.login.emailVariant.createPassword.CreatePassFragmentDirections
@@ -20,6 +20,7 @@ import ru.vsibi.presentation.screens.search.main.SearchFragmentDirections
 import ru.vsibi.presentation.screens.tours.info.ToursInfoFragment
 import ru.vsibi.presentation.screens.tours.info.ToursInfoFragmentDirections
 import ru.vsibi.presentation.screens.tours.info.flights.main.FlightsListFragmentDirections
+import ru.vsibi.presentation.screens.tours.main.ToursFragmentDirections
 import ru.vsibi.presentation.screens.tours.purchase.PurchaseFormFragmentDirections
 
 class Router {
@@ -42,11 +43,11 @@ class Router {
     }
 
     fun navigateToHotelsInfo(hotelsModel: TourModel) {
-        childNavController?.navigate(HotelsFragmentDirections.actionHotelsFragmentToHotelsInfoFragment(hotelsModel))
+        childNavController?.navigate(ToursFragmentDirections.actionHotelsFragmentToHotelsInfoFragment(hotelsModel))
     }
 
-    fun navigateHotels() {
-        childNavController?.navigate(SearchFragmentDirections.actionSearchFragmentToHotelsFragment())
+    fun navigateHotels(searchModel: SearchModel) {
+        childNavController?.navigate(SearchFragmentDirections.actionSearchFragmentToHotelsFragment(searchModel))
     }
 
     fun navigatePurchaseForm(hotelsModel: TourModel) {
@@ -138,6 +139,10 @@ class Router {
 
     fun navigateToPersonalDataFromPurchaseForm(person: PersonalDataModel) {
         childNavController?.navigate(PurchaseFormFragmentDirections.actionPurchaseFormFragmentToPersonalDataFragment(person))
+    }
+
+    fun navigateToursSettings() {
+        childNavController?.navigate(ToursFragmentDirections.actionHotelsFragmentToToursSettingsFragment())
     }
 
 

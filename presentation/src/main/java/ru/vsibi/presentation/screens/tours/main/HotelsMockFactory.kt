@@ -7,6 +7,7 @@ object HotelsMockFactory {
         hotels.add(
             TourModel(
                 "http://www.harbor.digital/test/assets/lastmin/transatlantik/transatlantik-listing-cover-1.jpg",
+                "http://www.harbor.digital/test/assets/lastmin/transatlantik/transatlantik_full_1.jpg",
                 "Movenpick Resort & Spa El Gouna",
                 "Perfectly located right on the pedestrian avenue with taverns and shops, this hotel offers a high standard of service and quality service. Ideal for lovers of beautiful landscapes, the hotel's terrace offers breathtaking ocean views. \n" +
                         "\n" +
@@ -22,6 +23,7 @@ object HotelsMockFactory {
         hotels.add(
             TourModel(
                 "http://www.harbor.digital/test/assets/lastmin/sherwood/cover_list.jpg",
+                "http://www.harbor.digital/test/assets/lastmin/sherwood/sherwood_full_1.jpg",
                 "Dorisol Estrelicia",
                 "Perfectly located right on the pedestrian avenue with taverns and shops, this hotel offers a high standard of service and quality service. Ideal for lovers of beautiful landscapes, the hotel's terrace offers breathtaking ocean views. \n" +
                         "\n" +
@@ -42,6 +44,7 @@ object HotelsMockFactory {
         hotels.add(
             TourModel(
                 "http://www.harbor.digital/test/assets/lastmin/transatlantik/transatlantik-listing-cover-1.jpg",
+                "http://www.harbor.digital/test/assets/lastmin/transatlantik/transatlantik_full_1.jpg",
                 "Movenpick Resort & Spa El Gouna",
                 "Perfectly located right on the pedestrian avenue with taverns and shops, this hotel offers a high standard of service and quality service. Ideal for lovers of beautiful landscapes, the hotel's terrace offers breathtaking ocean views. \n" +
                         "\n" +
@@ -57,6 +60,7 @@ object HotelsMockFactory {
         hotels.add(
             TourModel(
                 "http://www.harbor.digital/test/assets/lastmin/sherwood/cover_list.jpg",
+                "http://www.harbor.digital/test/assets/lastmin/sherwood/sherwood_full_1.jpg",
                 "Dorisol Estrelicia",
                 "Perfectly located right on the pedestrian avenue with taverns and shops, this hotel offers a high standard of service and quality service. Ideal for lovers of beautiful landscapes, the hotel's terrace offers breathtaking ocean views. \n" +
                         "\n" +

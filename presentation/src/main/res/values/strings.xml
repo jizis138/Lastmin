@@ -124,4 +124,13 @@
     <string name="childs_age">Child’s Age</string>
     <string name="flights_search_opts">Flight Search Options</string>
     <string name="example_date_range">21.05.-27.05</string>
+    <string name="tours">Tours</string>
+    <string name="display_variant">Hotel Image size in listing</string>
+    <string name="big">Big</string>
+    <string name="small">Small</string>
+    <string name="sort_by">Sort By</string>
+    <string name="popularity">Popularity</string>
+    <string name="price_lower">Price (lowest first)</string>
+    <string name="price_higher">Price (highest first)</string>
+    <string name="view">View</string>
 </resources>
