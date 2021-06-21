@@ -7,6 +7,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_hotels"
+            android:clipToPadding="false"
+            android:paddingTop="@dimen/medium_margin"
+            android:paddingBottom="@dimen/large_margin"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />

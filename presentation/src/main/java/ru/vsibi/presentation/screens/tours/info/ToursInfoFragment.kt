@@ -1,5 +1,8 @@
 package ru.vsibi.presentation.screens.tours.info
 
+import android.widget.AutoCompleteTextView
+import android.widget.RelativeLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -10,15 +13,19 @@ import ru.vsibi.presentation.databinding.FragmentHotelsInfoBinding
 import ru.vsibi.presentation.screens.tours.info.more.TourMoreFragmentArgs
 import ru.vsibi.presentation.screens.tours.main.TourModel
 
+
 class ToursInfoFragment :
     BaseFragment<FragmentHotelsInfoBinding>(FragmentHotelsInfoBinding::inflate, R.layout.fragment_hotels_info) {
 
-    private val args : TourMoreFragmentArgs by navArgs()
+    private val args: TourMoreFragmentArgs by navArgs()
     private val viewModel: ToursInfoViewModel by viewModels()
 
     override fun onResume() {
         super.onResume()
         (activity as AppCompatActivity?)?.supportActionBar?.hide()
+        initBoardingSpinner()
+        initRoomsSpinner()
+        initTransferSpinner()
     }
 
     override fun FragmentHotelsInfoBinding.initViews() {
@@ -65,7 +72,6 @@ class ToursInfoFragment :
         }
     }
 
-
     private fun bindViewActions(action: ToursInfoAction?) {
 
     }
@@ -76,6 +82,60 @@ class ToursInfoFragment :
             tvLocation.text = data.location
             tvDescription.text = data.description
             Glide.with(requireContext()).load(data.bigImage).into(image)
+        }
+    }
+
+    private fun initBoardingSpinner() {
+        val adapter = TourMenuAdapter(
+            requireContext(),
+            R.layout.cell_spinner_tour, TourInfoFactory.getBoardingList()
+        )
+        val editTextFilledExposedDropdown = binding.tvBoarding
+        editTextFilledExposedDropdown.setAdapter(adapter)
+        editTextFilledExposedDropdown.setOnClickListener {
+            it as AutoCompleteTextView
+            if (!it.isShown) {
+                it.showDropDown()
+            }
+        }
+        editTextFilledExposedDropdown.setOnItemClickListener { parent, view, position, id ->
+            binding.tvBoarding.setText((binding.tvBoarding.adapter.getItem(position) as TourCellModel).title, false);
+        }
+    }
+
+    private fun initRoomsSpinner() {
+        val adapter = TourMenuAdapter(
+            requireContext(),
+            R.layout.cell_spinner_tour, TourInfoFactory.getRoomTypesList()
+        )
+        val editTextFilledExposedDropdown = binding.tvRoomType
+        editTextFilledExposedDropdown.setAdapter(adapter)
+        editTextFilledExposedDropdown.setOnClickListener {
+            it as AutoCompleteTextView
+            if (!it.isShown) {
+                it.showDropDown()
+            }
+        }
+        editTextFilledExposedDropdown.setOnItemClickListener { parent, view, position, id ->
+            binding.tvRoomType.setText((binding.tvRoomType.adapter.getItem(position) as TourCellModel).title, false);
+        }
+    }
+
+    private fun initTransferSpinner() {
+        val adapter = TourMenuAdapter(
+            requireContext(),
+            R.layout.cell_spinner_tour, TourInfoFactory.getTransferList()
+        )
+        val editTextFilledExposedDropdown = binding.tvTransfer
+        editTextFilledExposedDropdown.setAdapter(adapter)
+        editTextFilledExposedDropdown.setOnClickListener {
+            it as AutoCompleteTextView
+            if (!it.isShown) {
+                it.showDropDown()
+            }
+        }
+        editTextFilledExposedDropdown.setOnItemClickListener { parent, view, position, id ->
+            binding.tvTransfer.setText((binding.tvTransfer.adapter.getItem(position) as TourCellModel).title, false);
         }
     }
 
