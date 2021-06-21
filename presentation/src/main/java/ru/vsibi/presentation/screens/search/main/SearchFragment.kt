@@ -27,7 +27,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
         initDestinationSpinner()
     }
 
-    override fun initViews() {
+    override fun FragmentSearchBinding.initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.search)
             setDisplayHomeAsUpEnabled(false)
@@ -45,7 +45,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
 
     }
 
-    override fun initListeners() {
+    override fun FragmentSearchBinding.initListeners() {
         setFragmentResultListener(TravellersFragment.KEY_TRAVELLERS) { requestKey, bundle ->
             val travellersModel = bundle.getParcelable(TravellersFragment.KEY_TRAVELLERS) as? TravellersModel
             binding.tvTravellers.setText("" + travellersModel?.adultsCount + " Adults, " + travellersModel?.childsCount + " Kids")

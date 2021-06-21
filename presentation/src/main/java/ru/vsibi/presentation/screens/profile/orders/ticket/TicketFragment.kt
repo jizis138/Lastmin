@@ -12,7 +12,7 @@ class TicketFragment : BaseFragment<FragmentTicketBinding>(FragmentTicketBinding
 
     private var bottomSheetDialog: Dialog? = null
 
-    override fun initViews() {
+    override fun FragmentTicketBinding.initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.order_ticket_1)
             setDisplayHomeAsUpEnabled(true)
@@ -29,7 +29,7 @@ class TicketFragment : BaseFragment<FragmentTicketBinding>(FragmentTicketBinding
         super.initFragment()
     }
 
-    override fun initListeners() {
+    override fun FragmentTicketBinding.initListeners() {
         binding.apply {
             linShare.setOnClickListener {
                 showShareDialog()

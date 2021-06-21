@@ -38,10 +38,10 @@ open class BaseFragment<Binding : ViewBinding>(private val inflate: Inflate<Bind
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initDefaultToolbar()
-        initViews()
+        binding.initViews()
         initArguments()
         initFragment()
-        initListeners()
+        binding.initListeners()
         initData()
         initObservers()
     }
@@ -54,7 +54,7 @@ open class BaseFragment<Binding : ViewBinding>(private val inflate: Inflate<Bind
         }
     }
 
-    open fun initViews() {
+    open fun Binding.initViews() {
         log("setupUI function not implemented!")
     }
 
@@ -66,7 +66,7 @@ open class BaseFragment<Binding : ViewBinding>(private val inflate: Inflate<Bind
         log("initFragment function not implemented!")
     }
 
-    open fun initListeners() {
+    open fun Binding.initListeners() {
         log("initListeners function not implemented!")
     }
 

@@ -23,7 +23,7 @@ class HotelsFragment : BaseFragment<FragmentHotelsBinding>(FragmentHotelsBinding
         (activity as AppCompatActivity?)?.supportActionBar?.show()
     }
 
-    override fun initViews() {
+    override fun FragmentHotelsBinding.initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.hotels)
             setDisplayHomeAsUpEnabled(true)

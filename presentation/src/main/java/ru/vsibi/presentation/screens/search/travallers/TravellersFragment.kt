@@ -20,7 +20,7 @@ class TravellersFragment :
     private val viewModel: TravellersViewModel by viewModels()
     private val adapter = ChildsAdapter()
 
-    override fun initViews() {
+    override fun FragmentTravellersBinding.initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.travellers)
             setDisplayHomeAsUpEnabled(true)
@@ -39,7 +39,7 @@ class TravellersFragment :
         (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.travellers)
     }
 
-    override fun initListeners() {
+    override fun FragmentTravellersBinding.initListeners() {
         binding.apply {
             ibAdultMinus.setOnClickListener {
                 viewModel.minusAdult()

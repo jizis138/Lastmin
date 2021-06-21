@@ -2,6 +2,7 @@ package ru.vsibi.presentation.screens.tours.purchase
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -9,6 +10,8 @@ import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentPurchaseFormBinding
 import ru.vsibi.presentation.helpers.Lastmin
+import ru.vsibi.presentation.models.PersonalDataModel
+import ru.vsibi.presentation.screens.profile.personalData.PersonalDataFragment
 import ru.vsibi.presentation.screens.tours.main.TourModel
 
 class PurchaseFormFragment :
@@ -17,7 +20,7 @@ class PurchaseFormFragment :
     private val viewModel: PurchaseFormViewModel by viewModels()
     private val args: PurchaseFormFragmentArgs by navArgs()
 
-    override fun initViews() {
+    override fun FragmentPurchaseFormBinding.initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.customer_purchase_form)
             setDisplayHomeAsUpEnabled(true)
@@ -29,16 +32,17 @@ class PurchaseFormFragment :
         viewModel.obtainEvent(PurchaseFormEvent.ConfigureArgs(args.tour))
     }
 
-    override fun initFragment() {
-        super.initFragment()
-    }
-
-    override fun initListeners() {
-        super.initListeners()
-    }
-
-    override fun initData() {
-        super.initData()
+    override fun FragmentPurchaseFormBinding.initListeners() {
+        setFragmentResultListener(PersonalDataFragment.KEY_PERSONAL_DATA) { requestKey, bundle ->
+            val person = bundle.getParcelable(PersonalDataFragment.KEY_PERSONAL_DATA) as? PersonalDataModel
+            viewModel.obtainEvent(PurchaseFormEvent.UpdatePerson(person))
+        }
+        tvAdult.setOnClickListener {
+            router.navigateToPersonalDataFromPurchaseForm(viewModel.getAdult())
+        }
+        tvKid.setOnClickListener {
+            router.navigateToPersonalDataFromPurchaseForm(viewModel.getChild())
+        }
     }
 
     override fun initObservers() {
@@ -53,7 +57,10 @@ class PurchaseFormFragment :
     }
 
     private fun bindViewActions(action: PurchaseFormAction?) {
-
+        when(action){
+            is PurchaseFormAction.AdultUpdated -> binding.updateAdult(action.person)
+            is PurchaseFormAction.ChildUpdated -> binding.updateChild(action.person)
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -67,4 +74,10 @@ class PurchaseFormFragment :
         }
     }
 
+    private fun FragmentPurchaseFormBinding.updateAdult(person : PersonalDataModel){
+        tvAdult.setText(person.name)
+    }
+    private fun FragmentPurchaseFormBinding.updateChild(person : PersonalDataModel){
+        tvKid.setText(person.name)
+    }
 }

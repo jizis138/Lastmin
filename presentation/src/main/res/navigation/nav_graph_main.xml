@@ -46,6 +46,9 @@
         <argument
                 android:name="tour"
                 app:argType="ru.vsibi.presentation.screens.tours.main.TourModel"/>
+        <action
+                android:id="@+id/action_purchaseFormFragment_to_personalDataFragment"
+                app:destination="@id/personalDataFragment"/>
 
     </fragment>
     <fragment android:id="@+id/searchFragment"

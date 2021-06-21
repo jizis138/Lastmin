@@ -9,14 +9,16 @@ import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentPersonalDataBinding
 import ru.vsibi.presentation.models.PersonalDataModel
 
-class PersonalDataFragment : BaseFragment<FragmentPersonalDataBinding>(FragmentPersonalDataBinding::inflate, R.layout.fragment_personal_data) {
+class PersonalDataFragment :
+    BaseFragment<FragmentPersonalDataBinding>(FragmentPersonalDataBinding::inflate, R.layout.fragment_personal_data) {
 
-    private val args : PersonalDataFragmentArgs by navArgs()
+    private val args: PersonalDataFragmentArgs by navArgs()
 
     companion object {
         const val KEY_PERSONAL_DATA = "key_personal_data"
     }
-    override fun initViews() {
+
+    override fun FragmentPersonalDataBinding.initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.personal_data)
             setDisplayHomeAsUpEnabled(true)
@@ -25,16 +27,18 @@ class PersonalDataFragment : BaseFragment<FragmentPersonalDataBinding>(FragmentP
     }
 
     override fun initArguments() {
-        args.person?.let {person->
+        args.person?.let { person ->
             updateViews(person)
         }
     }
 
-    override fun initListeners() {
-        binding.apply {
-            btnSave.setOnClickListener {
-                setFragmentResult(KEY_PERSONAL_DATA, Bundle().apply {
-                    putParcelable(KEY_PERSONAL_DATA, PersonalDataModel(
+    override fun FragmentPersonalDataBinding.initListeners() {
+        btnSave.setOnClickListener {
+            val id = args.person?.id ?: 1
+            setFragmentResult(KEY_PERSONAL_DATA, Bundle().apply {
+                putParcelable(
+                    KEY_PERSONAL_DATA, PersonalDataModel(
+                        id,
                         tietName.text.toString().trim(),
                         tietDob.text.toString().trim(),
                         tietEmail.text.toString().trim(),
@@ -44,10 +48,10 @@ class PersonalDataFragment : BaseFragment<FragmentPersonalDataBinding>(FragmentP
                             tietCountry.text.toString().trim(),
                             tietDoe.text.toString().trim()
                         )
-                    ))
-                })
-                popBack()
-            }
+                    )
+                )
+            })
+            popBack()
         }
     }
 

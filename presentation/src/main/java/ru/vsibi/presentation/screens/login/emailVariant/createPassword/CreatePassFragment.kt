@@ -6,8 +6,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentCreatePasswordBinding
-import ru.vsibi.presentation.screens.login.emailVariant.password.LoginPasswordAction
-import ru.vsibi.presentation.screens.login.emailVariant.password.LoginPasswordViewState
 
 @AndroidEntryPoint
 class CreatePassFragment : BaseFragment<FragmentCreatePasswordBinding>(
@@ -17,7 +15,7 @@ class CreatePassFragment : BaseFragment<FragmentCreatePasswordBinding>(
 
     private val viewModel : CreatePassViewModel by viewModels()
 
-    override fun initViews() {
+    override fun FragmentCreatePasswordBinding.initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.app_name)
             setDisplayHomeAsUpEnabled(true)
@@ -33,7 +31,7 @@ class CreatePassFragment : BaseFragment<FragmentCreatePasswordBinding>(
         super.initFragment()
     }
 
-    override fun initListeners() {
+    override fun FragmentCreatePasswordBinding.initListeners() {
         binding.apply {
             btnCreatePass.setOnClickListener {
                 viewModel.obtainEvent(CreatePassEvent.SignIn())

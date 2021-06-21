@@ -7,7 +7,7 @@ import ru.vsibi.presentation.databinding.FragmentFligthsBinding
 
 class FlightsFragment : BaseFragment<FragmentFligthsBinding>(FragmentFligthsBinding::inflate, R.layout.fragment_fligths) {
 
-    override fun initViews() {
+    override fun FragmentFligthsBinding.initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.flights_search_opts)
             setDisplayHomeAsUpEnabled(false)

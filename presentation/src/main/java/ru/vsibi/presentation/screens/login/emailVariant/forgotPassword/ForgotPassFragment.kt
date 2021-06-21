@@ -6,15 +6,13 @@ import androidx.navigation.fragment.navArgs
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentForgotPasswordBinding
-import ru.vsibi.presentation.databinding.FragmentLoginEmailBinding
-import ru.vsibi.presentation.screens.login.emailVariant.password.LoginPasswordViewState
 
 class ForgotPassFragment : BaseFragment<FragmentForgotPasswordBinding>(FragmentForgotPasswordBinding::inflate, R.layout.fragment_forgot_password) {
 
     private val viewModel : ForgotPassViewModel by viewModels()
     private val args : ForgotPassFragmentArgs by navArgs()
 
-    override fun initViews() {
+    override fun FragmentForgotPasswordBinding.initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.forgot_pass)
             setDisplayHomeAsUpEnabled(true)
@@ -30,7 +28,7 @@ class ForgotPassFragment : BaseFragment<FragmentForgotPasswordBinding>(FragmentF
         super.initFragment()
     }
 
-    override fun initListeners() {
+    override fun FragmentForgotPasswordBinding.initListeners() {
         binding.apply {
             btnSendLink.setOnClickListener {
                 viewModel.obtainEvent(ForgotPassEvent.SendResetLink(tietEmail.text.toString().trim()))
