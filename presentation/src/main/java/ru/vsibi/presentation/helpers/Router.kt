@@ -4,6 +4,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import ru.vsibi.presentation.models.PersonalDataModel
 import ru.vsibi.presentation.models.SearchModel
+import ru.vsibi.presentation.models.flight.FlightResponse
 import ru.vsibi.presentation.screens.tours.main.TourModel
 import ru.vsibi.presentation.screens.login.LoginFragmentDirections
 import ru.vsibi.presentation.screens.login.emailVariant.createPassword.CreatePassFragmentDirections
@@ -113,8 +114,8 @@ class Router {
         childNavController?.navigate(ToursInfoFragmentDirections.actionTourInfoFragmentToFlightsListFragment())
     }
 
-    fun navigateToFlightInfo() {
-        childNavController?.navigate(FlightsListFragmentDirections.actionFlightsListFragmentToFlightsInfoFragment())
+    fun navigateToFlightInfo(fligths: FlightResponse) {
+        childNavController?.navigate(FlightsListFragmentDirections.actionFlightsListFragmentToFlightsInfoFragment(fligths))
     }
 
     fun navigateToPersonalData(){

@@ -1,5 +1,6 @@
-package ru.vsibi.presentation.screens.tours.info.flights.info
+package ru.vsibi.presentation.screens.tours.info.flights.info.models
 
+import ru.vsibi.presentation.screens.tours.info.flights.info.FlightsInfoChildFragment
 import ru.vsibi.presentation.screens.tours.info.flights.main.FlightsModel
 
 class FlightsInfoModel(

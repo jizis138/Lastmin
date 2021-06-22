@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentFligthsListBinding
+import ru.vsibi.presentation.models.flight.FlightResult
 
 class FlightsListFragment :
     BaseFragment<FragmentFligthsListBinding>(FragmentFligthsListBinding::inflate, R.layout.fragment_fligths_list) {
@@ -16,8 +17,8 @@ class FlightsListFragment :
         (activity as AppCompatActivity?)?.supportActionBar?.show()
     }
     private val viewModel : FlightsListViewModel by viewModels()
-    private val itemsClickListener: (FlightsModel) -> Unit = { flight ->
-        router.navigateToFlightInfo()
+    private val itemsClickListener: (FlightResult) -> Unit = { flight ->
+        router.navigateToFlightInfo(viewModel.getFligths())
     }
     private val adapter = FlightsAdapter(itemsClickListener)
 
@@ -42,7 +43,7 @@ class FlightsListFragment :
     private fun bindViewState(state: FlightsListState) {
         when (state) {
             is FlightsListState.Loaded -> {
-                adapter.setupAdapter(state.data)
+                adapter.setupAdapter(state.data.result)
             }
         }
     }

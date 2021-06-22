@@ -1,13 +1,11 @@
 package ru.vsibi.presentation.screens.tours.info.flights.info
 
-import android.os.Bundle
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import ru.vsibi.presentation.screens.tours.info.flights.info.FlightsInfoChildFragment.Companion.KEY_FLIGHTS
-import ru.vsibi.presentation.screens.tours.info.flights.main.FlightsModel
+import ru.vsibi.presentation.screens.tours.info.flights.info.models.FlightsInfoModel
 
-class FlightsInfoAdapter(fm: FragmentManager, lifecycle: Lifecycle, private val flights: List<FlightsInfoModel>) :
+class FlightsInfoViewPagerAdapter(fm: FragmentManager, lifecycle: Lifecycle, private val flights: List<FlightsInfoModel>) :
     FragmentStateAdapter(fm, lifecycle) {
 
     override fun getItemCount() = flights.size

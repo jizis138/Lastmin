@@ -41,7 +41,10 @@
             android:id="@+id/flightsInfoFragment"
             android:name="ru.vsibi.presentation.screens.tours.info.flights.info.FlightsInfoFragment"
             android:label="FlightsInfoFragment">
-   </fragment>
+        <argument
+                android:name="flightInfo"
+                app:argType="ru.vsibi.presentation.models.flight.FlightResponse"/>
+    </fragment>
     <fragment
             android:id="@+id/purchaseFormFragment"
             android:name="ru.vsibi.presentation.screens.tours.purchase.PurchaseFormFragment"

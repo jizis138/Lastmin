@@ -4,6 +4,7 @@ import ru.vsibi.presentation.base.BaseViewModel
 
 class FlightsListViewModel : BaseViewModel<FlightsListState, FlightsListAction, FlightsListEvent>() {
 
+    private var flights = FlightsMockFactory.getFlights()
     override fun obtainEvent(viewEvent: FlightsListEvent) {
         when(viewEvent){
             is FlightsListEvent.FetchData -> fetchHotels()
@@ -11,7 +12,9 @@ class FlightsListViewModel : BaseViewModel<FlightsListState, FlightsListAction, 
     }
 
     private fun fetchHotels() {
-        viewState = FlightsListState.Loaded(FlightsMockFactory.getMockFlights())
+        viewState = FlightsListState.Loaded(flights)
     }
+
+    fun getFligths() = flights
 
 }
