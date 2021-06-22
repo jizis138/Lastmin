@@ -56,6 +56,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
 
     fun hideNavigation() {
         binding.bottomNavigationView.visibility = View.GONE
+        binding.bottomNavigationView.isShown
     }
 
 }

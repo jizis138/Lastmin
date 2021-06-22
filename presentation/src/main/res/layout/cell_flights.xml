@@ -23,14 +23,17 @@
             android:layout_height="0.5dp"
             android:background="@color/grey"
             />
+
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginEnd="@dimen/big_margin_48"
+                android:paddingStart="@dimen/medium_margin"
                 >
 
             <RelativeLayout
@@ -45,11 +48,11 @@
                         >
 
                     <TextView
+                            android:id="@+id/tv_city_from"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/example_flight_name_1"
                             style="@style/DarkText.Big"
-                            android:layout_marginStart="@dimen/medium_margin"
                             android:layout_marginTop="@dimen/big_margin"
                             />
 
@@ -64,6 +67,7 @@
                             app:tint="@color/black"/>
 
                     <TextView
+                            android:id="@+id/tv_city_to"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/example_flight_name_2"
@@ -72,27 +76,21 @@
                             />
                 </LinearLayout>
 
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/example_cost"
-                        style="@style/LightText.Color75"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignBottom="@+id/lin_dest"
-                        android:layout_marginBottom="@dimen/min_margin"
-                        />
             </RelativeLayout>
 
             <TextView
+                    android:id="@+id/tv_duration"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/example_duration"
                     android:layout_gravity="center_horizontal"
                     style="@style/SmallText"
                     android:layout_marginTop="@dimen/medium_margin"
+
                     />
 
             <RelativeLayout
+                    android:id="@+id/rel_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     >
@@ -104,95 +102,104 @@
                         android:text="@string/example_time_start"
                         android:layout_gravity="center_horizontal"
                         style="@style/NormalText.Big"
-                        android:layout_marginStart="@dimen/medium_margin"
                         />
 
-                <FrameLayout
+                <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/tv_time_start"
-                        android:layout_toStartOf="@+id/lin_stops"
-                        android:layout_alignBottom="@+id/lin_stops"
-                        android:layout_alignTop="@+id/lin_stops"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginStart="@dimen/min_margin_10"
-                        android:layout_marginEnd="@dimen/min_margin_10"
-                        >
-
-                    <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.5dp"
-                            android:background="@color/grey"
-                            android:layout_gravity="center_vertical"
-                            />
-                </FrameLayout>
-
-                <LinearLayout
-                        android:id="@+id/lin_stops"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_centerHorizontal="true"
-                        android:layout_alignBottom="@+id/tv_time_start"
-                        android:gravity="center_vertical"
-                        android:layout_marginBottom="6dp"
-                        >
-
-                    <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_icon_travel_flight_horiz"
-                            android:layout_marginBottom="2dp"/>
-
-                    <ImageView
-                            android:layout_width="5dp"
-                            android:layout_height="5dp"
-                            android:src="@drawable/shape_dot_green"
-                            android:layout_marginBottom="2dp"
-                            android:layout_marginStart="@dimen/min_margin_10"
-                            android:layout_marginEnd="@dimen/min_margin_10"/>
-
-                    <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_icon_travel_flight_horiz"
-                            android:layout_marginBottom="2dp"/>
-
-                    <ImageView
-                            android:layout_width="5dp"
-                            android:layout_height="5dp"
-                            android:src="@drawable/shape_dot_green"
-                            android:layout_marginBottom="2dp"
-                            android:layout_marginStart="@dimen/min_margin_10"
-                            android:layout_marginEnd="@dimen/min_margin_10"/>
-
-                    <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_icon_travel_flight_horiz"
-                            android:layout_marginBottom="2dp"/>
-
-                </LinearLayout>
-
-                <FrameLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toEndOf="@+id/lin_stops"
                         android:layout_toStartOf="@+id/tv_time_end"
-                        android:layout_alignBottom="@+id/lin_stops"
-                        android:layout_alignTop="@+id/lin_stops"
                         android:layout_marginBottom="3dp"
                         android:layout_marginStart="@dimen/min_margin_10"
                         android:layout_marginEnd="@dimen/min_margin_10"
+                        android:layout_alignTop="@+id/tv_time_start"
+                        android:layout_alignBottom="@+id/tv_time_start"
                         >
 
                     <View
                             android:layout_width="match_parent"
                             android:layout_height="0.5dp"
                             android:background="@color/grey"
-                            android:layout_gravity="center_vertical"
+                            android:layout_centerVertical="true"
                             />
-                </FrameLayout>
+
+                    <LinearLayout
+                            android:id="@+id/lin_stops"
+                            android:layout_width="wrap_content"
+                            android:layout_height="26dp"
+                            android:orientation="horizontal"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="6dp"
+                            android:background="@color/white"
+                            android:paddingStart="@dimen/min_margin"
+                            android:paddingEnd="@dimen/min_margin"
+                            android:layout_centerVertical="true"
+                            >
+
+                        <ImageView
+                                android:id="@+id/iv_stop_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_icon_travel_flight_horiz"
+                                android:layout_marginBottom="2dp"/>
+
+                        <ImageView
+                                android:id="@+id/iv_stop_inter_1"
+                                android:layout_width="5dp"
+                                android:layout_height="5dp"
+                                android:src="@drawable/shape_dot_green"
+                                android:layout_marginBottom="2dp"
+                                android:layout_marginStart="@dimen/min_margin_10"
+                                android:layout_marginEnd="@dimen/min_margin_10"/>
+
+                        <ImageView
+                                android:id="@+id/iv_stop_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_icon_travel_flight_horiz"
+                                android:layout_marginBottom="2dp"/>
+
+                        <ImageView
+                                android:id="@+id/iv_stop_inter_2"
+                                android:layout_width="5dp"
+                                android:layout_height="5dp"
+                                android:src="@drawable/shape_dot_green"
+                                android:layout_marginBottom="2dp"
+                                android:layout_marginStart="@dimen/min_margin_10"
+                                android:layout_marginEnd="@dimen/min_margin_10"/>
+
+                        <ImageView
+                                android:id="@+id/iv_stop_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_icon_travel_flight_horiz"
+                                android:layout_marginBottom="2dp"/>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+
+                <!--                <FrameLayout-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_toEndOf="@+id/lin_stops"-->
+                <!--                        android:layout_toStartOf="@+id/tv_time_end"-->
+                <!--                        android:layout_alignBottom="@+id/lin_stops"-->
+                <!--                        android:layout_alignTop="@+id/lin_stops"-->
+                <!--                        android:layout_marginBottom="3dp"-->
+                <!--                        android:layout_marginStart="@dimen/min_margin_10"-->
+                <!--                        android:layout_marginEnd="@dimen/min_margin_10"-->
+                <!--                        >-->
+
+                <!--                    <View-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="0.5dp"-->
+                <!--                            android:background="@color/grey"-->
+                <!--                            android:layout_gravity="center_vertical"-->
+                <!--                            />-->
+                <!--                </FrameLayout>-->
 
                 <TextView
                         android:id="@+id/tv_time_end"
@@ -204,17 +211,18 @@
                         android:layout_alignParentEnd="true"
                         />
             </RelativeLayout>
+
             <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     >
 
                 <TextView
+                        android:id="@+id/tv_from_code"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/example_abb_start"
                         style="@style/NormalText"
-                        android:layout_marginStart="@dimen/medium_margin"
                         />
 
                 <LinearLayout
@@ -226,6 +234,7 @@
                         >
 
                     <TextView
+                            android:id="@+id/tv_stops"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/example_stops"
@@ -233,6 +242,7 @@
                             />
 
                     <TextView
+                            android:id="@+id/tv_stops_codes"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/example_abb_stops"
@@ -240,7 +250,9 @@
                             android:layout_marginTop="@dimen/min_margin"
                             />
                 </LinearLayout>
+
                 <TextView
+                        android:id="@+id/tv_to_code"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/example_abb_end"

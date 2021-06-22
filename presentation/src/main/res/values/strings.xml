@@ -85,6 +85,7 @@
     <string name="example_date">Saturday, 26 June 2021</string>
     <string name="example_flight_name_1">Vilnius</string>
     <string name="example_flight_name_2">Antalya</string>
+    <string name="example_flight_name_common">Vilnius - Antalya</string>
     <string name="example_cost">€350</string>
     <string name="example_duration">7 h 20 min</string>
     <string name="example_time_start">3:40</string>
@@ -133,4 +134,22 @@
     <string name="price_lower">Price (lowest first)</string>
     <string name="price_higher">Price (highest first)</string>
     <string name="view">View</string>
+    <string name="direct">Direct</string>
+    <string name="example_airport">Vilnus International Airport (VNO)</string>
+    <string name="example_company">AirBaltic</string>
+    <string name="example_class">Economy</string>
+    <string name="example_flight_connection">Flight connection: 3h 25min</string>
+    <string name="flight_connection">Flight connection:</string>
+    <string name="baggage_recheck">Baggage must be re-checked</string>
+    <string name="baggage_self_transfer">Self-transfer of baggage at the transfer airport CPH</string>
+    <string name="example_arrival">Arrival on next day</string>
+    <string name="select_flight">Select this flight</string>
+    <string name="seating_info">Seating info</string>
+    <string name="flight_no">Flight no</string>
+    <string name="seat_pitch">Seat pitch</string>
+    <string name="seat_width">Seat width</string>
+    <string name="seat_recline">Seat recline</string>
+    <string name="seat_audio_video"><![CDATA[Audio & video on demand]]></string>
+    <string name="seat_power">In-seat power</string>
+    <string name="seat_wifi">Wi-Fi on board</string>
 </resources>
