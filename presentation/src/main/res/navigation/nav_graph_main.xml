@@ -3,7 +3,21 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/nav_graph_main"
             app:startDestination="@id/searchFragment"
->
+        >
+    <fragment
+            android:id="@+id/addCountriesFragment"
+            android:name="ru.vsibi.presentation.screens.flights.exclude.add.AddCountriesFragment"
+            android:label="AddCountriesFragment"
+            />
+    <fragment
+            android:id="@+id/excludeCountriesFragment"
+            android:name="ru.vsibi.presentation.screens.flights.exclude.ExcludeCountriesFragment"
+            android:label="ExcludeCountriesFragment"
+            >
+        <action
+                android:id="@+id/action_excludeCountriesFragment_to_addCountriesFragment"
+                app:destination="@id/addCountriesFragment"/>
+    </fragment>
     <fragment
             android:id="@+id/changePasswordFragment"
             android:name="ru.vsibi.presentation.screens.profile.changePass.ChangePasswordFragment"
@@ -58,10 +72,11 @@
                 app:destination="@id/personalDataFragment"/>
 
     </fragment>
-    <fragment android:id="@+id/searchFragment"
-              android:name="ru.vsibi.presentation.screens.search.main.SearchFragment"
-              android:label="SearchFragment"
-    >
+    <fragment
+            android:id="@+id/searchFragment"
+            android:name="ru.vsibi.presentation.screens.search.main.SearchFragment"
+            android:label="SearchFragment"
+            >
         <action
                 android:id="@+id/action_searchFragment_to_travellersFragment"
                 app:destination="@id/travellersFragment"/>
@@ -69,34 +84,42 @@
                 android:id="@+id/action_searchFragment_to_hotelsFragment"
                 app:destination="@id/hotelsFragment"/>
     </fragment>
-    <fragment android:id="@+id/travellersFragment"
-              android:name="ru.vsibi.presentation.screens.search.travallers.TravellersFragment"
-              android:label="TravellersFragment"
-    />
+    <fragment
+            android:id="@+id/travellersFragment"
+            android:name="ru.vsibi.presentation.screens.search.travallers.TravellersFragment"
+            android:label="TravellersFragment"
+            />
 
-    <fragment android:id="@+id/fligthsFragment"
-              android:name="ru.vsibi.presentation.screens.flights.FlightsFragment"
-              android:label="FlightsFragment">
+    <fragment
+            android:id="@+id/fligthsFragment"
+            android:name="ru.vsibi.presentation.screens.flights.FlightsFragment"
+            android:label="FlightsFragment">
+        <action
+                android:id="@+id/action_fligthsFragment_to_excludeCountriesFragment"
+                app:destination="@id/excludeCountriesFragment"/>
     </fragment>
-    <fragment android:id="@+id/hotelsFragment"
-              android:name="ru.vsibi.presentation.screens.tours.main.ToursFragment"
-              android:label="HotelsFragment"
-    >
+    <fragment
+            android:id="@+id/hotelsFragment"
+            android:name="ru.vsibi.presentation.screens.tours.main.ToursFragment"
+            android:label="HotelsFragment"
+            >
         <action
                 android:id="@+id/action_hotelsFragment_to_hotelsInfoFragment"
                 app:destination="@id/tourInfoFragment">
 
         </action>
-        <argument android:name="search"
-                  app:argType="ru.vsibi.presentation.models.SearchModel"/>
+        <argument
+                android:name="search"
+                app:argType="ru.vsibi.presentation.models.SearchModel"/>
         <action
                 android:id="@+id/action_hotelsFragment_to_toursSettingsFragment"
                 app:destination="@id/toursSettingsFragment"/>
     </fragment>
-    <fragment android:id="@+id/tourInfoFragment"
-              android:name="ru.vsibi.presentation.screens.tours.info.ToursInfoFragment"
-              android:label="TourInfoFragment"
-    >
+    <fragment
+            android:id="@+id/tourInfoFragment"
+            android:name="ru.vsibi.presentation.screens.tours.info.ToursInfoFragment"
+            android:label="TourInfoFragment"
+            >
         <action
                 android:id="@+id/action_hotelsInfoFragment_to_purchaseFormFragment"
                 app:destination="@id/purchaseFormFragment"/>
@@ -111,24 +134,27 @@
                 app:destination="@id/flightsListFragment"/>
     </fragment>
 
-    <fragment android:id="@+id/tourMoreFragment"
-              android:name="ru.vsibi.presentation.screens.tours.info.more.TourMoreFragment"
-              android:label="TourMoreFragment">
+    <fragment
+            android:id="@+id/tourMoreFragment"
+            android:name="ru.vsibi.presentation.screens.tours.info.more.TourMoreFragment"
+            android:label="TourMoreFragment">
 
         <argument
                 android:name="tour"
                 app:argType="ru.vsibi.presentation.screens.tours.main.TourModel"/>
     </fragment>
-    <fragment android:id="@+id/savedFragment"
-              android:name="ru.vsibi.presentation.screens.saved.SavedFragment"
-              android:label="SavedFragment">
+    <fragment
+            android:id="@+id/savedFragment"
+            android:name="ru.vsibi.presentation.screens.saved.SavedFragment"
+            android:label="SavedFragment">
         <action
                 android:id="@+id/action_savedFragment_to_hotelsInfoFragment"
                 app:destination="@id/tourInfoFragment"/>
     </fragment>
-    <fragment android:id="@+id/profileFragment"
-              android:name="ru.vsibi.presentation.screens.profile.main.ProfileFragment"
-              android:label="ProfileFragment">
+    <fragment
+            android:id="@+id/profileFragment"
+            android:name="ru.vsibi.presentation.screens.profile.main.ProfileFragment"
+            android:label="ProfileFragment">
         <action
                 android:id="@+id/action_profileFragment_to_ordersFragment"
                 app:destination="@id/ordersFragment"/>
@@ -143,17 +169,19 @@
                 app:destination="@id/changePasswordFragment"/>
     </fragment>
 
-    <fragment android:id="@+id/ordersFragment"
-              android:name="ru.vsibi.presentation.screens.profile.orders.main.OrdersFragment"
-              android:label="OrdersFragment">
+    <fragment
+            android:id="@+id/ordersFragment"
+            android:name="ru.vsibi.presentation.screens.profile.orders.main.OrdersFragment"
+            android:label="OrdersFragment">
         <action
                 android:id="@+id/action_ordersFragment_to_ordersDetailFragment"
                 app:destination="@id/ordersDetailFragment"/>
     </fragment>
 
-    <fragment android:id="@+id/ordersDetailFragment"
-              android:name="ru.vsibi.presentation.screens.profile.orders.info.OrdersDetailFragment"
-              android:label="OrdersDetailFragment">
+    <fragment
+            android:id="@+id/ordersDetailFragment"
+            android:name="ru.vsibi.presentation.screens.profile.orders.info.OrdersDetailFragment"
+            android:label="OrdersDetailFragment">
         <argument
                 android:name="tour"
                 app:argType="ru.vsibi.presentation.screens.tours.main.TourModel"/>
@@ -161,9 +189,10 @@
                 android:id="@+id/action_ordersDetailFragment_to_ticketFragment"
                 app:destination="@id/ticketFragment"/>
     </fragment>
-    <fragment android:id="@+id/ticketFragment"
-              android:name="ru.vsibi.presentation.screens.profile.orders.ticket.TicketFragment"
-              android:label="TicketFragment">
-   </fragment>
+    <fragment
+            android:id="@+id/ticketFragment"
+            android:name="ru.vsibi.presentation.screens.profile.orders.ticket.TicketFragment"
+            android:label="TicketFragment">
+    </fragment>
 
 </navigation>

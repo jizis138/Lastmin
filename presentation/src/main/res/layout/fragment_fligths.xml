@@ -419,6 +419,7 @@
                 >
 
             <TextView
+                    android:id="@+id/tv_exclude_countries"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/exclude_countries"

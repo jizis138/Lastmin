@@ -152,4 +152,6 @@
     <string name="seat_audio_video"><![CDATA[Audio & video on demand]]></string>
     <string name="seat_power">In-seat power</string>
     <string name="seat_wifi">Wi-Fi on board</string>
+    <string name="add_more">Add more</string>
+    <string name="do_not_fly">Do not fly via those countries</string>
 </resources>
