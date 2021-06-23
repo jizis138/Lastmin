@@ -19,6 +19,18 @@
                 app:destination="@id/addCountriesFragment"/>
     </fragment>
     <fragment
+            android:id="@+id/payVariantsFragment"
+            android:name="ru.vsibi.presentation.screens.tours.purchase.paymentVariants.PayVariantsFragment"
+            android:label="PayVariantsFragment">
+        <action
+                android:id="@+id/action_payVariantsFragment_to_addCardFragment"
+                app:destination="@id/addCardFragment"/>
+    </fragment>
+    <fragment
+            android:id="@+id/addCardFragment"
+            android:name="ru.vsibi.presentation.screens.tours.purchase.paymentVariants.add.AddCardFragment"
+            android:label="AddCardFragment"/>
+    <fragment
             android:id="@+id/changePasswordFragment"
             android:name="ru.vsibi.presentation.screens.profile.changePass.ChangePasswordFragment"
             android:label="ChangePasswordFragment"/>
@@ -70,6 +82,9 @@
         <action
                 android:id="@+id/action_purchaseFormFragment_to_personalDataFragment"
                 app:destination="@id/personalDataFragment"/>
+        <action
+                android:id="@+id/action_purchaseFormFragment_to_payVariantsFragment"
+                app:destination="@id/payVariantsFragment"/>
 
     </fragment>
     <fragment

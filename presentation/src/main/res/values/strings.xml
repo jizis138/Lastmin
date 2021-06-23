@@ -154,4 +154,12 @@
     <string name="seat_wifi">Wi-Fi on board</string>
     <string name="add_more">Add more</string>
     <string name="do_not_fly">Do not fly via those countries</string>
+    <string name="add_new_card">Add new card</string>
+    <string name="expiry">Expiry</string>
+    <string name="cvv">CVV</string>
+    <string name="post_code">Post code</string>
+    <string name="card_number">Card number</string>
+    <string name="example_card_number">Visa •••• 1540</string>
+    <string name="example_card_expiry">09/23</string>
+    <string name="pay">Pay</string>
 </resources>

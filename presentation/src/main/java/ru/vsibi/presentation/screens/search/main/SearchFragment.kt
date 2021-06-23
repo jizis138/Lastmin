@@ -22,6 +22,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
 
     private var picker: MaterialDatePicker<Pair<Long, Long>>? = null
     private val viewModel: SearchViewModel by viewModels()
+    private var isPickerOpened = false
 
     override fun onResume() {
         super.onResume()
@@ -128,6 +129,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
 
         picker = builder.build()
         binding.tvDate.setOnClickListener {
+            if(isPickerOpened) return@setOnClickListener
+            isPickerOpened = true
             picker?.show(childFragmentManager, picker.toString())
             picker?.addOnPositiveButtonClickListener {
                 val formatter = SimpleDateFormat("dd.MM");
@@ -138,6 +141,12 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
                     "DatePicker Activity",
                     "Date String = ${picker?.headerText}::  Date epoch values::${it.first}:: to :: ${it.second}"
                 )
+            }
+            picker?.addOnCancelListener {
+                isPickerOpened = false
+            }
+            picker?.addOnDismissListener {
+                isPickerOpened = false
             }
         }
     }

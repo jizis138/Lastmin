@@ -3,7 +3,6 @@ package ru.vsibi.presentation.screens.profile.personalData
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.util.Pair
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.datepicker.CalendarConstraints
@@ -12,7 +11,6 @@ import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentPersonalDataBinding
 import ru.vsibi.presentation.models.PersonalDataModel
-import ru.vsibi.presentation.screens.search.main.SearchEvent
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -24,6 +22,11 @@ class PersonalDataFragment :
 
     companion object {
         const val KEY_PERSONAL_DATA = "key_personal_data"
+    }
+
+    override fun onResume() {
+        super.onResume()
+        initDatePicker()
     }
 
     override fun FragmentPersonalDataBinding.initViews() {
@@ -41,9 +44,7 @@ class PersonalDataFragment :
     }
 
     override fun FragmentPersonalDataBinding.initListeners() {
-        tietDob.setOnClickListener {
-            showDatePicker()
-        }
+
         btnSave.setOnClickListener {
             val id = args.person?.id ?: 1
             setFragmentResult(KEY_PERSONAL_DATA, Bundle().apply {
@@ -66,7 +67,7 @@ class PersonalDataFragment :
         }
     }
 
-    private fun showDatePicker() {
+    private fun initDatePicker() {
         val builder = MaterialDatePicker.Builder.datePicker()
         val calendar = Calendar.getInstance()
         calendar.set(1990, 1, 15)
@@ -77,16 +78,18 @@ class PersonalDataFragment :
         builder.setCalendarConstraints(constraints).setTitleText(getString(R.string.dob))
 
         picker = builder.build()
-        picker?.show(childFragmentManager, picker.toString())
-        picker?.addOnPositiveButtonClickListener {
-            val formatter = SimpleDateFormat("dd/MM/yyyy");
-            val dateString = formatter.format(Date(it));
-            binding.tietDob.setText(dateString)
+        binding.tietDob.setOnClickListener {
+            picker?.show(childFragmentManager, picker.toString())
+            picker?.addOnPositiveButtonClickListener {
+                val formatter = SimpleDateFormat("dd/MM/yyyy");
+                val dateString = formatter.format(Date(it));
+                binding.tietDob.setText(dateString)
 
-            Log.d(
-                "DatePicker Activity",
-                "Date String = ${picker?.headerText}::  Date epoch values::${it}"
-            )
+                Log.d(
+                    "DatePicker Activity",
+                    "Date String = ${picker?.headerText}::  Date epoch values::${it}"
+                )
+            }
         }
     }
 
@@ -100,9 +103,9 @@ class PersonalDataFragment :
             tietName.setText(person.name)
             tietPhone.setText(person.phoneNumber)
         }
-        if(person.id == 1){
+        if (person.id == 1) {
             (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.adult)
-        }else{
+        } else {
             (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.kid)
         }
     }
