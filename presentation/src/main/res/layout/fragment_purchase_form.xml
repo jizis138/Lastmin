@@ -40,6 +40,7 @@
                 android:layout_marginStart="@dimen/medium_margin"
                 android:layout_marginEnd="@dimen/medium_margin"
                 app:endIconDrawable="@drawable/ic_baseline_keyboard_arrow_right_24"
+                app:boxBackgroundColor="@color/text_input_layout_color"
                 >
 
             <AutoCompleteTextView
@@ -64,6 +65,7 @@
                 android:layout_marginEnd="@dimen/medium_margin"
                 android:layout_marginTop="@dimen/def_margin"
                 app:endIconDrawable="@drawable/ic_baseline_keyboard_arrow_right_24"
+                app:boxBackgroundColor="@color/text_input_layout_color"
                 >
 
             <AutoCompleteTextView
@@ -150,6 +152,7 @@
             </LinearLayout>
 
             <Button
+                    android:id="@+id/btn_add"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/add"
@@ -161,6 +164,18 @@
                     />
 
         </RelativeLayout>
+
+
+        <Button
+                android:id="@+id/btn_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pay"
+                android:textColor="@color/white"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:layout_marginEnd="@dimen/medium_margin"
+                android:layout_marginTop="@dimen/def_margin"
+                />
     </LinearLayout>
 
 

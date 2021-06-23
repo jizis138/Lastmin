@@ -25,6 +25,8 @@ import ru.vsibi.presentation.screens.tours.info.ToursInfoFragmentDirections
 import ru.vsibi.presentation.screens.tours.info.flights.main.FlightsListFragmentDirections
 import ru.vsibi.presentation.screens.tours.main.ToursFragmentDirections
 import ru.vsibi.presentation.screens.tours.purchase.PurchaseFormFragmentDirections
+import ru.vsibi.presentation.screens.tours.purchase.paymentVariants.PayVariantsFragment
+import ru.vsibi.presentation.screens.tours.purchase.paymentVariants.PayVariantsFragmentDirections
 
 class Router {
 
@@ -151,6 +153,14 @@ class Router {
     fun navigateToExcludeCountries(){
         childNavController?.navigate(FlightsFragmentDirections.actionFligthsFragmentToExcludeCountriesFragment())
     }
+    fun navigateToAddCards() {
+        childNavController?.navigate(PurchaseFormFragmentDirections.actionPurchaseFormFragmentToPayVariantsFragment())
+    }
+
+    fun navigateToAddCard() {
+        childNavController?.navigate(PayVariantsFragmentDirections.actionPayVariantsFragmentToAddCardFragment())
+    }
+
 
     fun navigateToAddCountries() {
         childNavController?.navigate(ExcludeCountriesFragmentDirections.actionExcludeCountriesFragmentToAddCountriesFragment())

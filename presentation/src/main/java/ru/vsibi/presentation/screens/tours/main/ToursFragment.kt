@@ -20,7 +20,7 @@ class ToursFragment : BaseFragment<FragmentToursBinding>(FragmentToursBinding::i
 
     private val viewModel: HotelsViewModel by viewModels()
     private val args: ToursFragmentArgs by navArgs()
-
+    private var isSmall = true
     private val itemsClickListener: (TourModel) -> Unit = { hotel ->
         router.navigateToHotelsInfo(hotel)
     }
@@ -29,6 +29,7 @@ class ToursFragment : BaseFragment<FragmentToursBinding>(FragmentToursBinding::i
     override fun onResume() {
         super.onResume()
         (activity as AppCompatActivity?)?.supportActionBar?.show()
+        checkItemSize()
     }
 
     override fun FragmentToursBinding.initViews() {
@@ -44,7 +45,7 @@ class ToursFragment : BaseFragment<FragmentToursBinding>(FragmentToursBinding::i
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.tours_menu, menu)
-        super.onCreateOptionsMenu(menu,inflater)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -53,13 +54,9 @@ class ToursFragment : BaseFragment<FragmentToursBinding>(FragmentToursBinding::i
     }
 
     override fun FragmentToursBinding.initListeners() {
-        setFragmentResultListener(ToursSettingsFragment.TOURS_SETTINGS_KEY){requestKey, bundle ->
-            val isSmall = bundle.getBoolean(ToursSettingsFragment.IS_SMALL)
-            if(isSmall){
-                displaySmallSize()
-            }else{
-                displayBigSize()
-            }
+        setFragmentResultListener(ToursSettingsFragment.TOURS_SETTINGS_KEY) { requestKey, bundle ->
+            isSmall = bundle.getBoolean(ToursSettingsFragment.IS_SMALL)
+            checkItemSize()
         }
     }
 
@@ -107,6 +104,14 @@ class ToursFragment : BaseFragment<FragmentToursBinding>(FragmentToursBinding::i
         }
     }
 
+    private fun checkItemSize() {
+        if (isSmall) {
+            displaySmallSize()
+        } else {
+            displayBigSize()
+        }
+    }
+
     private fun displayBigSize() {
         adapter.displayBigSize()
         binding.rvHotels.setPadding(0, 0, 0, getDp(64f).toInt())
@@ -117,7 +122,7 @@ class ToursFragment : BaseFragment<FragmentToursBinding>(FragmentToursBinding::i
         binding.rvHotels.setPadding(0, getDp(20f).toInt(), 0, getDp(64f).toInt())
     }
 
-    private fun getDp(float : Float) : Float{
+    private fun getDp(float: Float): Float {
         return TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP, float,
             requireContext().resources.displayMetrics

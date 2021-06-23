@@ -43,6 +43,9 @@ class PurchaseFormFragment :
         tvKid.setOnClickListener {
             router.navigateToPersonalDataFromPurchaseForm(viewModel.getChild())
         }
+        btnAdd.setOnClickListener {
+            router.navigateToAddCards()
+        }
     }
 
     override fun initObservers() {
