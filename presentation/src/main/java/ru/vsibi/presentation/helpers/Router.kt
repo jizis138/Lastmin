@@ -5,6 +5,8 @@ import androidx.navigation.fragment.NavHostFragment
 import ru.vsibi.presentation.models.PersonalDataModel
 import ru.vsibi.presentation.models.SearchModel
 import ru.vsibi.presentation.models.flight.FlightResponse
+import ru.vsibi.presentation.screens.flights.FlightsFragmentDirections
+import ru.vsibi.presentation.screens.flights.exclude.ExcludeCountriesFragmentDirections
 import ru.vsibi.presentation.screens.tours.main.TourModel
 import ru.vsibi.presentation.screens.login.LoginFragmentDirections
 import ru.vsibi.presentation.screens.login.emailVariant.createPassword.CreatePassFragmentDirections
@@ -146,5 +148,11 @@ class Router {
         childNavController?.navigate(ToursFragmentDirections.actionHotelsFragmentToToursSettingsFragment())
     }
 
+    fun navigateToExcludeCountries(){
+        childNavController?.navigate(FlightsFragmentDirections.actionFligthsFragmentToExcludeCountriesFragment())
+    }
 
+    fun navigateToAddCountries() {
+        childNavController?.navigate(ExcludeCountriesFragmentDirections.actionExcludeCountriesFragmentToAddCountriesFragment())
+    }
 }

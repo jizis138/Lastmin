@@ -13,5 +13,8 @@ class FlightsFragment : BaseFragment<FragmentFligthsBinding>(FragmentFligthsBind
             setDisplayHomeAsUpEnabled(false)
             setDisplayShowHomeEnabled(false)
         }
+        tvExcludeCountries.setOnClickListener {
+            router.navigateToExcludeCountries()
+        }
     }
 }
