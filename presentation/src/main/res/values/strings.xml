@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="search">Search</string>
     <string name="flights">Flights</string>
     <string name="saved">Saved</string>
@@ -162,4 +162,5 @@
     <string name="example_card_number">Visa •••• 1540</string>
     <string name="example_card_expiry">09/23</string>
     <string name="pay">Pay</string>
+    <string name="mtrl_picker_confirm" tools:override="true">Ok</string>
 </resources>
