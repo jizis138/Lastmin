@@ -150,7 +150,7 @@
                     android:layout_alignBottom="@+id/tv_checked"
                     android:weightSum="3"
                     android:gravity="center"
-                    android:layout_marginEnd="@dimen/big_margin"
+                    android:layout_marginEnd="@dimen/def_margin"
                     >
 
                 <TextView
@@ -164,20 +164,21 @@
                         android:gravity="center_horizontal"
                         />
 
-                <ImageButton
-                        android:id="@+id/ib_adult_plus"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_baseline_add_24"
-                        android:layout_weight="1"
-                        android:background="@android:color/transparent"
-                        />
 
                 <ImageButton
                         android:id="@+id/ib_adult_minus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_baseline_remove_24"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        />
+
+                <ImageButton
+                        android:id="@+id/ib_adult_plus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_add_24"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
                         />
@@ -213,7 +214,7 @@
                     android:layout_alignBottom="@+id/tv_cabin"
                     android:weightSum="3"
                     android:gravity="center"
-                    android:layout_marginEnd="@dimen/big_margin"
+                    android:layout_marginEnd="@dimen/def_margin"
                     >
 
                 <TextView
@@ -227,20 +228,21 @@
                         android:gravity="center_horizontal"
                         />
 
-                <ImageButton
-                        android:id="@+id/ib_cabin_plus"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_baseline_add_24"
-                        android:layout_weight="1"
-                        android:background="@android:color/transparent"
-                        />
 
                 <ImageButton
                         android:id="@+id/ib_cabin_minus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_baseline_remove_24"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        />
+
+                <ImageButton
+                        android:id="@+id/ib_cabin_plus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_add_24"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
                         />
@@ -305,7 +307,7 @@
                     android:layout_centerVertical="true"
                     android:weightSum="3"
                     android:gravity="center"
-                    android:layout_marginEnd="@dimen/big_margin"
+                    android:layout_marginEnd="@dimen/def_margin"
                     >
 
                 <TextView
@@ -319,20 +321,21 @@
                         android:gravity="center_horizontal"
                         />
 
-                <ImageButton
-                        android:id="@+id/ib_duration_plus"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_baseline_add_24"
-                        android:layout_weight="1"
-                        android:background="@android:color/transparent"
-                        />
 
                 <ImageButton
                         android:id="@+id/ib_duration_minus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_baseline_remove_24"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        />
+
+                <ImageButton
+                        android:id="@+id/ib_duration_plus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_add_24"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
                         />
@@ -367,7 +370,7 @@
                     android:layout_alignBottom="@+id/tv_stops"
                     android:weightSum="3"
                     android:gravity="center"
-                    android:layout_marginEnd="@dimen/big_margin"
+                    android:layout_marginEnd="@dimen/def_margin"
                     >
 
                 <TextView
@@ -381,20 +384,21 @@
                         android:gravity="center_horizontal"
                         />
 
-                <ImageButton
-                        android:id="@+id/ib_stops_plus"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_baseline_add_24"
-                        android:layout_weight="1"
-                        android:background="@android:color/transparent"
-                        />
 
                 <ImageButton
                         android:id="@+id/ib_stops_minus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_baseline_remove_24"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        />
+
+                <ImageButton
+                        android:id="@+id/ib_stops_plus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_add_24"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
                         />

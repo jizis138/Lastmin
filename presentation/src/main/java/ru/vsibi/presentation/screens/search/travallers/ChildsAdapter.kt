@@ -13,8 +13,10 @@ class ChildsAdapter : RecyclerView.Adapter<ChildsAdapter.ChildsViewHolder>() {
     private val childAges = mutableListOf<Int>()
 
     fun removeLast() {
-        childAges.removeLast()
-        notifyItemRemoved(childAges.size)
+        if (childAges.size > 0) {
+            childAges.removeLast()
+            notifyItemRemoved(childAges.size)
+        }
     }
 
     fun add(age: Int) {
