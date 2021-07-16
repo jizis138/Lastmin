@@ -1,6 +1,7 @@
 package ru.vsibi.presentation.screens.login.emailVariant.email
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import ru.vsibi.presentation.R
@@ -33,9 +34,12 @@ class LoginEmailFragment :
     }
 
     override fun FragmentLoginEmailBinding.initListeners() {
-        binding.apply {
-            btnContinue.setOnClickListener {
-                viewModel.obtainEvent(LoginEmailEvent.ContinueWithEmail(tietEmail.text.toString().trim()))
+        btnContinue.setOnClickListener {
+            viewModel.obtainEvent(LoginEmailEvent.ContinueWithEmail(tietEmail.text.toString().trim()))
+        }
+        tietEmail.doAfterTextChanged {
+            if(tilEmail.isErrorEnabled){
+                tilEmail.isErrorEnabled = false
             }
         }
     }
@@ -57,10 +61,19 @@ class LoginEmailFragment :
                 } else {
                     router.navigateToCreatePassFromSignup(state.data)
                 }
+                viewModel.obtainEvent(LoginEmailEvent.Default())
+            }
+            is LoginEmailViewState.Default -> {
+            }
+            is LoginEmailViewState.ValidError -> {
+                binding.tilEmail.error = getString(state.stringId)
             }
         }
     }
 
     private fun bindViewActions(action: LoginEmailAction?) {}
 
+    override fun onStop() {
+        super.onStop()
+    }
 }

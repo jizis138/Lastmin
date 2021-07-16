@@ -11,7 +11,7 @@ class ForgotPassViewModel : BaseViewModel<ForgotPassViewState, ForgotPassAction,
     }
 
     private fun sendResetLink(email: String) {
-        viewState = ForgotPassViewState.OnSentLink()
+        viewState = ForgotPassViewState.OnSentLink(email)
     }
 
 }

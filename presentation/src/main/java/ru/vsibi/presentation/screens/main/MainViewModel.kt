@@ -11,5 +11,5 @@ class MainViewModel@Inject constructor(
     private val sharedPref: SharedPreferenceService
 ) : ViewModel() {
 
-    var isAuth = sharedPref.getSpBool(KEY_AUTH)
+    var isAuth = sharedPref.getSpString(KEY_AUTH) != null
 }
