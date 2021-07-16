@@ -1,3 +1,6 @@
+include ':helper'
+include ':domain'
+include ':data'
 include ':presentation'
 include ':app'
 rootProject.name = "Lastmin"

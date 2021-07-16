@@ -77,8 +77,8 @@ class Router {
         parentNavController?.navigate(MainFragmentDirections.actionMainFragmentSelf())
     }
 
-    fun navigateToCreatePassFromForgot() {
-        parentNavController?.navigate(ForgotPassFragmentDirections.actionForgotPassFragmentToCreatePassFragment())
+    fun navigateToCreatePassFromForgot(email : String) {
+        parentNavController?.navigate(ForgotPassFragmentDirections.actionForgotPassFragmentToCreatePassFragment(email))
     }
 
     fun navigateForgotPass(email: String) {
@@ -139,7 +139,7 @@ class Router {
     }
 
     fun navigateToCreatePassFromSignup(data: String) {
-        parentNavController?.navigate(LoginEmailFragmentDirections.actionLoginEmailFragmentToCreatePassFragment())
+        parentNavController?.navigate(LoginEmailFragmentDirections.actionLoginEmailFragmentToCreatePassFragment(data))
     }
 
     fun navigateToPersonalDataFromPurchaseForm(person: PersonalDataModel) {
@@ -161,8 +161,11 @@ class Router {
         childNavController?.navigate(PayVariantsFragmentDirections.actionPayVariantsFragmentToAddCardFragment())
     }
 
-
     fun navigateToAddCountries() {
         childNavController?.navigate(ExcludeCountriesFragmentDirections.actionExcludeCountriesFragmentToAddCountriesFragment())
+    }
+
+    fun navigateToMainFromLogin() {
+        parentNavController?.navigate(LoginFragmentDirections.actionLoginFragmentToMainFragment())
     }
 }

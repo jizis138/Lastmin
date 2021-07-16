@@ -1,6 +1,9 @@
 package ru.vsibi.presentation.base
 
 import androidx.lifecycle.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import ru.movemove.presentation.helpers.SingleLiveAction
 
 abstract class BaseViewModel<State, Action, Event> : ViewModel() {
@@ -32,6 +35,11 @@ abstract class BaseViewModel<State, Action, Event> : ViewModel() {
 
     abstract fun obtainEvent(viewEvent: Event)
 
+    fun CoroutineScope.launchOnIO(unit: suspend () -> Unit) {
+        this.launch(Dispatchers.IO) {
+            unit.invoke()
+        }
+    }
 //    inline fun <T> launchOnViewModelScope(crossinline block: suspend () -> LiveData<T>): LiveData<State> {
 //        return liveData(viewModelScope.coroutineContext + Dispatchers.IO) {
 //            emitSource(block())

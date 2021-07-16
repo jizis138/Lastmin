@@ -47,7 +47,7 @@ class ForgotPassFragment : BaseFragment<FragmentForgotPasswordBinding>(FragmentF
 
     private fun bindViewState(state: ForgotPassViewState) {
         when (state) {
-            is ForgotPassViewState.OnSentLink -> router.navigateToCreatePassFromForgot()
+            is ForgotPassViewState.OnSentLink -> router.navigateToCreatePassFromForgot(state.email)
         }
     }
 

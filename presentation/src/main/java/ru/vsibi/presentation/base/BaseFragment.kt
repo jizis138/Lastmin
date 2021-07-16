@@ -14,6 +14,7 @@ import androidx.navigation.Navigator
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
+import ru.vsibi.helper.IError
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.helpers.Router
 
@@ -116,6 +117,17 @@ open class BaseFragment<Binding : ViewBinding>(private val inflate: Inflate<Bind
         toast(errorMessage)
 //        tvError?.setText(errorMessage)
 //        tvError?.visible()
+    }
+
+    open fun onError(error: IError?) {
+        if (error == null) return
+        if (error.getErrorResource() != null) {
+            toast(error.getErrorResource())
+        } else {
+            error.getErrorMessage()?.let {
+                toast(it)
+            }
+        }
     }
 
     fun onStartLoad() {
