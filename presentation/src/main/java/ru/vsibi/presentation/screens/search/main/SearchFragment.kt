@@ -1,13 +1,18 @@
 package ru.vsibi.presentation.screens.search.main
 
 import android.util.Log
+import android.view.Gravity
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.PopupMenu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.util.Pair
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
+import com.facebook.internal.Utility.arrayList
 import com.google.android.material.datepicker.MaterialDatePicker
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
@@ -28,6 +33,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
         super.onResume()
         initOriginSpinner()
         initDestinationSpinner()
+        isPickerOpened = false
     }
 
     override fun FragmentSearchBinding.initViews() {
@@ -95,59 +101,91 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
 
 
     private fun initOriginSpinner() {
-        val adapter = ArrayAdapter(
-            requireContext(),
-            R.layout.cell_spinner, SearchFactory.getCountryList()
-        )
+//        val adapter = ArrayAdapter(
+//            requireContext(),
+//            R.layout.cell_spinner, SearchFactory.getCountryList()
+//        )
         val editTextFilledExposedDropdown = binding.tvOrigin
-        editTextFilledExposedDropdown.setAdapter(adapter)
-        editTextFilledExposedDropdown.setOnClickListener {
-            it as AutoCompleteTextView
-            if (!it.isShown) {
-                it.showDropDown()
+//        editTextFilledExposedDropdown.setAdapter(adapter)
+        val clickListener = View.OnClickListener {
+            val popupMenu = PopupMenu(requireContext(), editTextFilledExposedDropdown, Gravity.END, 0, R.style.PopupMenuMoreCentralized)
+//            popupMenu.gravity = Gravity.END
+            val list = SearchFactory.getCountryList()
+            for (i in list.indices) {
+                popupMenu.menu.add(i, Menu.FIRST, i, list[i])
             }
+            popupMenu.setOnMenuItemClickListener { menuItem ->
+                editTextFilledExposedDropdown.setText(menuItem.title)
+                false
+            }
+            popupMenu.show()
         }
+        binding.tilOrigin.setEndIconOnClickListener(clickListener)
+        editTextFilledExposedDropdown.setOnClickListener(clickListener)
+//        {
+//            it as AutoCompleteTextView
+//            if (!it.isShown) {
+//                it.showDropDown()
+//            }
+//        }
     }
 
     private fun initDestinationSpinner() {
-        val adapter = ArrayAdapter(
-            requireContext(),
-            R.layout.cell_spinner, SearchFactory.getCountryList()
-        )
+//        val adapter = ArrayAdapter(
+//            requireContext(),
+//            R.layout.cell_spinner, SearchFactory.getCountryList()
+//        )
         val editTextFilledExposedDropdown = binding.tvDestionation
-        editTextFilledExposedDropdown.setAdapter(adapter)
-        editTextFilledExposedDropdown.setOnClickListener {
-            it as AutoCompleteTextView
-            if (!it.isShown) {
-                it.showDropDown()
+//        editTextFilledExposedDropdown.setAdapter(adapter)
+        val clickListener = View.OnClickListener {
+            val popupMenu = PopupMenu(requireContext(), editTextFilledExposedDropdown, Gravity.END, 0, R.style.PopupMenuMoreCentralized)
+            val list = SearchFactory.getCountryList()
+            for (i in list.indices) {
+                popupMenu.menu.add(i, Menu.FIRST, i, list[i])
             }
+            popupMenu.setOnMenuItemClickListener { menuItem ->
+                editTextFilledExposedDropdown.setText(menuItem.title)
+                false
+            }
+            popupMenu.show()
         }
+        binding.tilDestination.setEndIconOnClickListener(clickListener)
+        editTextFilledExposedDropdown.setOnClickListener(clickListener)
+//        {
+//            it as AutoCompleteTextView
+//            if (!it.isShown) {
+//                it.showDropDown()
+//            }
+
+//        }
     }
 
     private fun initRangeDatePicker() {
         val builder = MaterialDatePicker.Builder.dateRangePicker()
-
         picker = builder.build()
         binding.tvDate.setOnClickListener {
-            if(isPickerOpened) return@setOnClickListener
+            if (isPickerOpened) return@setOnClickListener
             isPickerOpened = true
-            picker?.show(childFragmentManager, picker.toString())
-            picker?.addOnPositiveButtonClickListener {
-                val formatter = SimpleDateFormat("dd.MM");
-                val dateString = formatter.format(Date(it.first));
-                binding.tvDate.setText(picker?.headerText)
-                viewModel.obtainEvent(SearchEvent.UpdateDate(dateString))
-                Log.d(
-                    "DatePicker Activity",
-                    "Date String = ${picker?.headerText}::  Date epoch values::${it.first}:: to :: ${it.second}"
-                )
-            }
-            picker?.addOnCancelListener {
-                isPickerOpened = false
-            }
-            picker?.addOnDismissListener {
-                isPickerOpened = false
-            }
+
+            router.openDateRangeDialog()
+
+//            picker?.show(childFragmentManager, picker.toString())
+//            picker?.addOnPositiveButtonClickListener {
+//                val formatter = SimpleDateFormat("dd.MM");
+//                val dateString = formatter.format(Date(it.first));
+//                binding.tvDate.setText(picker?.headerText)
+//                viewModel.obtainEvent(SearchEvent.UpdateDate(dateString))
+//                Log.d(
+//                    "DatePicker Activity",
+//                    "Date String = ${picker?.headerText}::  Date epoch values::${it.first}:: to :: ${it.second}"
+//                )
+//            }
+//            picker?.addOnCancelListener {
+//                isPickerOpened = false
+//            }
+//            picker?.addOnDismissListener {
+//                isPickerOpened = false
+//            }
         }
     }
 

@@ -25,6 +25,10 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
             log("destination " + destination.label)
             when (destination.id) {
                 R.id.travellersFragment -> hideNavigation()
+                R.id.dateRangeDialog -> hideNavigation()
+                R.id.tourInfoFragment -> hideNavigation()
+                R.id.flightsListFragment -> hideNavigation()
+                R.id.flightsInfoFragment -> hideNavigation()
                 else -> showNavigation()
             }
         }

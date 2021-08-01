@@ -2,6 +2,7 @@ package ru.vsibi.presentation.helpers
 
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import ru.vsibi.presentation.R
 import ru.vsibi.presentation.models.PersonalDataModel
 import ru.vsibi.presentation.models.SearchModel
 import ru.vsibi.presentation.models.flight.FlightResponse
@@ -167,5 +168,9 @@ class Router {
 
     fun navigateToMainFromLogin() {
         parentNavController?.navigate(LoginFragmentDirections.actionLoginFragmentToMainFragment())
+    }
+
+    fun openDateRangeDialog() {
+        childNavController?.navigate(SearchFragmentDirections.actionSearchFragmentToDateRangeDialog())
     }
 }

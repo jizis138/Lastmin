@@ -10,6 +10,11 @@
             android:label="AddCountriesFragment"
             />
     <fragment
+            android:id="@+id/dateRangeDialog"
+            android:name="ru.vsibi.presentation.screens.search.main.DateRangeDialog"
+            android:label="DateRangeDialog"
+            />
+    <fragment
             android:id="@+id/excludeCountriesFragment"
             android:name="ru.vsibi.presentation.screens.flights.exclude.ExcludeCountriesFragment"
             android:label="ExcludeCountriesFragment"
@@ -98,6 +103,9 @@
         <action
                 android:id="@+id/action_searchFragment_to_hotelsFragment"
                 app:destination="@id/hotelsFragment"/>
+        <action
+                android:id="@+id/action_searchFragment_to_dateRangeDialog"
+                app:destination="@id/dateRangeDialog"/>
     </fragment>
     <fragment
             android:id="@+id/travellersFragment"
