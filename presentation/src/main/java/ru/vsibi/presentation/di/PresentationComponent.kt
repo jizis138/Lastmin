@@ -5,6 +5,7 @@ import dagger.BindsInstance
 import dagger.Component
 import ru.vsibi.data.di.RemoteModule
 import ru.vsibi.data.di.RepositoryModule
+import ru.vsibi.data.di.StorageModule
 import ru.vsibi.presentation.screens.main.MainFragment
 
 @Component(modules = [StorageModule::class, RemoteModule::class, RepositoryModule::class])

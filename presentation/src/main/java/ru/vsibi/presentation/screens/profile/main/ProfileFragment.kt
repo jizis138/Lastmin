@@ -56,7 +56,7 @@ class ProfileFragment :
     }
 
     override fun initData() {
-        super.initData()
+        viewModel.obtainEvent(ProfileEvent.FetchProfile())
     }
 
     override fun initObservers() {

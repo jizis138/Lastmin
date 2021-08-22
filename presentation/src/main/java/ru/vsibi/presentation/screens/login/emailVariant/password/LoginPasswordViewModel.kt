@@ -6,13 +6,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import ru.vsibi.data.api.auth.AuthRepository
 import ru.vsibi.domain.network.post.PostLogin
-import ru.vsibi.domain.network.post.PostSignup
 import ru.vsibi.helper.Status
 import ru.vsibi.presentation.base.BaseViewModel
-import ru.vsibi.presentation.helpers.SharedPreferenceService
-import ru.vsibi.presentation.helpers.SharedPreferenceService.Companion.KEY_AUTH
-import ru.vsibi.presentation.helpers.SharedPreferenceService.Companion.KEY_EMAIL
-import ru.vsibi.presentation.screens.login.emailVariant.createPassword.CreatePassViewState
+import ru.vsibi.data.SharedPreferenceService
+import ru.vsibi.data.SharedPreferenceService.Companion.KEY_AUTH
+import ru.vsibi.data.SharedPreferenceService.Companion.KEY_EMAIL
 import javax.inject.Inject
 
 @HiltViewModel

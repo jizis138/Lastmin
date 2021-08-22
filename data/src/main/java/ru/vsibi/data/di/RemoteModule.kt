@@ -13,6 +13,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.vsibi.data.api.auth.AuthService
 import ru.vsibi.data.AuthHelper
+import ru.vsibi.data.SharedPreferenceService
+import ru.vsibi.data.api.profile.ProfileService
 import javax.inject.Singleton
 
 @Module
@@ -37,7 +39,10 @@ class RemoteModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor, authInterceptor : Interceptor): OkHttpClient {
+    fun provideOkHttpClient(
+        httpLoggingInterceptor: HttpLoggingInterceptor,
+        authInterceptor: Interceptor
+    ): OkHttpClient {
         val client = OkHttpClient.Builder()
         client.addInterceptor(httpLoggingInterceptor)
         client.addInterceptor(authInterceptor)
@@ -54,8 +59,8 @@ class RemoteModule {
 
     @Singleton
     @Provides
-    fun authHelper(): AuthHelper {
-        return AuthHelper()
+    fun authHelper(sharedPreferenceService: SharedPreferenceService): AuthHelper {
+        return AuthHelper(sharedPreferenceService)
     }
 
     @Singleton
@@ -67,6 +72,11 @@ class RemoteModule {
     @Provides
     fun provideAuthService(retrofit: Retrofit): AuthService {
         return retrofit.create(AuthService::class.java)
+    }
+
+    @Provides
+    fun provideProfileService(retrofit: Retrofit): ProfileService {
+        return retrofit.create(ProfileService::class.java)
     }
 
 }

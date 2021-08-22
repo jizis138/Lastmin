@@ -1,15 +1,13 @@
 package ru.vsibi.presentation.screens.login
 
 import androidx.lifecycle.viewModelScope
-import com.facebook.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import ru.vsibi.data.api.auth.AuthRepository
 import ru.vsibi.helper.Status
 import ru.vsibi.presentation.base.BaseViewModel
-import ru.vsibi.presentation.helpers.SharedPreferenceService
-import ru.vsibi.presentation.screens.login.emailVariant.createPassword.CreatePassViewState
+import ru.vsibi.data.SharedPreferenceService
 import javax.inject.Inject
 
 @HiltViewModel

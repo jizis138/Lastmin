@@ -14,6 +14,7 @@ import androidx.navigation.Navigator
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
+import com.google.android.material.snackbar.Snackbar
 import ru.vsibi.helper.IError
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.helpers.Router
@@ -97,6 +98,11 @@ open class BaseFragment<Binding : ViewBinding>(private val inflate: Inflate<Bind
 
     fun toast(text: String) {
         Toast.makeText(requireContext(), "$text", Toast.LENGTH_SHORT).show()
+    }
+
+    fun snack(text: String) {
+        Snackbar.make(binding.root, text, Snackbar.LENGTH_LONG)
+            .show()
     }
 
     fun toast(textRes: Int?) {
