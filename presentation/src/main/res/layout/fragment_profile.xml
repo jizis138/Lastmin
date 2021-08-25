@@ -25,11 +25,11 @@
                     android:layout_height="70dp"
                     />
             <TextView
+                    android:id="@+id/tv_profile_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/DarkText.Big"
                     android:layout_gravity="center_vertical"
-                    android:text="@string/example_profile_name"
                     android:layout_marginStart="@dimen/medium_margin"
                     />
         </LinearLayout>

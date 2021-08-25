@@ -3,6 +3,7 @@ package ru.vsibi.data
 import android.util.Log
 import okhttp3.Interceptor
 import okhttp3.Request
+import ru.vsibi.data.SharedPreferenceService.Companion.KEY_AUTH
 import javax.inject.Inject
 
 class AuthHelper @Inject constructor(private val sharedPreferenceService: SharedPreferenceService) {
@@ -28,14 +29,15 @@ class AuthHelper @Inject constructor(private val sharedPreferenceService: Shared
             val interceptRequest: Request =
                 chain.request()
                     .newBuilder()
-                    .addHeader(HEADER_ACCEPT, "application/json")
-                    .addHeader(HEADER_AUTH, "$accessToken")
+//                    .addHeader(HEADER_ACCEPT, "application/json")
+                    .addHeader(HEADER_AUTH, "Bearer $accessToken")
                     .build()
             chain.proceed(interceptRequest)
         }
     }
 
-    fun setupAccessToken(token: String) {
+    fun setupAccessToken(token: String?) {
         this.accessToken = token
+        Log.d(TAG, "setupAccessToken : $token")
     }
 }

@@ -8,6 +8,7 @@ import okhttp3.RequestBody
 import retrofit2.Response
 import ru.vsibi.domain.network.post.PostChangePass
 import ru.vsibi.domain.network.post.PostProfile
+import ru.vsibi.domain.network.response.ResponseProfile
 import ru.vsibi.helper.RemoteRepository
 import ru.vsibi.helper.Resource
 import java.io.File
@@ -16,7 +17,7 @@ import javax.inject.Inject
 
 class ProfileRepositoryImpl @Inject constructor(private val profileService: ProfileService) : ProfileRepository {
 
-    override suspend fun get() = RemoteRepository<Response<Unit>>().request {
+    override suspend fun get() = RemoteRepository<Response<ResponseProfile>>().request {
         profileService.get()
     }
 

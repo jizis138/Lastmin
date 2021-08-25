@@ -44,8 +44,8 @@ class RemoteModule {
         authInterceptor: Interceptor
     ): OkHttpClient {
         val client = OkHttpClient.Builder()
-        client.addInterceptor(httpLoggingInterceptor)
         client.addInterceptor(authInterceptor)
+        client.addInterceptor(httpLoggingInterceptor)
         return client.build()
     }
 

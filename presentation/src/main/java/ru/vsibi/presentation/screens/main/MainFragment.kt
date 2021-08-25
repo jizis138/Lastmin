@@ -52,6 +52,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
                 return@setOnNavigationItemSelectedListener false
             }
         }
+        viewModel.setupAccess()
     }
 
     fun showNavigation() {

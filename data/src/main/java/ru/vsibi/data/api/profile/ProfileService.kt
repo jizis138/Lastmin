@@ -8,6 +8,7 @@ import ru.vsibi.domain.network.post.PostChangePass
 import ru.vsibi.domain.network.post.PostLogin
 import ru.vsibi.domain.network.post.PostProfile
 import ru.vsibi.domain.network.post.PostSignup
+import ru.vsibi.domain.network.response.ResponseProfile
 import ru.vsibi.domain.network.response.ResponseSignup
 
 interface ProfileService {
@@ -20,7 +21,7 @@ interface ProfileService {
 
     @Headers("Accept: application/json")
     @GET("/api/${LastminData.ApiVersion}/profile")
-    suspend fun get(): Response<Unit>
+    suspend fun get(): Response<ResponseProfile>
 
     @Headers("Accept: application/json")
     @POST("/api/${LastminData.ApiVersion}/profile/change-password")

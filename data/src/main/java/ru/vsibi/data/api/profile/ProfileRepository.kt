@@ -8,10 +8,11 @@ import ru.vsibi.helper.Resource
 import ru.vsibi.domain.network.post.PostLogin
 import ru.vsibi.domain.network.post.PostProfile
 import ru.vsibi.domain.network.post.PostSignup
+import ru.vsibi.domain.network.response.ResponseProfile
 import ru.vsibi.domain.network.response.ResponseSignup
 
 interface ProfileRepository {
-    suspend fun get(): Resource<Response<Unit>>
+    suspend fun get(): Resource<Response<ResponseProfile>>
     suspend fun update(postProfile: PostProfile): Resource<Response<Unit>>
     suspend fun changePassword(postChangePass: PostChangePass): Resource<Response<Unit>>
     suspend fun uploadAvatar(profileImage: MultipartBody.Part): Resource<Response<Unit>>

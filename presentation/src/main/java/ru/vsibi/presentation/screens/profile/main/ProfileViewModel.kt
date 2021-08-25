@@ -31,7 +31,7 @@ class ProfileViewModel @Inject constructor(
             withContext(Dispatchers.Main) {
                 when (response.status) {
                     Status.SUCCESS -> {
-                        viewState = ProfileViewState.Loaded()
+                        viewState = ProfileViewState.Loaded(response.data?.body()?.result)
                     }
                     Status.ERROR -> {
                         viewState = ProfileViewState.Error(response.error)

@@ -36,6 +36,9 @@ class RemoteRepository<T> {
 
     fun getStringFromCode(code: Int): Int {
         when (code) {
+            401-> {
+                return R.string.not_authorized
+            }
             else -> {
                 return R.string.something_went_wrong
             }

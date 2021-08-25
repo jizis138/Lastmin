@@ -5,6 +5,7 @@ import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import ru.vsibi.domain.network.response.ResponseProfile
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentProfileBinding
@@ -67,6 +68,12 @@ class ProfileFragment :
     private fun bindViewState(state: ProfileViewState) {
         when (state) {
             is ProfileViewState.LoggedOut -> router.reopenApp()
+            is ProfileViewState.Error -> onError(state.error)
+            is ProfileViewState.Loaded -> {
+                binding.setProfileName(state.result)
+            }
+            is ProfileViewState.Loading -> {
+            }
         }
     }
 
@@ -77,4 +84,18 @@ class ProfileFragment :
         }
     }
 
+
+    private fun FragmentProfileBinding.setProfileName(result: ResponseProfile.Result?) {
+        val firstName = result?.first_name
+        val secondName = result?.last_name
+        if (firstName == null && secondName != null) {
+            tvProfileName.text = secondName
+        } else if (firstName != null && secondName == null) {
+            tvProfileName.text = firstName
+        } else if (firstName != null && secondName != null) {
+            tvProfileName.text = "$firstName $secondName"
+        } else {
+            tvProfileName.text = ""
+        }
+    }
 }
