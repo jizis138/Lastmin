@@ -1,5 +1,6 @@
 package ru.vsibi.presentation.screens.search.main
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.Gravity
 import android.view.Menu
@@ -15,6 +16,7 @@ import androidx.fragment.app.viewModels
 import com.facebook.internal.Utility.arrayList
 import com.google.android.material.datepicker.MaterialDatePicker
 import ru.vsibi.presentation.R
+//import ru.vsibi.
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentSearchBinding
 import ru.vsibi.presentation.screens.search.travallers.TravellersFragment
@@ -160,32 +162,37 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
 //        }
     }
 
+    @SuppressLint("RestrictedApi")
     private fun initRangeDatePicker() {
-        val builder = MaterialDatePicker.Builder.dateRangePicker()
+        val selector = CustomRangeSelector()
+        val builder = MaterialDatePicker.Builder.customDatePicker(selector)
         picker = builder.build()
         binding.tvDate.setOnClickListener {
             if (isPickerOpened) return@setOnClickListener
             isPickerOpened = true
 
-            router.openDateRangeDialog()
-
-//            picker?.show(childFragmentManager, picker.toString())
-//            picker?.addOnPositiveButtonClickListener {
-//                val formatter = SimpleDateFormat("dd.MM");
-//                val dateString = formatter.format(Date(it.first));
-//                binding.tvDate.setText(picker?.headerText)
-//                viewModel.obtainEvent(SearchEvent.UpdateDate(dateString))
-//                Log.d(
-//                    "DatePicker Activity",
-//                    "Date String = ${picker?.headerText}::  Date epoch values::${it.first}:: to :: ${it.second}"
-//                )
-//            }
-//            picker?.addOnCancelListener {
-//                isPickerOpened = false
-//            }
-//            picker?.addOnDismissListener {
-//                isPickerOpened = false
-//            }
+//            router.openDateRangeDialog()
+            picker?.setRadioListener {
+                selector.switchRadioMode(it)
+                picker?.notifyAdapter()
+            }
+            picker?.show(childFragmentManager, picker.toString())
+            picker?.addOnPositiveButtonClickListener {
+                val formatter = SimpleDateFormat("dd.MM");
+                val dateString = formatter.format(Date(it.first));
+                binding.tvDate.setText(picker?.headerText)
+                viewModel.obtainEvent(SearchEvent.UpdateDate(dateString))
+                Log.d(
+                    "DatePicker Activity",
+                    "Date String = ${picker?.headerText}::  Date epoch values::${it.first}:: to :: ${it.second}"
+                )
+            }
+            picker?.addOnCancelListener {
+                isPickerOpened = false
+            }
+            picker?.addOnDismissListener {
+                isPickerOpened = false
+            }
         }
     }
 
