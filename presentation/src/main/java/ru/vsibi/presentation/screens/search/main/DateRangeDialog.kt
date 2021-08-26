@@ -21,10 +21,9 @@ class DateRangeDialog : BaseFragment<LayoutDatePickerBinding>(LayoutDatePickerBi
 
     @SuppressLint("RestrictedApi")
     open fun startPickerFragment() {
-        val dateSelector = RangeDateSelector()
+        val dateSelector = CustomRangeSelector()
 
         val themeResId: Int = dateSelector.getDefaultThemeResId(requireContext())
-
         val pickerFragment = MaterialCalendar.newInstance(dateSelector, themeResId, CalendarConstraints.Builder().setOpenAt(
             System.currentTimeMillis()
         ).build())
