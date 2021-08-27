@@ -1,5 +1,8 @@
 package ru.vsibi.presentation.base
 
+import android.app.Activity
+import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -29,7 +32,6 @@ open class BaseFragment<Binding : ViewBinding>(private val inflate: Inflate<Bind
     val TAG = this.javaClass.simpleName
     var toolbarTitle: TextView? = null
     var ivBack: ImageView? = null
-    var progressBar: ProgressBar? = null
     var tvError: TextView? = null
     var navHostFragment: NavHostFragment? = null
 
@@ -128,21 +130,16 @@ open class BaseFragment<Binding : ViewBinding>(private val inflate: Inflate<Bind
     open fun onError(error: IError?) {
         if (error == null) return
         if (error.getErrorResource() != null) {
-            toast(error.getErrorResource())
+            toast(getString(error.getErrorResource()) + " " + error.getErrorCode() + " " + error.getErrorMessage())
         } else {
             error.getErrorMessage()?.let {
                 toast(it)
             }
         }
-    }
-
-    fun onStartLoad() {
-//        progressBar?.visible()
-//        tvError?.gone()
-    }
-
-    fun onEndLoad() {
-//        progressBar?.gone()
+        if(error.getErrorCode() == 401){
+            router.mainFragmentInstance?.clearAuth()
+            router.reopenApp()
+        }
     }
 
     fun NavController.safeNavigate(actionId: Int, bundle: Bundle?, extras: Navigator.Extras?) {

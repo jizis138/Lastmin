@@ -29,10 +29,11 @@ interface ProfileService {
         @Body postChangePass: PostChangePass
     ): Response<Unit>
 
-    @Headers("Accept: application/json")
+    @Headers("Accept: application/json", "Content-Type: multipart/form-data")
+    @Multipart
     @POST("/api/${LastminData.ApiVersion}/profile/upload-avatar")
     suspend fun uploadAvatar(
-        @Part file : MultipartBody.Part
+        @Part file: MultipartBody.Part
     ): Response<Unit>
 
 }

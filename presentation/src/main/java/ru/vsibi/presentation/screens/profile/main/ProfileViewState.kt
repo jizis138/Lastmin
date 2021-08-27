@@ -6,7 +6,9 @@ import ru.vsibi.presentation.screens.login.LoginViewState
 
 sealed class ProfileViewState {
     class LoggedOut() : ProfileViewState()
-    class Loading() : ProfileViewState()
+    class LoadingData() : ProfileViewState()
     class Loaded(val result: ResponseProfile.Result?) : ProfileViewState()
+    class LoadingPhoto() : ProfileViewState()
+    class LoadedPhoto(val photo : String?) : ProfileViewState()
     class Error(val error: IError?) : ProfileViewState()
 }

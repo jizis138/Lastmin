@@ -17,5 +17,9 @@ class MainViewModel@Inject constructor(
         authHelper.setupAccessToken(sharedPref.getSpString(KEY_AUTH))
     }
 
+    fun clearAuth() {
+        sharedPref.setSpString(KEY_AUTH, null)
+    }
+
     var isAuth = sharedPref.getSpString(KEY_AUTH) != null
 }

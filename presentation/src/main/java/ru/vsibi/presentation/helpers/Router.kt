@@ -1,5 +1,7 @@
 package ru.vsibi.presentation.helpers
 
+import android.app.Activity
+import android.content.Intent
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import ru.vsibi.presentation.R
@@ -14,8 +16,10 @@ import ru.vsibi.presentation.screens.login.emailVariant.createPassword.CreatePas
 import ru.vsibi.presentation.screens.login.emailVariant.email.LoginEmailFragmentDirections
 import ru.vsibi.presentation.screens.login.emailVariant.forgotPassword.ForgotPassFragmentDirections
 import ru.vsibi.presentation.screens.login.emailVariant.password.LoginPasswordFragmentDirections
+import ru.vsibi.presentation.screens.main.MainFragment
 import ru.vsibi.presentation.screens.main.MainFragmentDirections
 import ru.vsibi.presentation.screens.profile.coTravellers.CoTravallersFragmentDirections
+import ru.vsibi.presentation.screens.profile.main.ProfileFragment
 import ru.vsibi.presentation.screens.profile.main.ProfileFragmentDirections
 import ru.vsibi.presentation.screens.profile.orders.info.OrdersDetailFragmentDirections
 import ru.vsibi.presentation.screens.profile.orders.main.OrdersFragmentDirections
@@ -35,6 +39,7 @@ class Router {
         val instance = Router()
     }
 
+    var mainFragmentInstance: MainFragment? = null
     var parentNavController: NavController? = null
     var parentNavHostFragment: NavHostFragment? = null
     var childNavHostFragment: NavHostFragment? = null
@@ -172,5 +177,9 @@ class Router {
 
     fun openDateRangeDialog() {
         childNavController?.navigate(SearchFragmentDirections.actionSearchFragmentToDateRangeDialog())
+    }
+
+    fun navigateToPhotoActionDialog() {
+        childNavController?.navigate(ProfileFragmentDirections.actionProfileFragmentToProfilePhotoAction())
     }
 }
