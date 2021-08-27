@@ -3,12 +3,10 @@ package ru.vsibi.presentation.screens.profile.main
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.os.Bundle
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
@@ -18,6 +16,7 @@ import ru.vsibi.domain.network.response.ResponseProfile
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentProfileBinding
+import ru.vsibi.presentation.models.PersonalDataModel
 import ru.vsibi.presentation.screens.profile.main.ProfilePhotoActionDialog.Companion.REQUEST_ADD_PHOTO
 import ru.vsibi.presentation.screens.profile.main.ProfilePhotoActionDialog.Companion.REQUEST_OPEN_PHOTO
 
@@ -70,7 +69,7 @@ class ProfileFragment :
             router.navigateToMyOrders()
         }
         relPersonalData.setOnClickListener {
-            router.navigateToPersonalData()
+            router.navigateToPersonalData(null)
         }
         relCoTravellers.setOnClickListener {
             router.navigateToCoTravellers()
@@ -108,6 +107,25 @@ class ProfileFragment :
             is ProfileViewState.Loaded -> {
                 binding.setProfileName(state.result)
                 Glide.with(requireContext()).load(state.result?.picture_file_name).into(binding.profilePhoto)
+
+                binding.relPersonalData.setOnClickListener {
+                    state.result?.apply {
+                        val person = PersonalDataModel(
+                            1,
+                            first_name + " " + last_name,
+                            birthday,
+                            email,
+                            phone,
+                            PersonalDataModel.Passport(
+                                passport.number,
+                                passport.issue_country,
+                                passport.date_of_expiry
+                            )
+                        )
+
+                        router.navigateToPersonalData(person)
+                    }
+                }
             }
             is ProfileViewState.LoadingData -> {
             }

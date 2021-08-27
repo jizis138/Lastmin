@@ -18,7 +18,9 @@ package com.google.android.material.datepicker;
 
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
+
 import androidx.appcompat.widget.SwitchCompat;
+
 import com.google.android.material.R;
 
 import static androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP;
@@ -34,11 +36,13 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.InsetDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Bundle;
+
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.core.util.Pair;
 import androidx.core.view.ViewCompat;
 import androidx.appcompat.content.res.AppCompatResources;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -47,12 +51,14 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.StringRes;
 import androidx.annotation.StyleRes;
+
 import com.google.android.material.dialog.InsetDialogOnTouchListener;
 import com.google.android.material.internal.CheckableImageButton;
 import com.google.android.material.resources.MaterialAttributes;
@@ -290,25 +296,29 @@ public final class MaterialDatePicker<S> extends DialogFragment {
                 });
 
         dayRange3 = root.findViewById(R.id.range_3);
-        dayRange3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    dayRange5.setChecked(false);
-                    radioListener.selectedMode(RadioMode.DAYS_3);
+        if (dayRange3 != null) {
+            dayRange3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        dayRange5.setChecked(false);
+                        radioListener.selectedMode(RadioMode.DAYS_3);
+                    }
                 }
-            }
-        });
+            });
+        }
         dayRange5 = root.findViewById(R.id.range_5);
-        dayRange5.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    dayRange3.setChecked(false);
-                    radioListener.selectedMode(RadioMode.DAYS_5);
+        if (dayRange5 != null) {
+            dayRange5.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        dayRange3.setChecked(false);
+                        radioListener.selectedMode(RadioMode.DAYS_5);
+                    }
                 }
-            }
-        });
+            });
+        }
         return root;
     }
 
