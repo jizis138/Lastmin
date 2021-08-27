@@ -171,4 +171,7 @@
 
     <string name="facebook_app_id" translatable="false">282871512422025</string>
     <string name="fb_login_protocol_scheme" translatable="false">fb282871512422025</string>
+    <string name="add_new_photo">Add new Photo</string>
+    <string name="open_photo">Open Photo</string>
+    <string name="permission_storage_denied">Permission denied to read your External storage</string>
 </resources>

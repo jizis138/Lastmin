@@ -1,13 +1,24 @@
 package ru.vsibi.presentation.screens.profile.main
 
+import android.Manifest
+import android.content.Intent
+import android.content.pm.PackageManager
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import ru.vsibi.domain.network.response.ResponseProfile
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentProfileBinding
+import ru.vsibi.presentation.models.PersonalDataModel
+import ru.vsibi.presentation.screens.profile.main.ProfilePhotoActionDialog.Companion.REQUEST_ADD_PHOTO
+import ru.vsibi.presentation.screens.profile.main.ProfilePhotoActionDialog.Companion.REQUEST_OPEN_PHOTO
 
 
 @AndroidEntryPoint
@@ -15,6 +26,22 @@ class ProfileFragment :
     BaseFragment<FragmentProfileBinding>(FragmentProfileBinding::inflate, R.layout.fragment_profile) {
 
     private val viewModel: ProfileViewModel by viewModels()
+
+    private val imageLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        val uri = it.data?.data
+        log("data " + uri)
+        uri?.let { letUri ->
+//            Glide.with(requireContext()).load(uri).into(binding.profilePhoto)
+            viewModel.obtainEvent(ProfileEvent.UploadPhoto(requireContext().contentResolver, letUri.toString()))
+        }
+    }
+
+    private val requestMultiplePermissions =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+            addPhoto()
+        }
 
     override fun FragmentProfileBinding.initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
@@ -24,7 +51,6 @@ class ProfileFragment :
         }
         Glide.with(requireContext()).load(R.drawable.profile)
             .into(binding.profilePhoto)
-
     }
 
     override fun initArguments() {
@@ -36,27 +62,34 @@ class ProfileFragment :
     }
 
     override fun FragmentProfileBinding.initListeners() {
-        binding.apply {
-            linSignout.setOnClickListener {
-                viewModel.obtainEvent(ProfileEvent.LogOut())
-            }
-            relOrders.setOnClickListener {
-                router.navigateToMyOrders()
-            }
-            relPersonalData.setOnClickListener {
-                router.navigateToPersonalData()
-            }
-            relCoTravellers.setOnClickListener {
-                router.navigateToCoTravellers()
-            }
-            relChangePass.setOnClickListener {
-                router.navigateToChangePass()
-            }
+        linSignout.setOnClickListener {
+            viewModel.obtainEvent(ProfileEvent.LogOut())
+        }
+        relOrders.setOnClickListener {
+            router.navigateToMyOrders()
+        }
+        relPersonalData.setOnClickListener {
+            router.navigateToPersonalData(null)
+        }
+        relCoTravellers.setOnClickListener {
+            router.navigateToCoTravellers()
+        }
+        relChangePass.setOnClickListener {
+            router.navigateToChangePass()
+        }
+        profilePhoto.setOnClickListener {
+            router.navigateToPhotoActionDialog()
+        }
+        setFragmentResultListener(REQUEST_OPEN_PHOTO) { requestKey, bundle ->
+
+        }
+        setFragmentResultListener(REQUEST_ADD_PHOTO) { requestKey, bundle ->
+            addPhoto()
         }
     }
 
     override fun initData() {
-        super.initData()
+        viewModel.obtainEvent(ProfileEvent.FetchProfile())
     }
 
     override fun initObservers() {
@@ -67,6 +100,42 @@ class ProfileFragment :
     private fun bindViewState(state: ProfileViewState) {
         when (state) {
             is ProfileViewState.LoggedOut -> router.reopenApp()
+            is ProfileViewState.Error -> {
+                onError(state.error)
+                router.mainFragmentInstance?.onEndLoad()
+            }
+            is ProfileViewState.Loaded -> {
+                binding.setProfileName(state.result)
+                Glide.with(requireContext()).load(state.result?.picture_file_name).into(binding.profilePhoto)
+
+                binding.relPersonalData.setOnClickListener {
+                    state.result?.apply {
+                        val person = PersonalDataModel(
+                            1,
+                            first_name + " " + last_name,
+                            birthday,
+                            email,
+                            phone,
+                            PersonalDataModel.Passport(
+                                passport.number,
+                                passport.issue_country,
+                                passport.date_of_expiry
+                            )
+                        )
+
+                        router.navigateToPersonalData(person)
+                    }
+                }
+            }
+            is ProfileViewState.LoadingData -> {
+            }
+            is ProfileViewState.LoadingPhoto -> {
+                router.mainFragmentInstance?.onStartLoad()
+            }
+            is ProfileViewState.LoadedPhoto -> {
+                Glide.with(requireContext()).load(state.photo).into(binding.profilePhoto)
+                router.mainFragmentInstance?.onEndLoad()
+            }
         }
     }
 
@@ -77,4 +146,43 @@ class ProfileFragment :
         }
     }
 
+
+    private fun FragmentProfileBinding.setProfileName(result: ResponseProfile.Result?) {
+        val firstName = result?.first_name
+        val secondName = result?.last_name
+        if (firstName == null && secondName != null) {
+            tvProfileName.text = secondName
+        } else if (firstName != null && secondName == null) {
+            tvProfileName.text = firstName
+        } else if (firstName != null && secondName != null) {
+            tvProfileName.text = "$firstName $secondName"
+        } else {
+            tvProfileName.text = ""
+        }
+    }
+
+
+    private fun addPhoto() {
+        val readResult = ContextCompat.checkSelfPermission(
+            requireContext(),
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+        )
+        val writeResult = ContextCompat.checkSelfPermission(
+            requireContext(),
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+        )
+
+        if (readResult == PackageManager.PERMISSION_GRANTED && writeResult == PackageManager.PERMISSION_GRANTED) {
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type = "image/*"
+            imageLauncher.launch(intent)
+        } else {
+            requestMultiplePermissions.launch(
+                arrayOf(
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                )
+            )
+        }
+    }
 }

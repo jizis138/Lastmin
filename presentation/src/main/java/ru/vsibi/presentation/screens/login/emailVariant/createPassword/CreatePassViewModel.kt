@@ -8,7 +8,7 @@ import ru.vsibi.data.api.auth.AuthRepository
 import ru.vsibi.domain.network.post.PostSignup
 import ru.vsibi.helper.Status
 import ru.vsibi.presentation.base.BaseViewModel
-import ru.vsibi.presentation.helpers.SharedPreferenceService
+import ru.vsibi.data.SharedPreferenceService
 import javax.inject.Inject
 
 @HiltViewModel

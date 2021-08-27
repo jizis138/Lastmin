@@ -2,7 +2,6 @@ package ru.vsibi.presentation.helpers
 
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import ru.vsibi.presentation.R
 import ru.vsibi.presentation.models.PersonalDataModel
 import ru.vsibi.presentation.models.SearchModel
 import ru.vsibi.presentation.models.flight.FlightResponse
@@ -14,6 +13,7 @@ import ru.vsibi.presentation.screens.login.emailVariant.createPassword.CreatePas
 import ru.vsibi.presentation.screens.login.emailVariant.email.LoginEmailFragmentDirections
 import ru.vsibi.presentation.screens.login.emailVariant.forgotPassword.ForgotPassFragmentDirections
 import ru.vsibi.presentation.screens.login.emailVariant.password.LoginPasswordFragmentDirections
+import ru.vsibi.presentation.screens.main.MainFragment
 import ru.vsibi.presentation.screens.main.MainFragmentDirections
 import ru.vsibi.presentation.screens.profile.coTravellers.CoTravallersFragmentDirections
 import ru.vsibi.presentation.screens.profile.main.ProfileFragmentDirections
@@ -21,12 +21,10 @@ import ru.vsibi.presentation.screens.profile.orders.info.OrdersDetailFragmentDir
 import ru.vsibi.presentation.screens.profile.orders.main.OrdersFragmentDirections
 import ru.vsibi.presentation.screens.saved.SavedFragmentDirections
 import ru.vsibi.presentation.screens.search.main.SearchFragmentDirections
-import ru.vsibi.presentation.screens.tours.info.ToursInfoFragment
 import ru.vsibi.presentation.screens.tours.info.ToursInfoFragmentDirections
 import ru.vsibi.presentation.screens.tours.info.flights.main.FlightsListFragmentDirections
 import ru.vsibi.presentation.screens.tours.main.ToursFragmentDirections
 import ru.vsibi.presentation.screens.tours.purchase.PurchaseFormFragmentDirections
-import ru.vsibi.presentation.screens.tours.purchase.paymentVariants.PayVariantsFragment
 import ru.vsibi.presentation.screens.tours.purchase.paymentVariants.PayVariantsFragmentDirections
 
 class Router {
@@ -35,6 +33,7 @@ class Router {
         val instance = Router()
     }
 
+    var mainFragmentInstance: MainFragment? = null
     var parentNavController: NavController? = null
     var parentNavHostFragment: NavHostFragment? = null
     var childNavHostFragment: NavHostFragment? = null
@@ -123,8 +122,8 @@ class Router {
         childNavController?.navigate(FlightsListFragmentDirections.actionFlightsListFragmentToFlightsInfoFragment(fligths))
     }
 
-    fun navigateToPersonalData(){
-        childNavController?.navigate(ProfileFragmentDirections.actionProfileFragmentToPersonalDataFragment(null))
+    fun navigateToPersonalData(person: PersonalDataModel?) {
+        childNavController?.navigate(ProfileFragmentDirections.actionProfileFragmentToPersonalDataFragment(person))
     }
 
     fun navigateToCoTravellers() {
@@ -172,5 +171,9 @@ class Router {
 
     fun openDateRangeDialog() {
         childNavController?.navigate(SearchFragmentDirections.actionSearchFragmentToDateRangeDialog())
+    }
+
+    fun navigateToPhotoActionDialog() {
+        childNavController?.navigate(ProfileFragmentDirections.actionProfileFragmentToProfilePhotoAction())
     }
 }

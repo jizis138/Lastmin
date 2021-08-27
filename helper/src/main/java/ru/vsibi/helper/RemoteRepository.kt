@@ -25,9 +25,9 @@ class RemoteRepository<T> {
     } catch (e: HttpException) {
         Resource.error(createError(e.code(), e.localizedMessage))
     } catch (e: IOException) {
-        Resource.error(createError(ERROR_CODE_INTERNET, ""))
+        Resource.error(createError(ERROR_CODE_INTERNET, "${e.localizedMessage}"))
     } catch (e: Exception) {
-        Resource.error(createError(ERROR_CODE_NOT_FOUND, ""))
+        Resource.error(createError(ERROR_CODE_NOT_FOUND, "${e.localizedMessage}"))
     }
 
     fun createError(code: Int, message: String): IError {
@@ -36,6 +36,15 @@ class RemoteRepository<T> {
 
     fun getStringFromCode(code: Int): Int {
         when (code) {
+            -1 -> {
+                return R.string.network_error
+            }
+            401 -> {
+                return R.string.not_authorized
+            }
+            500 -> {
+                return R.string.server_error
+            }
             else -> {
                 return R.string.something_went_wrong
             }

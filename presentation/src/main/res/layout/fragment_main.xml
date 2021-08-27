@@ -21,5 +21,10 @@
             app:menu="@menu/main_bottom_menu"
             android:layout_alignParentBottom="true"
             app:labelVisibilityMode="labeled"
-    />
+            />
+
+    <include
+            android:id="@+id/include"
+            layout="@layout/layout_progress"
+            />
 </RelativeLayout>

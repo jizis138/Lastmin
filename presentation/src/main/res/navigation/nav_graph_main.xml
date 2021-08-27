@@ -4,6 +4,11 @@
             android:id="@+id/nav_graph_main"
             app:startDestination="@id/searchFragment"
         >
+    <dialog
+            android:id="@+id/profile_photo_action"
+            android:name="ru.vsibi.presentation.screens.profile.main.ProfilePhotoActionDialog"
+            android:label="ProfilePhotoActionDialog"
+            />
     <fragment
             android:id="@+id/addCountriesFragment"
             android:name="ru.vsibi.presentation.screens.flights.exclude.add.AddCountriesFragment"
@@ -190,6 +195,9 @@
         <action
                 android:id="@+id/action_profileFragment_to_changePasswordFragment"
                 app:destination="@id/changePasswordFragment"/>
+        <action
+                android:id="@+id/action_profileFragment_to_profile_photo_action"
+                app:destination="@id/profile_photo_action"/>
     </fragment>
 
     <fragment

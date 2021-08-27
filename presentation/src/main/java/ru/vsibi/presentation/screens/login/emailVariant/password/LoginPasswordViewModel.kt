@@ -4,21 +4,21 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import ru.vsibi.data.AuthHelper
 import ru.vsibi.data.api.auth.AuthRepository
 import ru.vsibi.domain.network.post.PostLogin
-import ru.vsibi.domain.network.post.PostSignup
 import ru.vsibi.helper.Status
 import ru.vsibi.presentation.base.BaseViewModel
-import ru.vsibi.presentation.helpers.SharedPreferenceService
-import ru.vsibi.presentation.helpers.SharedPreferenceService.Companion.KEY_AUTH
-import ru.vsibi.presentation.helpers.SharedPreferenceService.Companion.KEY_EMAIL
-import ru.vsibi.presentation.screens.login.emailVariant.createPassword.CreatePassViewState
+import ru.vsibi.data.SharedPreferenceService
+import ru.vsibi.data.SharedPreferenceService.Companion.KEY_AUTH
+import ru.vsibi.data.SharedPreferenceService.Companion.KEY_EMAIL
 import javax.inject.Inject
 
 @HiltViewModel
 class LoginPasswordViewModel @Inject constructor(
     private val sharedPref: SharedPreferenceService,
-    private val authRepository : AuthRepository
+    private val authRepository : AuthRepository,
+    private val authHelper: AuthHelper
 ) : BaseViewModel<LoginPasswordViewState, LoginPasswordAction, LoginPasswordEvent>() {
 
     private var email: String? = null
@@ -50,7 +50,9 @@ class LoginPasswordViewModel @Inject constructor(
             withContext(Dispatchers.Main) {
                 when (response.status) {
                     Status.SUCCESS -> {
-                        sharedPref.setSpString(KEY_AUTH, response.data?.body()?.result?.access_token)
+                        val access = response.data?.body()?.result?.access_token
+                        sharedPref.setSpString(SharedPreferenceService.KEY_AUTH, access)
+                        authHelper.setupAccessToken(access)
                         viewState = LoginPasswordViewState.LoggedIn()
                     }
                     Status.ERROR -> {

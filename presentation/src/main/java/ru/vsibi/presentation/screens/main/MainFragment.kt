@@ -9,11 +9,18 @@ import dagger.hilt.android.AndroidEntryPoint
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentMainBinding
+import ru.vsibi.presentation.helpers.Lastmin.gone
+import ru.vsibi.presentation.helpers.Lastmin.visible
 
 @AndroidEntryPoint
 class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::inflate, R.layout.fragment_main) {
 
     private val viewModel: MainViewModel by viewModels()
+
+    override fun onStart() {
+        super.onStart()
+        router.mainFragmentInstance = this
+    }
 
     override fun FragmentMainBinding.initViews() {
         navHostFragment = childFragmentManager.findFragmentById(R.id.navHostMain) as NavHostFragment
@@ -52,6 +59,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
                 return@setOnNavigationItemSelectedListener false
             }
         }
+        viewModel.setupAccess()
     }
 
     fun showNavigation() {
@@ -61,6 +69,18 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
     fun hideNavigation() {
         binding.bottomNavigationView.visibility = View.GONE
         binding.bottomNavigationView.isShown
+    }
+
+    fun onStartLoad() {
+        binding.include.progress.visible()
+    }
+
+    fun onEndLoad() {
+        binding.include.progress.gone()
+    }
+
+    fun clearAuth() {
+        viewModel.clearAuth()
     }
 
 }

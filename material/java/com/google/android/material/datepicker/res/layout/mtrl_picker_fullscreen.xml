@@ -44,8 +44,9 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:text="Departure Date"
-              style="@style/DarkText"
-              android:layout_marginTop="@dimen/def_margin"
+              android:textColor="#000000"
+              android:textSize="16sp"
+              android:layout_marginTop="16dp"
               android:layout_marginStart="22dp"
               />
 
@@ -54,8 +55,8 @@
               android:layout_height="wrap_content"
               android:weightSum="2"
               android:orientation="horizontal"
-              android:layout_marginTop="@dimen/min_margin_10"
-              android:layout_marginStart="@dimen/def_margin"
+              android:layout_marginTop="10dp"
+              android:layout_marginStart="16dp"
               >
 
         <LinearLayout
@@ -102,8 +103,9 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:text="Duration"
-              style="@style/DarkText"
-              android:layout_marginTop="@dimen/def_margin"
+              android:textColor="#000000"
+              android:textSize="16sp"
+              android:layout_marginTop="16dp"
               android:layout_marginStart="22dp"                    />
 
       <LinearLayout
@@ -111,8 +113,8 @@
               android:layout_height="wrap_content"
               android:weightSum="2"
               android:orientation="horizontal"
-              android:layout_marginTop="@dimen/min_margin_10"
-              android:layout_marginStart="@dimen/def_margin"
+              android:layout_marginTop="10dp"
+              android:layout_marginStart="16dp"
               >
 
         <LinearLayout

@@ -1,21 +1,21 @@
 package ru.vsibi.presentation.screens.login
 
 import androidx.lifecycle.viewModelScope
-import com.facebook.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import ru.vsibi.data.AuthHelper
 import ru.vsibi.data.api.auth.AuthRepository
 import ru.vsibi.helper.Status
 import ru.vsibi.presentation.base.BaseViewModel
-import ru.vsibi.presentation.helpers.SharedPreferenceService
-import ru.vsibi.presentation.screens.login.emailVariant.createPassword.CreatePassViewState
+import ru.vsibi.data.SharedPreferenceService
 import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val authRepository: AuthRepository,
-    private val sharedPref : SharedPreferenceService
+    private val sharedPref : SharedPreferenceService,
+    private val authHelper: AuthHelper
 ) : BaseViewModel<LoginViewState, LoginAction, LoginEvent>() {
 
     override fun obtainEvent(viewEvent: LoginEvent) {
@@ -32,7 +32,9 @@ class LoginViewModel @Inject constructor(
             withContext(Dispatchers.Main) {
                 when (response.status) {
                     Status.SUCCESS -> {
-                        sharedPref.setSpString(SharedPreferenceService.KEY_AUTH, response.data?.body()?.result?.access_token)
+                        val access = response.data?.body()?.result?.access_token
+                        sharedPref.setSpString(SharedPreferenceService.KEY_AUTH, access)
+                        authHelper.setupAccessToken(access)
                         viewState = LoginViewState.LoggedIn()
                     }
                     Status.ERROR -> {
@@ -50,7 +52,9 @@ class LoginViewModel @Inject constructor(
             withContext(Dispatchers.Main) {
                 when (response.status) {
                     Status.SUCCESS -> {
-                        sharedPref.setSpString(SharedPreferenceService.KEY_AUTH, response.data?.body()?.result?.access_token)
+                        val access = response.data?.body()?.result?.access_token
+                        sharedPref.setSpString(SharedPreferenceService.KEY_AUTH, access)
+                        authHelper.setupAccessToken(access)
                         viewState = LoginViewState.LoggedIn()
                     }
                     Status.ERROR -> {
