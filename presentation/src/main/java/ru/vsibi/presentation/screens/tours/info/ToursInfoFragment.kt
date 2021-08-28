@@ -54,6 +54,11 @@ class ToursInfoFragment :
             tvFlightDetails.setOnClickListener {
                 router.navigateToFlightDetails()
             }
+            image.setOnClickListener {
+                viewModel.tour?.bigImage?.let {
+                    router.navigatePhotoViewerFromTourInfo(listOf(it))
+                }
+            }
         }
     }
 

@@ -3,27 +3,27 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/nav_graph_main"
             app:startDestination="@id/searchFragment"
-        >
+>
     <dialog
             android:id="@+id/profile_photo_action"
             android:name="ru.vsibi.presentation.screens.profile.main.ProfilePhotoActionDialog"
             android:label="ProfilePhotoActionDialog"
-            />
+    />
     <fragment
             android:id="@+id/addCountriesFragment"
             android:name="ru.vsibi.presentation.screens.flights.exclude.add.AddCountriesFragment"
             android:label="AddCountriesFragment"
-            />
+    />
     <fragment
             android:id="@+id/dateRangeDialog"
             android:name="ru.vsibi.presentation.screens.search.main.DateRangeDialog"
             android:label="DateRangeDialog"
-            />
+    />
     <fragment
             android:id="@+id/excludeCountriesFragment"
             android:name="ru.vsibi.presentation.screens.flights.exclude.ExcludeCountriesFragment"
             android:label="ExcludeCountriesFragment"
-            >
+    >
         <action
                 android:id="@+id/action_excludeCountriesFragment_to_addCountriesFragment"
                 app:destination="@id/addCountriesFragment"/>
@@ -85,7 +85,7 @@
             android:id="@+id/purchaseFormFragment"
             android:name="ru.vsibi.presentation.screens.tours.purchase.PurchaseFormFragment"
             android:label="PurchaseFormFragment"
-            >
+    >
         <argument
                 android:name="tour"
                 app:argType="ru.vsibi.presentation.screens.tours.main.TourModel"/>
@@ -101,7 +101,7 @@
             android:id="@+id/searchFragment"
             android:name="ru.vsibi.presentation.screens.search.main.SearchFragment"
             android:label="SearchFragment"
-            >
+    >
         <action
                 android:id="@+id/action_searchFragment_to_travellersFragment"
                 app:destination="@id/travellersFragment"/>
@@ -116,7 +116,7 @@
             android:id="@+id/travellersFragment"
             android:name="ru.vsibi.presentation.screens.search.travallers.TravellersFragment"
             android:label="TravellersFragment"
-            />
+    />
 
     <fragment
             android:id="@+id/fligthsFragment"
@@ -130,7 +130,7 @@
             android:id="@+id/hotelsFragment"
             android:name="ru.vsibi.presentation.screens.tours.main.ToursFragment"
             android:label="HotelsFragment"
-            >
+    >
         <action
                 android:id="@+id/action_hotelsFragment_to_hotelsInfoFragment"
                 app:destination="@id/tourInfoFragment">
@@ -147,7 +147,7 @@
             android:id="@+id/tourInfoFragment"
             android:name="ru.vsibi.presentation.screens.tours.info.ToursInfoFragment"
             android:label="TourInfoFragment"
-            >
+    >
         <action
                 android:id="@+id/action_hotelsInfoFragment_to_purchaseFormFragment"
                 app:destination="@id/purchaseFormFragment"/>
@@ -160,8 +160,17 @@
         <action
                 android:id="@+id/action_tourInfoFragment_to_flightsListFragment"
                 app:destination="@id/flightsListFragment"/>
+        <action android:id="@+id/action_tourInfoFragment_to_photoViewerFragment"
+                app:destination="@id/photoViewerFragment"/>
     </fragment>
 
+    <fragment
+            android:id="@+id/photoViewerFragment"
+            android:name="ru.vsibi.presentation.screens.photoViewer.PhotoViewerFragment"
+            android:label="PhotoViewerFragment"
+    >
+        <argument android:name="photos" app:argType="string[]"/>
+    </fragment>
     <fragment
             android:id="@+id/tourMoreFragment"
             android:name="ru.vsibi.presentation.screens.tours.info.more.TourMoreFragment"
