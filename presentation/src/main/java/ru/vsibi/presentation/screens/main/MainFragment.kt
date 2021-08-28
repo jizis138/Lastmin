@@ -1,6 +1,7 @@
 package ru.vsibi.presentation.screens.main
 
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -36,6 +37,10 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
                 R.id.tourInfoFragment -> hideNavigation()
                 R.id.flightsListFragment -> hideNavigation()
                 R.id.flightsInfoFragment -> hideNavigation()
+                R.id.photoViewerFragment -> {
+                    hideNavigation()
+                    hideToolbar()
+                }
                 else -> showNavigation()
             }
         }
@@ -69,6 +74,14 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
     fun hideNavigation() {
         binding.bottomNavigationView.visibility = View.GONE
         binding.bottomNavigationView.isShown
+    }
+
+    fun showToolbar() {
+        (activity as AppCompatActivity?)?.supportActionBar?.show()
+    }
+
+    fun hideToolbar() {
+        (activity as AppCompatActivity?)?.supportActionBar?.hide()
     }
 
     fun onStartLoad() {

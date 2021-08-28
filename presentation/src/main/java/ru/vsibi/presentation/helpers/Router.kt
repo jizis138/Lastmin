@@ -176,4 +176,8 @@ class Router {
     fun navigateToPhotoActionDialog() {
         childNavController?.navigate(ProfileFragmentDirections.actionProfileFragmentToProfilePhotoAction())
     }
+
+    fun navigatePhotoViewerFromTourInfo(listOf: List<String>) {
+        childNavController?.navigate(ToursInfoFragmentDirections.actionTourInfoFragmentToPhotoViewerFragment(listOf.toTypedArray()))
+    }
 }

@@ -4,7 +4,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        >
+>
 
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -16,23 +16,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                >
+        >
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_scrollFlags="scroll"
 
-                    >
+            >
 
-                <ImageView
-                        android:id="@+id/image"
+                <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:maxHeight="350dp"
-                        android:adjustViewBounds="true"
-                        android:scaleType="fitXY"
-                        />
+                        >
+
+                    <ImageView
+                            android:id="@+id/image"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxHeight="350dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitXY"
+                    />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/shape_black_alpha"
+                            style="@style/WhiteText"
+                            android:text="1/1"
+                            android:layout_alignParentEnd="true"
+                            android:layout_margin="@dimen/def_margin"
+                            android:paddingStart="@dimen/min_margin"
+                            android:paddingEnd="@dimen/min_margin"
+                            android:layout_alignBottom="@+id/image"
+
+                    />
+
+                </RelativeLayout>
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -42,13 +63,13 @@
                 app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                >
+        >
 
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    >
+            >
 
                 <TextView
                         android:id="@+id/tv_title"
@@ -60,7 +81,7 @@
                         android:layout_marginStart="@dimen/medium_margin"
                         android:layout_marginEnd="@dimen/medium_margin"
 
-                        />
+                />
 
                 <TextView
                         android:id="@+id/tv_location"
@@ -72,7 +93,7 @@
                         android:layout_marginStart="@dimen/medium_margin"
                         android:layout_marginEnd="@dimen/medium_margin"
 
-                        />
+                />
 
                 <View
                         android:layout_width="match_parent"
@@ -81,7 +102,7 @@
                         android:layout_marginTop="@dimen/def_margin"
                         android:layout_marginStart="@dimen/def_margin"
                         android:layout_marginEnd="@dimen/def_margin"
-                        />
+                />
 
                 <LinearLayout
                         android:layout_width="match_parent"
@@ -89,7 +110,7 @@
                         android:orientation="horizontal"
                         android:weightSum="3"
                         android:layout_marginTop="@dimen/def_margin"
-                        >
+                >
 
                     <LinearLayout
                             android:layout_width="match_parent"
@@ -97,13 +118,13 @@
                             android:orientation="horizontal"
                             android:layout_weight="1"
                             android:gravity="center"
-                            >
+                    >
 
                         <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/ic_icon_travel_maps_home_work"
-                                />
+                        />
 
                         <TextView
                                 android:id="@+id/tv_destination"
@@ -111,7 +132,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/example_destination"
                                 android:layout_marginStart="@dimen/min_margin"
-                                />
+                        />
 
                     </LinearLayout>
 
@@ -121,13 +142,13 @@
                             android:orientation="horizontal"
                             android:layout_weight="1"
                             android:gravity="center"
-                            >
+                    >
 
                         <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/ic_icon_travel_pool"
-                                />
+                        />
 
                         <TextView
                                 android:id="@+id/tv_pool"
@@ -135,7 +156,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/example_destination"
                                 android:layout_marginStart="@dimen/min_margin"
-                                />
+                        />
 
                     </LinearLayout>
 
@@ -145,13 +166,13 @@
                             android:orientation="horizontal"
                             android:layout_weight="1"
                             android:gravity="center"
-                            >
+                    >
 
                         <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/ic_icon_travel_flight_24_px"
-                                />
+                        />
 
                         <TextView
                                 android:id="@+id/tv_flight_dest"
@@ -159,7 +180,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/example_destination"
                                 android:layout_marginStart="@dimen/min_margin"
-                                />
+                        />
 
                     </LinearLayout>
 
@@ -172,7 +193,7 @@
                         android:layout_marginTop="@dimen/def_margin"
                         android:layout_marginStart="@dimen/def_margin"
                         android:layout_marginEnd="@dimen/def_margin"
-                        />
+                />
 
                 <TextView
                         android:id="@+id/tv_description"
@@ -185,7 +206,7 @@
                         android:layout_marginTop="@dimen/def_margin"
                         android:layout_marginStart="@dimen/medium_margin"
                         android:layout_marginEnd="@dimen/medium_margin"
-                        />
+                />
 
                 <TextView
                         android:id="@+id/tv_more"
@@ -211,7 +232,7 @@
                         android:layout_marginStart="@dimen/medium_margin"
                         android:layout_marginEnd="@dimen/medium_margin"
                         android:layout_marginTop="@dimen/def_margin"
-                        >
+                >
 
                     <AutoCompleteTextView
                             android:id="@+id/tv_flight_details"
@@ -220,7 +241,7 @@
                             android:inputType="none"
                             android:focusable="false"
                             android:clickable="true"
-                            />
+                    />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -234,7 +255,7 @@
                         android:layout_marginStart="@dimen/medium_margin"
                         android:layout_marginEnd="@dimen/medium_margin"
                         android:layout_marginTop="@dimen/min_margin"
-                        >
+                >
 
                     <AutoCompleteTextView
                             android:id="@+id/tv_boarding"
@@ -243,7 +264,7 @@
                             android:inputType="none"
                             android:focusable="false"
                             android:clickable="true"
-                            />
+                    />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -257,7 +278,7 @@
                         android:layout_marginStart="@dimen/medium_margin"
                         android:layout_marginEnd="@dimen/medium_margin"
                         android:layout_marginTop="@dimen/min_margin"
-                        >
+                >
 
                     <AutoCompleteTextView
                             android:id="@+id/tv_room_type"
@@ -266,7 +287,7 @@
                             android:inputType="none"
                             android:focusable="false"
                             android:clickable="true"
-                            />
+                    />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -280,7 +301,7 @@
                         android:layout_marginStart="@dimen/medium_margin"
                         android:layout_marginEnd="@dimen/medium_margin"
                         android:layout_marginTop="@dimen/min_margin"
-                        >
+                >
 
                     <AutoCompleteTextView
                             android:id="@+id/tv_transfer"
@@ -289,7 +310,7 @@
                             android:inputType="none"
                             android:focusable="false"
                             android:clickable="true"
-                            />
+                    />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -302,7 +323,7 @@
                         android:layout_marginStart="@dimen/medium_margin"
                         android:layout_marginEnd="@dimen/medium_margin"
                         android:layout_marginBottom="@dimen/min_margin"
-                        />
+                />
 
                 <LinearLayout
                         android:layout_width="match_parent"
@@ -312,11 +333,11 @@
                         android:layout_marginStart="@dimen/medium_margin"
                         android:layout_marginEnd="@dimen/medium_margin"
                         android:layout_marginBottom="@dimen/medium_margin"
-                        >
+                >
 
                     <include
                             layout="@layout/layout_date_hotels"
-                            />
+                    />
 
                     <View
                             android:layout_width="match_parent"
@@ -325,11 +346,11 @@
                             android:layout_marginTop="@dimen/min_margin_10"
                             android:layout_marginStart="@dimen/medium_margin"
                             android:layout_marginEnd="@dimen/medium_margin"
-                            />
+                    />
 
                     <include
                             layout="@layout/layout_date_hotels"
-                            />
+                    />
 
                     <View
                             android:layout_width="match_parent"
@@ -338,14 +359,14 @@
                             android:layout_marginTop="@dimen/min_margin_10"
                             android:layout_marginStart="@dimen/medium_margin"
                             android:layout_marginEnd="@dimen/medium_margin"
-                            />
+                    />
 
                     <include
                             layout="@layout/layout_date_hotels"
                             android:layout_margin="@dimen/medium_margin"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            />
+                    />
 
                 </LinearLayout>
             </LinearLayout>
@@ -361,7 +382,7 @@
                 android:src="@drawable/ic_baseline_keyboard_arrow_left_24"
                 android:backgroundTint="@color/white"
                 app:borderWidth="0dp"
-                />
+        />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:layout_width="wrap_content"
@@ -372,7 +393,7 @@
                 android:src="@drawable/ic_icon_action_favorite_border"
                 android:backgroundTint="@color/white"
                 app:borderWidth="0dp"
-                />
+        />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <androidx.cardview.widget.CardView
@@ -382,12 +403,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             app:cardBackgroundColor="@color/white"
-            >
+    >
 
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                >
+        >
 
             <LinearLayout
                     android:id="@+id/lin"
@@ -397,21 +418,21 @@
                     android:gravity="end"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/large_margin"
-                    >
+            >
 
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         style="@style/PinkText.Large"
                         android:text="€1025"
-                        />
+                />
 
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         style="@style/SmallText"
                         android:text="21.05 - 27.05"
-                        />
+                />
 
             </LinearLayout>
 
@@ -427,7 +448,7 @@
                     android:layout_marginEnd="@dimen/big_margin"
                     android:layout_marginTop="@dimen/big_margin"
                     android:layout_marginBottom="@dimen/big_margin"
-                    />
+            />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
