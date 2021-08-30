@@ -1,12 +1,15 @@
 package ru.vsibi.presentation.helpers
 
+import android.os.Build
 import android.view.View
+import androidx.annotation.RequiresApi
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import ru.vsibi.data.LastminData.ApiVersion
 import ru.vsibi.presentation.R
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.function.IntPredicate
 
 object Lastmin {
 
@@ -31,5 +34,25 @@ object Lastmin {
 
     fun getStringDate(long : Long) : String{
         return dateFormatter.format(Date(long))
+    }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    fun containsLowerCase(value: String): Boolean {
+        return contains(value) { i -> Character.isLetter(i) && Character.isLowerCase(i) }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    fun containsUpperCase(value: String): Boolean {
+        return contains(value) { i -> Character.isLetter(i) && Character.isUpperCase(i) }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    fun containsNumber(value: String): Boolean {
+        return contains(value, Character::isDigit)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    fun contains(value: String, predicate: IntPredicate): Boolean {
+        return value.chars().anyMatch(predicate)
     }
 }

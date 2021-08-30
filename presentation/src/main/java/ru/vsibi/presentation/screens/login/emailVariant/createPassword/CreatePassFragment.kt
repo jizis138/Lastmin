@@ -11,6 +11,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentCreatePasswordBinding
+import ru.vsibi.presentation.helpers.Lastmin.containsLowerCase
+import ru.vsibi.presentation.helpers.Lastmin.containsNumber
+import ru.vsibi.presentation.helpers.Lastmin.containsUpperCase
 import ru.vsibi.presentation.helpers.Lastmin.gone
 import ru.vsibi.presentation.helpers.Lastmin.visible
 import java.util.function.IntPredicate
@@ -121,24 +124,4 @@ class CreatePassFragment : BaseFragment<FragmentCreatePasswordBinding>(
         return isValid
     }
 
-
-    @RequiresApi(Build.VERSION_CODES.N)
-    private fun containsLowerCase(value: String): Boolean {
-        return contains(value) { i -> Character.isLetter(i) && Character.isLowerCase(i) }
-    }
-
-    @RequiresApi(Build.VERSION_CODES.N)
-    private fun containsUpperCase(value: String): Boolean {
-        return contains(value) { i -> Character.isLetter(i) && Character.isUpperCase(i) }
-    }
-
-    @RequiresApi(Build.VERSION_CODES.N)
-    private fun containsNumber(value: String): Boolean {
-        return contains(value, Character::isDigit)
-    }
-
-    @RequiresApi(Build.VERSION_CODES.N)
-    private fun contains(value: String, predicate: IntPredicate): Boolean {
-        return value.chars().anyMatch(predicate)
-    }
 }
