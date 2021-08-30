@@ -176,4 +176,5 @@
     <string name="permission_storage_denied">Permission denied to read your External storage</string>
     <string name="error_old_pass_empty">Old password cannot be empty</string>
     <string name="error_pass_diff">Password mismatch</string>
+    <string name="departure_date"><![CDATA[Departure Date & Duration]]></string>
 </resources>

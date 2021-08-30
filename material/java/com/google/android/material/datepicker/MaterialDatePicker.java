@@ -16,10 +16,7 @@
 
 package com.google.android.material.datepicker;
 
-import android.widget.CompoundButton;
-import android.widget.RadioButton;
-
-import androidx.appcompat.widget.SwitchCompat;
+import android.widget.*;
 
 import com.google.android.material.R;
 
@@ -48,9 +45,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
 
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
@@ -157,6 +152,8 @@ public final class MaterialDatePicker<S> extends DialogFragment {
     private Button confirmButton;
     private RadioButton dayRange3;
     private RadioButton dayRange5;
+    private LinearLayout linDate;
+    private LinearLayout linDuration;
     private RadioListener radioListener;
 
     @NonNull
@@ -241,13 +238,15 @@ public final class MaterialDatePicker<S> extends DialogFragment {
 
         if (fullscreen) {
             View frame = root.findViewById(R.id.mtrl_calendar_frame);
-            frame.setLayoutParams(
-                    new LayoutParams(getPaddedPickerWidth(context), LayoutParams.WRAP_CONTENT));
+//            frame.setLayoutParams(
+//                    new LayoutParams(getPaddedPickerWidth(context), LayoutParams.WRAP_CONTENT));
+//            frame.setLayoutParams(
+//                    new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
         } else {
             View pane = root.findViewById(R.id.mtrl_calendar_main_pane);
             View frame = root.findViewById(R.id.mtrl_calendar_frame);
             pane.setLayoutParams(
-                    new LayoutParams(getPaddedPickerWidth(context), LayoutParams.MATCH_PARENT));
+                    new RelativeLayout.LayoutParams(getPaddedPickerWidth(context), LayoutParams.MATCH_PARENT));
             frame.setMinimumHeight(getDialogPickerHeight(requireContext()));
         }
 
@@ -319,6 +318,8 @@ public final class MaterialDatePicker<S> extends DialogFragment {
                 }
             });
         }
+        linDate = root.findViewById(R.id.lin_date);
+        linDuration = root.findViewById(R.id.lin_duration);
         return root;
     }
 
@@ -393,6 +394,16 @@ public final class MaterialDatePicker<S> extends DialogFragment {
                         ? MaterialTextInputPicker.newInstance(
                         getDateSelector(), themeResId, calendarConstraints)
                         : calendar;
+
+        if (linDuration != null && linDate != null) {
+            if (headerToggleButton.isChecked()) {
+                linDate.setVisibility(View.GONE);
+                linDuration.setVisibility(View.GONE);
+            } else {
+                linDuration.setVisibility(View.VISIBLE);
+                linDate.setVisibility(View.VISIBLE);
+            }
+        }
         updateHeader();
 
         FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
@@ -733,7 +744,6 @@ public final class MaterialDatePicker<S> extends DialogFragment {
             if (calendarConstraints.getOpenAt() == null) {
                 calendarConstraints.setOpenAt(createDefaultOpenAt());
             }
-
             return MaterialDatePicker.newInstance(this);
         }
 
@@ -770,4 +780,7 @@ public final class MaterialDatePicker<S> extends DialogFragment {
         calendar.notifyAdapter();
     }
 
+    public void notifySelect(long day) {
+        calendar.notifySelect(day);
+    }
 }

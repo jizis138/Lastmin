@@ -207,13 +207,13 @@ public class RangeDateSelector implements DateSelector<Pair<Long, Long>> {
         new DateFormatTextWatcher(formatHint, format, startTextInput, constraints) {
 
           @Override
-          void onValidDate(@Nullable Long day) {
+          public void onValidDate(@Nullable Long day) {
             proposedTextStart = day;
             updateIfValidTextProposal(startTextInput, endTextInput, listener);
           }
 
           @Override
-          void onInvalidDate() {
+          public void onInvalidDate() {
             proposedTextStart = null;
             updateIfValidTextProposal(startTextInput, endTextInput, listener);
           }
@@ -221,12 +221,12 @@ public class RangeDateSelector implements DateSelector<Pair<Long, Long>> {
 
     endEditText.addTextChangedListener(
         new DateFormatTextWatcher(formatHint, format, endTextInput, constraints) {
-          void onValidDate(@Nullable Long day) {
+          public void onValidDate(@Nullable Long day) {
             proposedTextEnd = day;
             updateIfValidTextProposal(startTextInput, endTextInput, listener);
           }
 
-          void onInvalidDate() {
+          public void onInvalidDate() {
             proposedTextEnd = null;
             updateIfValidTextProposal(startTextInput, endTextInput, listener);
           }
