@@ -3,7 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+>
     <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
@@ -18,14 +18,14 @@
                 android:layout_marginStart="@dimen/medium_margin"
                 android:layout_marginEnd="@dimen/medium_margin"
                 android:layout_marginTop="@dimen/def_margin"
-                >
+        >
 
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiet_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    />
+            />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -34,7 +34,7 @@
                 android:layout_marginStart="@dimen/medium_margin"
                 android:layout_marginEnd="@dimen/medium_margin"
                 android:layout_marginTop="@dimen/def_margin"
-                >
+        >
 
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiet_dob"
@@ -43,7 +43,7 @@
                     android:inputType="date"
                     android:clickable="false"
                     android:focusable="false"
-                    />
+            />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -52,14 +52,14 @@
                 android:layout_marginStart="@dimen/medium_margin"
                 android:layout_marginEnd="@dimen/medium_margin"
                 android:layout_marginTop="@dimen/def_margin"
-                >
+        >
 
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiet_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
-                    />
+            />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -68,14 +68,14 @@
                 android:layout_marginStart="@dimen/medium_margin"
                 android:layout_marginEnd="@dimen/medium_margin"
                 android:layout_marginTop="@dimen/def_margin"
-                >
+        >
 
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiet_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="phone"
-                    />
+            />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -89,7 +89,7 @@
                 android:layout_marginTop="@dimen/big_margin"
                 android:fontFamily="@font/roboto_medium"
                 android:letterSpacing="0.15"
-                />
+        />
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -97,14 +97,14 @@
                 android:layout_marginStart="@dimen/medium_margin"
                 android:layout_marginEnd="@dimen/medium_margin"
                 android:layout_marginTop="@dimen/min_margin_10"
-                >
+        >
 
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiet_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    />
+            />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -113,14 +113,14 @@
                 android:layout_marginStart="@dimen/medium_margin"
                 android:layout_marginEnd="@dimen/medium_margin"
                 android:layout_marginTop="@dimen/def_margin"
-                >
+        >
 
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiet_country"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    />
+            />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -129,25 +129,45 @@
                 android:layout_marginStart="@dimen/medium_margin"
                 android:layout_marginEnd="@dimen/medium_margin"
                 android:layout_marginTop="@dimen/def_margin"
-                >
+        >
 
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiet_doe"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="date"
-                    />
+            />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-                android:id="@+id/btn_save"
+
+        <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/save"
-                android:textColor="@color/white"
                 android:layout_marginStart="@dimen/medium_margin"
                 android:layout_marginEnd="@dimen/medium_margin"
                 android:layout_marginTop="@dimen/def_margin"
-                />
+        >
+
+            <Button
+                    android:id="@+id/btn_save"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/save"
+                    android:textColor="@color/white"
+            />
+
+            <ProgressBar
+                    android:id="@+id/progress"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="100dp"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/white"
+                    android:indeterminateTintMode="src_in"
+                    android:elevation="20dp"
+                    android:visibility="gone"
+            />
+        </RelativeLayout>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

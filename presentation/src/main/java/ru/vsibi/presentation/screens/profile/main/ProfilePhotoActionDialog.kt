@@ -26,12 +26,12 @@ class ProfilePhotoActionDialog : BaseDialogFragment<DialogAvatarChooserBinding>(
 
     override fun DialogAvatarChooserBinding.initListeners() {
         tvAdd.setOnClickListener {
-            setFragmentResult(REQUEST_ADD_PHOTO, Bundle())
             dismiss()
+            setFragmentResult(REQUEST_ADD_PHOTO, Bundle())
         }
         tvOpen.setOnClickListener {
-            setFragmentResult(REQUEST_OPEN_PHOTO, Bundle())
             dismiss()
+            setFragmentResult(REQUEST_OPEN_PHOTO, Bundle())
         }
     }
 

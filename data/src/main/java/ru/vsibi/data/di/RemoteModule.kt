@@ -16,6 +16,7 @@ import ru.vsibi.data.api.auth.AuthService
 import ru.vsibi.data.AuthHelper
 import ru.vsibi.data.SharedPreferenceService
 import ru.vsibi.data.api.profile.ProfileService
+import java.util.*
 import javax.inject.Singleton
 
 @Module
@@ -45,6 +46,7 @@ class RemoteModule {
         authInterceptor: Interceptor
     ): OkHttpClient {
         val client = OkHttpClient.Builder()
+//        client.protocols(listOf(Protocol.HTTP_1_1))
         client.addInterceptor(authInterceptor)
         client.addInterceptor(httpLoggingInterceptor)
         return client.build()

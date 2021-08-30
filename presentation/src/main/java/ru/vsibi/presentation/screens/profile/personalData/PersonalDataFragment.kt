@@ -15,6 +15,8 @@ import ru.vsibi.domain.network.post.PostProfile
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentPersonalDataBinding
+import ru.vsibi.presentation.helpers.Lastmin.gone
+import ru.vsibi.presentation.helpers.Lastmin.visible
 import ru.vsibi.presentation.models.PersonalDataModel
 import ru.vsibi.presentation.screens.profile.main.ProfileAction
 import ru.vsibi.presentation.screens.profile.main.ProfileViewState
@@ -48,11 +50,9 @@ class PersonalDataFragment :
     }
 
     override fun initArguments() {
+        mode = args.mode
         args.person.let { person ->
-            if (person == null) {
-                mode = Mode.PROFILE
-            } else {
-                mode = Mode.PERSON
+            if (person != null) {
                 updateViews(person)
             }
         }
@@ -109,13 +109,22 @@ class PersonalDataFragment :
 
     private fun bindViewState(state: PersonalDataViewState) {
         when (state) {
-            is PersonalDataViewState.Error -> onError(state.error)
+            is PersonalDataViewState.Error -> {
+                onError(state.error)
+
+                binding.progress.gone()
+                binding.btnSave.setText(R.string.save)
+            }
             is PersonalDataViewState.Loading -> {
-                snack("Loading")
+                binding.progress.visible()
+                binding.btnSave.text = ""
             }
             is PersonalDataViewState.ProfileUpdated -> {
                 snack("Profile Updated")
                 popBack()
+
+                binding.progress.gone()
+                binding.btnSave.setText(R.string.save)
             }
         }
     }
