@@ -174,4 +174,6 @@
     <string name="add_new_photo">Add new Photo</string>
     <string name="open_photo">Open Photo</string>
     <string name="permission_storage_denied">Permission denied to read your External storage</string>
+    <string name="error_old_pass_empty">Old password cannot be empty</string>
+    <string name="error_pass_diff">Password mismatch</string>
 </resources>
