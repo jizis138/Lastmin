@@ -127,7 +127,8 @@ class ProfileFragment :
                                 passport.number,
                                 passport.issue_country,
                                 passport.date_of_expiry
-                            )
+                            ),
+                            picture_file_name
                         )
 
                         router.navigateToPersonalData(person, PersonalDataFragment.Mode.PROFILE)

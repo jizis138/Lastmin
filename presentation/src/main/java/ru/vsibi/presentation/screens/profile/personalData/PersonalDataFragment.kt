@@ -70,12 +70,12 @@ class PersonalDataFragment :
                             "",
                             "",
                             Passport(
-                                tietNumber.text.toString().trim(),
+                                tietDoe.text.toString().trim(),
                                 tietCountry.text.toString().trim(),
-                                tietDoe.text.toString().trim()
+                                tietNumber.text.toString().trim()
                             ),
                             tietPhone.text.toString().trim(),
-                            ""
+                            args.person?.picture ?: ""
                         )
                     )
                 )
@@ -94,7 +94,8 @@ class PersonalDataFragment :
                             tietNumber.text.toString().trim(),
                             tietCountry.text.toString().trim(),
                             tietDoe.text.toString().trim()
-                        )
+                        ),
+                        ""
                     )
                 )
             })
@@ -170,10 +171,12 @@ class PersonalDataFragment :
             tietName.setText(person.name)
             tietPhone.setText(person.phoneNumber)
         }
-        if (person.id == 1) {
-            (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.adult)
-        } else {
-            (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.kid)
+        if(mode == Mode.PERSON) {
+            if (person.id == 1) {
+                (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.adult)
+            } else {
+                (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.kid)
+            }
         }
     }
 

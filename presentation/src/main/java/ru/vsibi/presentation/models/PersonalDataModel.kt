@@ -10,10 +10,11 @@ data class PersonalDataModel(
     val dateOfBirth: String,
     val email: String,
     val phoneNumber: String,
-    val passport: Passport
+    val passport: Passport,
+    val picture : String
 ) : Parcelable {
 
-    constructor(id: Int) : this(id, "", "", "", "", Passport("", "", ""))
+    constructor(id: Int) : this(id, "", "", "", "", Passport("", "", ""), "")
 
     @Parcelize
     data class Passport(
