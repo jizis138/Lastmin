@@ -3,6 +3,8 @@ package ru.vsibi.presentation.screens.profile.main
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Handler
+import android.os.Looper
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -16,9 +18,12 @@ import ru.vsibi.domain.network.response.ResponseProfile
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentProfileBinding
+import ru.vsibi.presentation.helpers.Lastmin.circleOprions
+import ru.vsibi.presentation.helpers.Lastmin.getImageUrl
 import ru.vsibi.presentation.models.PersonalDataModel
 import ru.vsibi.presentation.screens.profile.main.ProfilePhotoActionDialog.Companion.REQUEST_ADD_PHOTO
 import ru.vsibi.presentation.screens.profile.main.ProfilePhotoActionDialog.Companion.REQUEST_OPEN_PHOTO
+import ru.vsibi.presentation.screens.profile.personalData.PersonalDataFragment
 
 
 @AndroidEntryPoint
@@ -33,7 +38,6 @@ class ProfileFragment :
         val uri = it.data?.data
         log("data " + uri)
         uri?.let { letUri ->
-//            Glide.with(requireContext()).load(uri).into(binding.profilePhoto)
             viewModel.obtainEvent(ProfileEvent.UploadPhoto(requireContext().contentResolver, letUri.toString()))
         }
     }
@@ -69,7 +73,7 @@ class ProfileFragment :
             router.navigateToMyOrders()
         }
         relPersonalData.setOnClickListener {
-            router.navigateToPersonalData(null)
+            router.navigateToPersonalData(null, PersonalDataFragment.Mode.PROFILE)
         }
         relCoTravellers.setOnClickListener {
             router.navigateToCoTravellers()
@@ -79,9 +83,6 @@ class ProfileFragment :
         }
         profilePhoto.setOnClickListener {
             router.navigateToPhotoActionDialog()
-        }
-        setFragmentResultListener(REQUEST_OPEN_PHOTO) { requestKey, bundle ->
-
         }
         setFragmentResultListener(REQUEST_ADD_PHOTO) { requestKey, bundle ->
             addPhoto()
@@ -106,7 +107,13 @@ class ProfileFragment :
             }
             is ProfileViewState.Loaded -> {
                 binding.setProfileName(state.result)
-                Glide.with(requireContext()).load(state.result?.picture_file_name).into(binding.profilePhoto)
+                if (!state.result?.picture_file_name.isNullOrEmpty()) {
+                    val picture = getImageUrl(state.result?.picture_file_name!!)
+                    Glide.with(requireContext()).load(picture).apply(circleOprions)
+                        .into(binding.profilePhoto)
+
+                    updateGalleryListener(picture)
+                }
 
                 binding.relPersonalData.setOnClickListener {
                     state.result?.apply {
@@ -123,7 +130,7 @@ class ProfileFragment :
                             )
                         )
 
-                        router.navigateToPersonalData(person)
+                        router.navigateToPersonalData(person, PersonalDataFragment.Mode.PROFILE)
                     }
                 }
             }
@@ -133,7 +140,8 @@ class ProfileFragment :
                 router.mainFragmentInstance?.onStartLoad()
             }
             is ProfileViewState.LoadedPhoto -> {
-                Glide.with(requireContext()).load(state.photo).into(binding.profilePhoto)
+                Glide.with(requireContext()).load(state.photo).apply(circleOprions).into(binding.profilePhoto)
+                state.photo?.let { updateGalleryListener(it) }
                 router.mainFragmentInstance?.onEndLoad()
             }
         }
@@ -183,6 +191,14 @@ class ProfileFragment :
                     Manifest.permission.WRITE_EXTERNAL_STORAGE
                 )
             )
+        }
+    }
+
+    private fun updateGalleryListener(photo : String){
+        setFragmentResultListener(REQUEST_OPEN_PHOTO) { requestKey, bundle ->
+            Handler(Looper.getMainLooper()).postDelayed({
+                router.navigatePhotoViewerFromProfile(listOf(photo))
+            }, 150)
         }
     }
 }

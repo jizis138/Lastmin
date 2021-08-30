@@ -64,6 +64,8 @@
                 android:name="person"
                 app:argType="ru.vsibi.presentation.models.PersonalDataModel"
                 app:nullable="true"/>
+        <argument android:name="mode"
+                  app:argType="ru.vsibi.presentation.screens.profile.personalData.PersonalDataFragment$Mode"/>
     </fragment>
     <fragment
             android:id="@+id/flightsListFragment"
@@ -207,6 +209,8 @@
         <action
                 android:id="@+id/action_profileFragment_to_profile_photo_action"
                 app:destination="@id/profile_photo_action"/>
+        <action android:id="@+id/action_profileFragment_to_photoViewerFragment"
+                app:destination="@id/photoViewerFragment"/>
     </fragment>
 
     <fragment

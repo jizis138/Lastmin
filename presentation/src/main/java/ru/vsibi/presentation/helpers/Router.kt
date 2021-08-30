@@ -19,6 +19,7 @@ import ru.vsibi.presentation.screens.profile.coTravellers.CoTravallersFragmentDi
 import ru.vsibi.presentation.screens.profile.main.ProfileFragmentDirections
 import ru.vsibi.presentation.screens.profile.orders.info.OrdersDetailFragmentDirections
 import ru.vsibi.presentation.screens.profile.orders.main.OrdersFragmentDirections
+import ru.vsibi.presentation.screens.profile.personalData.PersonalDataFragment
 import ru.vsibi.presentation.screens.saved.SavedFragmentDirections
 import ru.vsibi.presentation.screens.search.main.SearchFragmentDirections
 import ru.vsibi.presentation.screens.tours.info.ToursInfoFragmentDirections
@@ -122,8 +123,8 @@ class Router {
         childNavController?.navigate(FlightsListFragmentDirections.actionFlightsListFragmentToFlightsInfoFragment(fligths))
     }
 
-    fun navigateToPersonalData(person: PersonalDataModel?) {
-        childNavController?.navigate(ProfileFragmentDirections.actionProfileFragmentToPersonalDataFragment(person))
+    fun navigateToPersonalData(person: PersonalDataModel?, mode : PersonalDataFragment.Mode) {
+        childNavController?.navigate(ProfileFragmentDirections.actionProfileFragmentToPersonalDataFragment(person, mode))
     }
 
     fun navigateToCoTravellers() {
@@ -131,7 +132,7 @@ class Router {
     }
 
     fun navigateToPersonalDataFromCoTravellers(person: PersonalDataModel?) {
-        childNavController?.navigate(CoTravallersFragmentDirections.actionCoTravallersFragmentToPersonalDataFragment(person))
+        childNavController?.navigate(CoTravallersFragmentDirections.actionCoTravallersFragmentToPersonalDataFragment(person, PersonalDataFragment.Mode.PERSON))
     }
 
     fun navigateToChangePass() {
@@ -143,7 +144,7 @@ class Router {
     }
 
     fun navigateToPersonalDataFromPurchaseForm(person: PersonalDataModel) {
-        childNavController?.navigate(PurchaseFormFragmentDirections.actionPurchaseFormFragmentToPersonalDataFragment(person))
+        childNavController?.navigate(PurchaseFormFragmentDirections.actionPurchaseFormFragmentToPersonalDataFragment(person, PersonalDataFragment.Mode.PERSON))
     }
 
     fun navigateToursSettings() {
@@ -179,5 +180,9 @@ class Router {
 
     fun navigatePhotoViewerFromTourInfo(listOf: List<String>) {
         childNavController?.navigate(ToursInfoFragmentDirections.actionTourInfoFragmentToPhotoViewerFragment(listOf.toTypedArray()))
+    }
+
+    fun navigatePhotoViewerFromProfile(listOf: List<String>) {
+        childNavController?.navigate(ProfileFragmentDirections.actionProfileFragmentToPhotoViewerFragment(listOf.toTypedArray()))
     }
 }

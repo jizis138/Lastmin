@@ -130,7 +130,9 @@ open class BaseFragment<Binding : ViewBinding>(private val inflate: Inflate<Bind
     open fun onError(error: IError?) {
         if (error == null) return
         if (error.getErrorResource() != null) {
-            toast(getString(error.getErrorResource()) + " " + error.getErrorCode() + " " + error.getErrorMessage())
+            val message = getString(error.getErrorResource()) + " " + error.getErrorCode() + " " + error.getErrorMessage()
+            toast(message)
+            log(message)
         } else {
             error.getErrorMessage()?.let {
                 toast(it)
