@@ -118,7 +118,7 @@ public class SingleDateSelector implements DateSelector<Long> {
         new DateFormatTextWatcher(formatHint, format, dateTextInput, constraints) {
 
           @Override
-          void onValidDate(@Nullable Long day) {
+          public void onValidDate(@Nullable Long day) {
             if (day == null) {
               clearSelection();
             } else {
@@ -128,7 +128,7 @@ public class SingleDateSelector implements DateSelector<Long> {
           }
 
           @Override
-          void onInvalidDate() {
+          public void onInvalidDate() {
             listener.onIncompleteSelectionChanged();
           }
         });

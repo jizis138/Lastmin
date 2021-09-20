@@ -103,15 +103,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
 
 
     private fun initOriginSpinner() {
-//        val adapter = ArrayAdapter(
-//            requireContext(),
-//            R.layout.cell_spinner, SearchFactory.getCountryList()
-//        )
         val editTextFilledExposedDropdown = binding.tvOrigin
-//        editTextFilledExposedDropdown.setAdapter(adapter)
         val clickListener = View.OnClickListener {
             val popupMenu = PopupMenu(requireContext(), editTextFilledExposedDropdown, Gravity.END, 0, R.style.PopupMenuMoreCentralized)
-//            popupMenu.gravity = Gravity.END
             val list = SearchFactory.getCountryList()
             for (i in list.indices) {
                 popupMenu.menu.add(i, Menu.FIRST, i, list[i])
@@ -124,21 +118,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
         }
         binding.tilOrigin.setEndIconOnClickListener(clickListener)
         editTextFilledExposedDropdown.setOnClickListener(clickListener)
-//        {
-//            it as AutoCompleteTextView
-//            if (!it.isShown) {
-//                it.showDropDown()
-//            }
-//        }
     }
 
     private fun initDestinationSpinner() {
-//        val adapter = ArrayAdapter(
-//            requireContext(),
-//            R.layout.cell_spinner, SearchFactory.getCountryList()
-//        )
         val editTextFilledExposedDropdown = binding.tvDestionation
-//        editTextFilledExposedDropdown.setAdapter(adapter)
         val clickListener = View.OnClickListener {
             val popupMenu = PopupMenu(requireContext(), editTextFilledExposedDropdown, Gravity.END, 0, R.style.PopupMenuMoreCentralized)
             val list = SearchFactory.getCountryList()
@@ -153,13 +136,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
         }
         binding.tilDestination.setEndIconOnClickListener(clickListener)
         editTextFilledExposedDropdown.setOnClickListener(clickListener)
-//        {
-//            it as AutoCompleteTextView
-//            if (!it.isShown) {
-//                it.showDropDown()
-//            }
-
-//        }
     }
 
     @SuppressLint("RestrictedApi")
@@ -175,6 +151,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
             picker?.setRadioListener {
                 selector.switchRadioMode(it)
                 picker?.notifyAdapter()
+            }
+            selector.setupNotifyListener { day->
+                picker?.notifySelect(day)
             }
             picker?.show(childFragmentManager, picker.toString())
             picker?.addOnPositiveButtonClickListener {

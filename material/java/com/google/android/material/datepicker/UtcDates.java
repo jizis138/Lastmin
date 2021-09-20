@@ -33,7 +33,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * Utility class for common operations on timezones, calendars, dateformats, and longs representing
  * time in milliseconds.
  */
-class UtcDates {
+public class UtcDates {
 
   static final String UTC = "UTC";
 

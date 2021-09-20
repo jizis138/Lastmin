@@ -29,7 +29,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 /** Util methods for formatting date strings for use in {@link MaterialDatePicker}. */
-class DateStrings {
+public class DateStrings {
 
   private DateStrings() {}
 
@@ -39,7 +39,7 @@ class DateStrings {
     return DateUtils.formatDateTime(context, timeInMillis - offsetMillis, flags);
   }
 
-  static String getYearMonthDay(long timeInMillis) {
+  public static String getYearMonthDay(long timeInMillis) {
     return getYearMonthDay(timeInMillis, Locale.getDefault());
   }
 

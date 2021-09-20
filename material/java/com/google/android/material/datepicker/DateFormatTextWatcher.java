@@ -28,7 +28,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Date;
 
-abstract class DateFormatTextWatcher extends TextWatcherAdapter {
+public abstract class DateFormatTextWatcher extends TextWatcherAdapter {
 
   private static final int VALIDATION_DELAY = 1000;
 
@@ -41,7 +41,7 @@ abstract class DateFormatTextWatcher extends TextWatcherAdapter {
 
   private Runnable setRangeErrorCallback;
 
-  DateFormatTextWatcher(
+  public DateFormatTextWatcher(
       final String formatHint,
       DateFormat dateFormat,
       @NonNull TextInputLayout textInputLayout,
@@ -72,9 +72,9 @@ abstract class DateFormatTextWatcher extends TextWatcherAdapter {
         };
   }
 
-  abstract void onValidDate(@Nullable Long day);
+  public abstract void onValidDate(@Nullable Long day);
 
-  void onInvalidDate() {}
+  public void onInvalidDate() {}
 
   @Override
   public void onTextChanged(@NonNull CharSequence s, int start, int before, int count) {

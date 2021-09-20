@@ -39,4 +39,6 @@ abstract class PickerFragment<S> extends Fragment {
   void clearOnSelectionChangedListeners() {
     onSelectionChangedListeners.clear();
   }
+
+
 }
