@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import ru.vsibi.domain.network.response.ResponseSearch
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentOrdersBinding
@@ -12,7 +13,7 @@ import ru.vsibi.presentation.screens.tours.main.*
 class OrdersFragment : BaseFragment<FragmentOrdersBinding>(FragmentOrdersBinding::inflate, R.layout.fragment_orders) {
 
     private val viewModel: OrdersViewModel by viewModels()
-    private val itemsClickListener: (TourModel) -> Unit = { hotel ->
+    private val itemsClickListener: (ResponseSearch.Result) -> Unit = { hotel ->
         router.navigateToOrdersDetail(hotel)
     }
     private val adapter = HotelsAdapter(itemsClickListener)
@@ -38,7 +39,7 @@ class OrdersFragment : BaseFragment<FragmentOrdersBinding>(FragmentOrdersBinding
     private fun bindViewState(state: OrdersViewState) {
         when (state) {
             is OrdersViewState.Loaded -> {
-                adapter.setupAdapter(state.data)
+//                adapter.setupAdapter(state.data)
             }
         }
     }

@@ -243,11 +243,11 @@ public final class MaterialDatePicker<S> extends DialogFragment {
 //            frame.setLayoutParams(
 //                    new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
         } else {
-            View pane = root.findViewById(R.id.mtrl_calendar_main_pane);
-            View frame = root.findViewById(R.id.mtrl_calendar_frame);
-            pane.setLayoutParams(
-                    new RelativeLayout.LayoutParams(getPaddedPickerWidth(context), LayoutParams.MATCH_PARENT));
-            frame.setMinimumHeight(getDialogPickerHeight(requireContext()));
+//            View pane = root.findViewById(R.id.mtrl_calendar_main_pane);
+//            View frame = root.findViewById(R.id.mtrl_calendar_frame);
+//            pane.setLayoutParams(
+//                    new RelativeLayout.LayoutParams(getPaddedPickerWidth(context), LayoutParams.MATCH_PARENT));
+//            frame.setMinimumHeight(getDialogPickerHeight(requireContext()));
         }
 
         headerSelectionText = root.findViewById(R.id.mtrl_picker_header_selection_text);

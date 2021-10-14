@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 val dateFormatter = SimpleDateFormat("dd.MM.yyyy");
+val dayMonthFormatter = SimpleDateFormat("dd.MM");
 val timeFormatter = SimpleDateFormat("HH:mm")
 
 
@@ -29,8 +30,21 @@ fun getTimestampFromTime(dateString : String) : Long?{
 }
 
 fun getDateFromTimestamp(dateLong : Long?) : String?{
+    var factor = 1
     if(dateLong == null) return null
-    return dateFormatter.format(dateLong)
+    if(dateLong.toString().length == 10){
+        factor = 1000
+    }
+    return dateFormatter.format(dateLong * factor)
+}
+
+fun getDateDayMonth(dateLong : Long?) : String?{
+    var factor = 1
+    if(dateLong == null) return null
+    if(dateLong.toString().length == 10){
+        factor = 1000
+    }
+    return dayMonthFormatter.format(dateLong * factor)
 }
 
 fun getTimeFromTimestamp(timeLong : Long?) : String?{
@@ -49,4 +63,12 @@ fun getToday(): String{
         SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
     val d = Date()
     return dateFormat.format(d)
+}
+
+fun getPlaceText(regionName: String, countryName: String?): String {
+    return if(countryName == null){
+        regionName
+    }else{
+        "$regionName, $countryName"
+    }
 }

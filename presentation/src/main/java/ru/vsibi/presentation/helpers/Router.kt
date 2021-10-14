@@ -2,6 +2,7 @@ package ru.vsibi.presentation.helpers
 
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import ru.vsibi.domain.network.response.ResponseSearch
 import ru.vsibi.presentation.models.PersonalDataModel
 import ru.vsibi.presentation.models.SearchModel
 import ru.vsibi.presentation.models.flight.FlightResponse
@@ -48,11 +49,11 @@ class Router {
         parentNavController?.navigate(MainFragmentDirections.actionMainFragmentToLoginFragment())
     }
 
-    fun navigateToHotelsInfo(hotelsModel: TourModel) {
+    fun navigateToHotelsInfo(hotelsModel: ResponseSearch.Result) {
         childNavController?.navigate(ToursFragmentDirections.actionHotelsFragmentToHotelsInfoFragment(hotelsModel))
     }
 
-    fun navigateHotels(searchModel: SearchModel) {
+    fun navigateHotels(searchModel: ResponseSearch) {
         childNavController?.navigate(SearchFragmentDirections.actionSearchFragmentToHotelsFragment(searchModel))
     }
 
@@ -98,11 +99,11 @@ class Router {
         childNavController?.navigate(ProfileFragmentDirections.actionProfileFragmentToOrdersFragment())
     }
 
-    fun navigateToOrdersDetail(hotel: TourModel) {
-        childNavController?.navigate(OrdersFragmentDirections.actionOrdersFragmentToOrdersDetailFragment(hotel))
+    fun navigateToOrdersDetail(hotel: ResponseSearch.Result) {
+        childNavController?.navigate(OrdersFragmentDirections.actionOrdersFragmentToOrdersDetailFragment())
     }
 
-    fun navigateToOrdersDetailFromSaved(hotel: TourModel) {
+    fun navigateToOrdersDetailFromSaved(hotel: ResponseSearch.Result) {
         childNavController?.navigate(SavedFragmentDirections.actionSavedFragmentToHotelsInfoFragment(hotel))
     }
 

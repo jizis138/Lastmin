@@ -9,7 +9,7 @@ import ru.vsibi.presentation.screens.tours.main.TourModel
 
 class OrdersDetailFragment : BaseFragment<FragmentOrdersDetailBinding>(FragmentOrdersDetailBinding::inflate, R.layout.fragment_orders_detail) {
 
-    private val args : OrdersDetailFragmentArgs by navArgs()
+//    private val args : OrdersDetailFragmentArgs by navArgs()
 
     override fun FragmentOrdersDetailBinding.initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
@@ -20,7 +20,7 @@ class OrdersDetailFragment : BaseFragment<FragmentOrdersDetailBinding>(FragmentO
     }
 
     override fun initArguments() {
-        updateViews(args.tour)
+//        updateViews(args.tour)
     }
 
     override fun initFragment() {

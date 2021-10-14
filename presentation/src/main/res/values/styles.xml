@@ -118,4 +118,8 @@
         <item name="android:dropDownHorizontalOffset">20dp</item>
         <item name="android:dropDownVerticalOffset">-70dp</item>
     </style>
+
+    <style name="ErrorAppearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/clr_error</item>
+    </style>
 </resources>

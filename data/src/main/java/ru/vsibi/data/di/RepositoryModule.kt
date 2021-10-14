@@ -10,6 +10,9 @@ import ru.vsibi.data.api.auth.AuthService
 import ru.vsibi.data.api.profile.ProfileRepository
 import ru.vsibi.data.api.profile.ProfileRepositoryImpl
 import ru.vsibi.data.api.profile.ProfileService
+import ru.vsibi.data.api.search.SearchRepository
+import ru.vsibi.data.api.search.SearchRepositoryImpl
+import ru.vsibi.data.api.search.SearchService
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -23,6 +26,11 @@ class RepositoryModule {
     @Provides
     fun provideProfileRepository(profileService: ProfileService): ProfileRepository {
         return ProfileRepositoryImpl(profileService)
+    }
+
+    @Provides
+    fun provideSearchRepository(searchService: SearchService): SearchRepository {
+        return SearchRepositoryImpl(searchService)
     }
 
 }

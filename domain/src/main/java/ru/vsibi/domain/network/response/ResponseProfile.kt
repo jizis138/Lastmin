@@ -1,5 +1,8 @@
 package ru.vsibi.domain.network.response
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 data class ResponseProfile(
     val result: Result,
     val success: Boolean
@@ -21,10 +24,11 @@ data class ResponseProfile(
         val token_reset: String,
         val updated_at: Int
     ) {
+        @Parcelize
         data class Passport(
             val date_of_expiry: String,
             val issue_country: String,
             val number: String
-        )
+        ) : Parcelable
     }
 }
