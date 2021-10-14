@@ -177,4 +177,8 @@
     <string name="error_old_pass_empty">Old password cannot be empty</string>
     <string name="error_pass_diff">Password mismatch</string>
     <string name="departure_date"><![CDATA[Departure Date & Duration]]></string>
+    <string name="example_error">An error has occurred!</string>
+    <string name="try_again">Try Again</string>
+    <string name="error_not_choosed">Not choosed</string>
+    <string name="required">Required</string>
 </resources>

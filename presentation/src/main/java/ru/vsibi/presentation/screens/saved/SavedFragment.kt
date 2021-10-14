@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import ru.vsibi.domain.network.response.ResponseSearch
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentSavedBinding
@@ -13,7 +14,7 @@ import ru.vsibi.presentation.screens.tours.main.TourModel
 class SavedFragment : BaseFragment<FragmentSavedBinding>(FragmentSavedBinding::inflate, R.layout.fragment_saved) {
 
     private val viewModel: SavedViewModel by viewModels()
-    private val itemsClickListener: (TourModel) -> Unit = { hotel ->
+    private val itemsClickListener: (ResponseSearch.Result) -> Unit = { hotel ->
         router.navigateToOrdersDetailFromSaved(hotel)
     }
     private val adapter = HotelsAdapter(itemsClickListener)
@@ -39,7 +40,7 @@ class SavedFragment : BaseFragment<FragmentSavedBinding>(FragmentSavedBinding::i
     private fun bindViewState(state: SavedViewState) {
         when (state) {
             is SavedViewState.Loaded -> {
-                adapter.setupAdapter(state.data)
+//                adapter.setupAdapter(state.data)
             }
         }
     }

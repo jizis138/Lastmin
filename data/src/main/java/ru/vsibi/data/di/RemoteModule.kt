@@ -16,6 +16,7 @@ import ru.vsibi.data.api.auth.AuthService
 import ru.vsibi.data.AuthHelper
 import ru.vsibi.data.SharedPreferenceService
 import ru.vsibi.data.api.profile.ProfileService
+import ru.vsibi.data.api.search.SearchService
 import java.util.*
 import javax.inject.Singleton
 
@@ -80,6 +81,11 @@ class RemoteModule {
     @Provides
     fun provideProfileService(retrofit: Retrofit): ProfileService {
         return retrofit.create(ProfileService::class.java)
+    }
+
+    @Provides
+    fun provideSearchService(retrofit: Retrofit): SearchService {
+        return retrofit.create(SearchService::class.java)
     }
 
 }

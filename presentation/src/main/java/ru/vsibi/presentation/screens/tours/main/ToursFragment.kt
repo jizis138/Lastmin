@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import ru.vsibi.domain.network.response.ResponseSearch
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentToursBinding
@@ -21,7 +22,7 @@ class ToursFragment : BaseFragment<FragmentToursBinding>(FragmentToursBinding::i
     private val viewModel: HotelsViewModel by viewModels()
     private val args: ToursFragmentArgs by navArgs()
     private var isSmall = true
-    private val itemsClickListener: (TourModel) -> Unit = { hotel ->
+    private val itemsClickListener: (ResponseSearch.Result) -> Unit = { hotel ->
         router.navigateToHotelsInfo(hotel)
     }
     private val adapter = HotelsAdapter(itemsClickListener)
@@ -34,7 +35,7 @@ class ToursFragment : BaseFragment<FragmentToursBinding>(FragmentToursBinding::i
 
     override fun FragmentToursBinding.initViews() {
         (activity as AppCompatActivity).supportActionBar?.apply {
-            title = "${args.search.country} ${getArgsTitle()}"
+            title = "${getArgsTitle()}"
 
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
@@ -72,7 +73,7 @@ class ToursFragment : BaseFragment<FragmentToursBinding>(FragmentToursBinding::i
     private fun bindViewState(state: HotelsViewState) {
         when (state) {
             is HotelsViewState.Loaded -> {
-                adapter.setupAdapter(state.data)
+                adapter.setupAdapter(args.search.result)
             }
         }
     }
@@ -85,23 +86,23 @@ class ToursFragment : BaseFragment<FragmentToursBinding>(FragmentToursBinding::i
     }
 
     private fun getArgsTitle(): CharSequence? {
-        if (args.search.date == null && args.search.personsDesc == null) {
+//        if (args.search.date == null && args.search.personsDesc == null) {
             return getString(R.string.tours)
-        } else {
-            return if (args.search.date == null) {
-                if (args.search.personsDesc == null) {
-                    getString(R.string.tours)
-                } else {
-                    args.search.personsDesc
-                }
-            } else {
-                if (args.search.personsDesc == null) {
-                    args.search.date
-                } else {
-                    args.search.date + ", " + args.search.personsDesc
-                }
-            }
-        }
+//        } else {
+//            return if (args.search.date == null) {
+//                if (args.search.personsDesc == null) {
+//                    getString(R.string.tours)
+//                } else {
+//                    args.search.personsDesc
+//                }
+//            } else {
+//                if (args.search.personsDesc == null) {
+//                    args.search.date
+//                } else {
+//                    args.search.date + ", " + args.search.personsDesc
+//                }
+//            }
+//        }
     }
 
     private fun checkItemSize() {

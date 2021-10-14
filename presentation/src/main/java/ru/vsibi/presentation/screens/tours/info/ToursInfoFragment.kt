@@ -1,23 +1,24 @@
 package ru.vsibi.presentation.screens.tours.info
 
 import android.widget.AutoCompleteTextView
-import android.widget.RelativeLayout
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import ru.vsibi.domain.network.response.ResponseSearch
+import ru.vsibi.helper.getDateDayMonth
+import ru.vsibi.helper.getPlaceText
 import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseFragment
 import ru.vsibi.presentation.databinding.FragmentHotelsInfoBinding
-import ru.vsibi.presentation.screens.tours.info.more.TourMoreFragmentArgs
+import ru.vsibi.presentation.helpers.Lastmin
 import ru.vsibi.presentation.screens.tours.main.TourModel
 
 
 class ToursInfoFragment :
     BaseFragment<FragmentHotelsInfoBinding>(FragmentHotelsInfoBinding::inflate, R.layout.fragment_hotels_info) {
 
-    private val args: TourMoreFragmentArgs by navArgs()
+    private val args: ToursInfoFragmentArgs by navArgs()
     private val viewModel: ToursInfoViewModel by viewModels()
 
     override fun onResume() {
@@ -46,17 +47,19 @@ class ToursInfoFragment :
                 popBack()
             }
             btnBook.setOnClickListener {
-                viewModel.tour?.let { it1 -> router.navigatePurchaseForm(it1) }
+//                viewModel.tour?.let { it1 -> router.navigatePurchaseForm(it1) }
             }
             tvMore.setOnClickListener {
-                router.navigateTourMore(viewModel.tour)
+//                router.navigateTourMore(viewModel.tour)
             }
             tvFlightDetails.setOnClickListener {
                 router.navigateToFlightDetails()
             }
             image.setOnClickListener {
-                viewModel.tour?.bigImage?.let {
-                    router.navigatePhotoViewerFromTourInfo(listOf(it))
+                viewModel.tour?.tour?.hotel?.hotel_images?.let {
+                    router.navigatePhotoViewerFromTourInfo(it.toList().map { hotelImage->
+                        hotelImage.file_name
+                    })
                 }
             }
         }
@@ -81,12 +84,16 @@ class ToursInfoFragment :
 
     }
 
-    private fun updateViews(data: TourModel) {
+    private fun updateViews(data: ResponseSearch.Result) {
         binding.apply {
-            tvTitle.text = data.title
-            tvLocation.text = data.location
-            tvDescription.text = data.description
-            Glide.with(requireContext()).load(data.bigImage).into(image)
+            tvTitle.text = data.tour.hotel.name
+            val regionName = data.tour.hotel.place.resort.region.region_name?.name?:"Resort"
+            val countryName = data.tour.hotel.place.resort.region.country.country_name?.name
+            tvLocation.text = getPlaceText(regionName, countryName)
+//            tvDescription.text = data.description
+            Glide.with(requireContext()).load(Lastmin.getImageUrl(data.tour.hotel.hotel_images[0].file_name)).apply(
+                Lastmin.listRequestOpts).into(image)
+
         }
     }
 

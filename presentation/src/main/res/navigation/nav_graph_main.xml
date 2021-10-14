@@ -140,7 +140,7 @@
         </action>
         <argument
                 android:name="search"
-                app:argType="ru.vsibi.presentation.models.SearchModel"/>
+                app:argType="ru.vsibi.domain.network.response.ResponseSearch"/>
         <action
                 android:id="@+id/action_hotelsFragment_to_toursSettingsFragment"
                 app:destination="@id/toursSettingsFragment"/>
@@ -158,7 +158,7 @@
                 app:destination="@id/tourMoreFragment"/>
         <argument
                 android:name="tour"
-                app:argType="ru.vsibi.presentation.screens.tours.main.TourModel"/>
+                app:argType="ru.vsibi.domain.network.response.ResponseSearch$Result"/>
         <action
                 android:id="@+id/action_tourInfoFragment_to_flightsListFragment"
                 app:destination="@id/flightsListFragment"/>
@@ -226,9 +226,9 @@
             android:id="@+id/ordersDetailFragment"
             android:name="ru.vsibi.presentation.screens.profile.orders.info.OrdersDetailFragment"
             android:label="OrdersDetailFragment">
-        <argument
-                android:name="tour"
-                app:argType="ru.vsibi.presentation.screens.tours.main.TourModel"/>
+<!--        <argument-->
+<!--                android:name="tour"-->
+<!--                app:argType="ru.vsibi.presentation.screens.tours.main.TourModel"/>-->
         <action
                 android:id="@+id/action_ordersDetailFragment_to_ticketFragment"
                 app:destination="@id/ticketFragment"/>
