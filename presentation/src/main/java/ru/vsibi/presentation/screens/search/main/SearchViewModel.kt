@@ -7,7 +7,9 @@ import kotlinx.coroutines.withContext
 import ru.vsibi.data.api.search.SearchRepository
 import ru.vsibi.domain.network.query.QuerySearchModel
 import ru.vsibi.domain.network.response.ResponseSearch
+import ru.vsibi.helper.Error
 import ru.vsibi.helper.Status
+import ru.vsibi.presentation.R
 import ru.vsibi.presentation.base.BaseViewModel
 import javax.inject.Inject
 
@@ -42,8 +44,10 @@ class SearchViewModel @Inject constructor(private val searchRepository: SearchRe
                 when (response.status) {
                     Status.SUCCESS -> {
                         val list = response.data?.body()?.result?.map { it.name }
-                        list?.let {
-                            viewState = SearchViewState.LoadedData(list)
+                        viewState = if(list.isNullOrEmpty()){
+                            SearchViewState.ErrorData(Error("Empty Data", -1, R.string.server_error))
+                        }else{
+                            SearchViewState.LoadedData(list)
                         }
                     }
                     Status.ERROR -> {

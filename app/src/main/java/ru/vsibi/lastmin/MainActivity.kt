@@ -3,9 +3,11 @@ package ru.vsibi.lastmin
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.TintContextWrapper.wrap
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.NavUtils
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,7 +30,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
         router.parentNavHostFragment = navHostFragment
     }
 
@@ -40,8 +43,14 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         }
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
+
 }

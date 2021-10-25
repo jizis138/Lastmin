@@ -5,10 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
+import android.widget.Toast
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import ru.vsibi.presentation.R
+import ru.vsibi.presentation.helpers.Lastmin.getImageUrl
 
 
 class PhotoViewerAdapter () : PagerAdapter() {
@@ -41,7 +43,7 @@ class PhotoViewerAdapter () : PagerAdapter() {
         layIn = LayoutInflater.from(container.context)
         val view : View = layIn.inflate(R.layout.cell_photo_viewer, container, false)
         val ivPhoto : ImageView = view.findViewById(R.id.iv_photo)
-        Glide.with(container.context).load(models[position]).into(ivPhoto)
+        Glide.with(container.context).load(getImageUrl(models[position])).into(ivPhoto)
         container.addView(view, 0)
         return view
     }

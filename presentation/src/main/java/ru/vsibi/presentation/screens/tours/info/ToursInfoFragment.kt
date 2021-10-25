@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import dagger.hilt.android.AndroidEntryPoint
+import ru.vsibi.domain.network.response.ResponseHotel
 import ru.vsibi.domain.network.response.ResponseSearch
 import ru.vsibi.helper.getDateDayMonth
 import ru.vsibi.helper.getPlaceText
@@ -14,9 +16,12 @@ import ru.vsibi.presentation.databinding.FragmentHotelsInfoBinding
 import ru.vsibi.presentation.helpers.Lastmin
 import ru.vsibi.presentation.screens.tours.main.TourModel
 
-
+@AndroidEntryPoint
 class ToursInfoFragment :
-    BaseFragment<FragmentHotelsInfoBinding>(FragmentHotelsInfoBinding::inflate, R.layout.fragment_hotels_info) {
+    BaseFragment<FragmentHotelsInfoBinding>(
+        FragmentHotelsInfoBinding::inflate,
+        R.layout.fragment_hotels_info
+    ) {
 
     private val args: ToursInfoFragmentArgs by navArgs()
     private val viewModel: ToursInfoViewModel by viewModels()
@@ -24,9 +29,9 @@ class ToursInfoFragment :
     override fun onResume() {
         super.onResume()
         (activity as AppCompatActivity?)?.supportActionBar?.hide()
-        initBoardingSpinner()
-        initRoomsSpinner()
-        initTransferSpinner()
+//        initBoardingSpinner()
+//        initRoomsSpinner()
+//        initTransferSpinner()
     }
 
     override fun FragmentHotelsInfoBinding.initViews() {
@@ -49,24 +54,14 @@ class ToursInfoFragment :
             btnBook.setOnClickListener {
 //                viewModel.tour?.let { it1 -> router.navigatePurchaseForm(it1) }
             }
-            tvMore.setOnClickListener {
-//                router.navigateTourMore(viewModel.tour)
-            }
             tvFlightDetails.setOnClickListener {
-                router.navigateToFlightDetails()
-            }
-            image.setOnClickListener {
-                viewModel.tour?.tour?.hotel?.hotel_images?.let {
-                    router.navigatePhotoViewerFromTourInfo(it.toList().map { hotelImage->
-                        hotelImage.file_name
-                    })
-                }
+//                router.navigateToFlightDetails()
             }
         }
     }
 
     override fun initData() {
-        super.initData()
+        viewModel.obtainEvent(ToursInfoEvent.FetchHotel("615084401abe2b00089b29c3"))
     }
 
     override fun initObservers() {
@@ -84,16 +79,72 @@ class ToursInfoFragment :
 
     }
 
-    private fun updateViews(data: ResponseSearch.Result) {
+    private fun updateViews(data: ResponseHotel.Result) {
         binding.apply {
-            tvTitle.text = data.tour.hotel.name
-            val regionName = data.tour.hotel.place.resort.region.region_name?.name?:"Resort"
-            val countryName = data.tour.hotel.place.resort.region.country.country_name?.name
-            tvLocation.text = getPlaceText(regionName, countryName)
-//            tvDescription.text = data.description
-            Glide.with(requireContext()).load(Lastmin.getImageUrl(data.tour.hotel.hotel_images[0].file_name)).apply(
-                Lastmin.listRequestOpts).into(image)
+            /**
+             * for arguments data
+             */
+//            with(data.tour.hotel) {
+//                tvTitle.text = this.name
+//                val regionName = this.place.resort.region.region_name?.name ?: "Resort"
+//                val countryName = this.place.resort.region.country.country_name?.name
+//                tvLocation.text = getPlaceText(regionName, countryName)
+////            tvDescription.text = data.description
+//
+//                if (this.hotel_images.isNotEmpty()) {
+//                    Glide.with(root.context)
+//                        .load(Lastmin.getImageUrl(this.hotel_images[0].file_name))
+//                        .apply(Lastmin.listRequestOpts).into(image)
+//                }
+//                tvDistanceAirport.text = this.distance_to_slope.toString() + getString(R.string.km)
+//                tvDistanceBeach.text = this.distance_to_beach.toString() + getString(R.string.km)
+//                tvDistanceCity.text = this.distance_to_city.toString() + getString(R.string.km)
+//                with(this.hotel_images.size) {
+//                    if (this != 0) {
+//                        tvImageSelector.text = "1/${this}"
+//                    }
+//                }
+//            }
 
+            with(data) {
+                tvTitle.text = this.name
+                val regionName = this.place.resort.region.region_name?.name ?: "Resort"
+                val countryName = this.place.resort.region.country.country_name?.name
+                tvLocation.text = getPlaceText(regionName, countryName)
+                if (data.hotel_descriptions.isNotEmpty()) {
+                    tvDescription.text = data.hotel_descriptions[0].description
+                }
+                if (this.hotel_images.isNotEmpty()) {
+                    Glide.with(root.context)
+                        .load(Lastmin.getImageUrl(this.hotel_images[0].file_name)).into(image)
+                }
+                tvDistanceAirport.text = this.distance_to_slope.toString() + getString(R.string.km)
+                tvDistanceBeach.text = this.distance_to_beach.toString() + getString(R.string.km)
+                tvDistanceCity.text = this.distance_to_city.toString() + getString(R.string.km)
+                with(this.hotel_images.size) {
+                    if (this != 0) {
+                        tvImageSelector.text = "1/${this}"
+                    }
+                }
+                tvDates.text =
+                    getDateDayMonth(args.tour.tour.outbound_flight.date_from) + " - " + getDateDayMonth(
+                        args.tour.tour.return_flight.date_to
+                    )
+                tvPrice.text = "€" + args.tour.price
+
+                tvMore.setOnClickListener {
+                    router.navigateTourMore(data)
+                }
+                image.setOnClickListener {
+                    val photoList = this.hotel_images.map { hotelImage ->
+                        hotelImage.file_name
+                    }
+                    photoList.forEach {
+                        log("photo " + it)
+                    }
+                    router.navigatePhotoViewerFromTourInfo(photoList)
+                }
+            }
         }
     }
 
@@ -111,7 +162,10 @@ class ToursInfoFragment :
             }
         }
         editTextFilledExposedDropdown.setOnItemClickListener { parent, view, position, id ->
-            binding.tvBoarding.setText((binding.tvBoarding.adapter.getItem(position) as TourCellModel).title, false);
+            binding.tvBoarding.setText(
+                (binding.tvBoarding.adapter.getItem(position) as TourCellModel).title,
+                false
+            );
         }
     }
 
@@ -129,7 +183,10 @@ class ToursInfoFragment :
             }
         }
         editTextFilledExposedDropdown.setOnItemClickListener { parent, view, position, id ->
-            binding.tvRoomType.setText((binding.tvRoomType.adapter.getItem(position) as TourCellModel).title, false);
+            binding.tvRoomType.setText(
+                (binding.tvRoomType.adapter.getItem(position) as TourCellModel).title,
+                false
+            );
         }
     }
 
@@ -147,7 +204,10 @@ class ToursInfoFragment :
             }
         }
         editTextFilledExposedDropdown.setOnItemClickListener { parent, view, position, id ->
-            binding.tvTransfer.setText((binding.tvTransfer.adapter.getItem(position) as TourCellModel).title, false);
+            binding.tvTransfer.setText(
+                (binding.tvTransfer.adapter.getItem(position) as TourCellModel).title,
+                false
+            );
         }
     }
 

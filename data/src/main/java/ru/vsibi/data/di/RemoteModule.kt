@@ -15,6 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import ru.vsibi.data.api.auth.AuthService
 import ru.vsibi.data.AuthHelper
 import ru.vsibi.data.SharedPreferenceService
+import ru.vsibi.data.api.hotels.HotelsService
 import ru.vsibi.data.api.profile.ProfileService
 import ru.vsibi.data.api.search.SearchService
 import java.util.*
@@ -86,6 +87,11 @@ class RemoteModule {
     @Provides
     fun provideSearchService(retrofit: Retrofit): SearchService {
         return retrofit.create(SearchService::class.java)
+    }
+
+    @Provides
+    fun provideHotelsService(retrofit: Retrofit): HotelsService {
+        return retrofit.create(HotelsService::class.java)
     }
 
 }

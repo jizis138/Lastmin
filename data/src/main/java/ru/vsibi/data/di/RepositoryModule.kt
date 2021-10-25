@@ -7,6 +7,9 @@ import dagger.hilt.components.SingletonComponent
 import ru.vsibi.data.api.auth.AuthRepository
 import ru.vsibi.data.api.auth.AuthRepositoryImpl
 import ru.vsibi.data.api.auth.AuthService
+import ru.vsibi.data.api.hotels.HotelsRepository
+import ru.vsibi.data.api.hotels.HotelsRepositoryImpl
+import ru.vsibi.data.api.hotels.HotelsService
 import ru.vsibi.data.api.profile.ProfileRepository
 import ru.vsibi.data.api.profile.ProfileRepositoryImpl
 import ru.vsibi.data.api.profile.ProfileService
@@ -31,6 +34,11 @@ class RepositoryModule {
     @Provides
     fun provideSearchRepository(searchService: SearchService): SearchRepository {
         return SearchRepositoryImpl(searchService)
+    }
+
+    @Provides
+    fun provideHotelsRepository(hotelsService: HotelsService): HotelsRepository {
+        return HotelsRepositoryImpl(hotelsService)
     }
 
 }

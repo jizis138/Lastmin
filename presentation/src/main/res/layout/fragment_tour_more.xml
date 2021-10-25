@@ -1,127 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:orientation="vertical"
-        >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?android:actionBarSize"
-                app:title="@string/hotel_desc"
-                app:navigationIcon="@drawable/ic_baseline_close_24"
-                app:theme="@style/WhiteToolbar"
-                />
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize"
+            app:navigationIcon="@drawable/ic_baseline_close_24"
+            app:theme="@style/WhiteToolbar"
+            app:title="@string/hotel_desc" />
 
     </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.core.widget.NestedScrollView
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/DarkText.Big"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                >
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:layout_marginTop="@dimen/big_margin"
+                android:layout_marginEnd="@dimen/medium_margin"
+                android:layout_marginBottom="@dimen/big_margin"
+                android:text="@string/main_info" />
 
             <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/main_info"
-                    style="@style/DarkText.Big"
-                    android:layout_marginStart="@dimen/medium_margin"
-                    android:layout_marginEnd="@dimen/medium_margin"
-                    android:layout_marginTop="@dimen/big_margin"
-                    android:layout_marginBottom="@dimen/big_margin"
-                    />
-
-            <TextView
-                    android:id="@+id/tv_main_info"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/main_info"
-                    style="@style/DarkText"
-                    android:layout_marginStart="@dimen/medium_margin"
-                    android:layout_marginEnd="@dimen/medium_margin"
-                    />
+                android:id="@+id/tv_main_info"
+                style="@style/DarkText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:layout_marginEnd="@dimen/medium_margin"
+                android:text="@string/main_info" />
 
             <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    style="@style/stroke"
-                    android:layout_marginTop="@dimen/big_margin"
-                    android:layout_marginStart="@dimen/medium_margin"
-                    android:layout_marginEnd="@dimen/medium_margin"
-                    />
+                style="@style/stroke"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:layout_marginTop="@dimen/big_margin"
+                android:layout_marginEnd="@dimen/medium_margin" />
 
             <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/general"
-                    style="@style/DarkText.Big"
-                    android:layout_marginStart="@dimen/medium_margin"
-                    android:layout_marginEnd="@dimen/medium_margin"
-                    android:layout_marginTop="@dimen/big_margin"
-                    android:layout_marginBottom="@dimen/big_margin"
-                    />
+                style="@style/DarkText.Big"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:layout_marginTop="@dimen/big_margin"
+                android:layout_marginEnd="@dimen/medium_margin"
+                android:layout_marginBottom="@dimen/big_margin"
+                android:text="@string/general"
+                android:visibility="gone" />
 
             <TextView
-                    android:id="@+id/tv_general"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tour_general"
-                    style="@style/DarkText"
-                    android:layout_marginStart="@dimen/medium_margin"
-                    android:layout_marginEnd="@dimen/medium_margin"
-                    />
+                android:id="@+id/tv_general"
+                style="@style/DarkText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:layout_marginEnd="@dimen/medium_margin"
+                android:visibility="gone"
+                android:text="@string/tour_general" />
 
             <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    style="@style/stroke"
-                    android:layout_marginTop="@dimen/big_margin"
-                    android:layout_marginStart="@dimen/medium_margin"
-                    android:layout_marginEnd="@dimen/medium_margin"
-                    />
+                style="@style/stroke"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:layout_marginTop="@dimen/big_margin"
+                android:layout_marginEnd="@dimen/medium_margin"
+                android:visibility="gone"/>
 
             <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/restaraunts"
-                    style="@style/DarkText.Big"
-                    android:layout_marginStart="@dimen/medium_margin"
-                    android:layout_marginEnd="@dimen/medium_margin"
-                    android:layout_marginTop="@dimen/big_margin"
-                    android:layout_marginBottom="@dimen/big_margin"
-                    />
+                style="@style/DarkText.Big"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:layout_marginTop="@dimen/big_margin"
+                android:layout_marginEnd="@dimen/medium_margin"
+                android:layout_marginBottom="@dimen/big_margin"
+                android:text="@string/restaraunts"
+                android:visibility="gone"/>
 
             <TextView
-                    android:id="@+id/tv_restaraunts"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tour_restaurants"
-                    style="@style/DarkText"
-                    android:layout_marginStart="@dimen/medium_margin"
-                    android:layout_marginEnd="@dimen/medium_margin"
-                    />
+                android:id="@+id/tv_restaraunts"
+                style="@style/DarkText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:layout_marginEnd="@dimen/medium_margin"
+                android:visibility="gone"
+                android:text="@string/tour_restaurants" />
 
             <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    style="@style/stroke"
-                    android:layout_marginTop="@dimen/big_margin"
-                    android:layout_marginStart="@dimen/medium_margin"
-                    android:layout_marginEnd="@dimen/medium_margin"
-                    />
+                style="@style/stroke"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:layout_marginTop="@dimen/big_margin"
+                android:layout_marginEnd="@dimen/medium_margin"
+                android:visibility="gone"
+                />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
