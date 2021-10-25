@@ -76,16 +76,24 @@ class HotelsAdapter(private var itemClickListener: ((ResponseSearch.Result) -> U
         notifyDataSetChanged()
     }
 
-    inner class SmallHotelsViewHolder(private val binding: CellHotelsBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class SmallHotelsViewHolder(private val binding: CellHotelsBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int) {
             val item = hotels[position]
             binding.apply {
-                Glide.with(root.context).load(Lastmin.getImageUrl(item.tour.hotel.hotel_images[0].file_name)).apply(Lastmin.listRequestOpts).into(image)
+                if (item.tour.hotel.hotel_images.isNotEmpty()) {
+                    Glide.with(root.context)
+                        .load(Lastmin.getImageUrl(item.tour.hotel.hotel_images[0].file_name))
+                        .apply(Lastmin.listRequestOpts).into(image)
+                }
                 tvTitle.text = item.tour.hotel.name
-                val regionName = item.tour.hotel.place.resort.region.region_name?.name?:"Resort"
+                val regionName = item.tour.hotel.place.resort.region.region_name?.name ?: "Resort"
                 val countryName = item.tour.hotel.place.resort.region.country.country_name?.name
                 tvDescription.text = getPlaceText(regionName, countryName)
-                relCost.tvDate.text = getDateDayMonth(item.tour.outbound_flight.date_from) + " - " + getDateDayMonth(item.tour.return_flight.date_to)
+                relCost.tvDate.text =
+                    getDateDayMonth(item.tour.outbound_flight.date_from) + " - " + getDateDayMonth(
+                        item.tour.return_flight.date_to
+                    )
                 relCost.tvCost.text = "€" + item.price
 //                if (item.isFavorite) {
 //                    relCost.ibFavorite.setImageResource(R.drawable.ic_icon_action_favorite_pink)
@@ -99,17 +107,25 @@ class HotelsAdapter(private var itemClickListener: ((ResponseSearch.Result) -> U
         }
     }
 
-    inner class BigHotelsViewHolder(private val binding: CellHotelsBigBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class BigHotelsViewHolder(private val binding: CellHotelsBigBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int) {
             val item = hotels[position]
             binding.apply {
 
-                Glide.with(root.context).load(Lastmin.getImageUrl(item.tour.hotel.hotel_images[0].file_name)).apply(Lastmin.listRequestOpts).into(image)
+                if (item.tour.hotel.hotel_images.isNotEmpty()) {
+                    Glide.with(root.context)
+                        .load(Lastmin.getImageUrl(item.tour.hotel.hotel_images[0].file_name))
+                        .apply(Lastmin.listRequestOpts).into(image)
+                }
                 tvTitle.text = item.tour.hotel.name
-                val regionName = item.tour.hotel.place.resort.region.region_name?.name?:"Resort"
+                val regionName = item.tour.hotel.place.resort.region.region_name?.name ?: "Resort"
                 val countryName = item.tour.hotel.place.resort.region.country.country_name?.name
                 tvDescription.text = getPlaceText(regionName, countryName)
-                relCost.tvDate.text = getDateDayMonth(item.tour.outbound_flight.date_from) + " - " + getDateDayMonth(item.tour.return_flight.date_to)
+                relCost.tvDate.text =
+                    getDateDayMonth(item.tour.outbound_flight.date_from) + " - " + getDateDayMonth(
+                        item.tour.return_flight.date_to
+                    )
                 relCost.tvCost.text = "€" + item.price
 //                if (item.isFavorite) {
 //                    relCost.ibFavorite.setImageResource(R.drawable.ic_icon_action_favorite_pink)

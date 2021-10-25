@@ -5,4 +5,5 @@ import ru.vsibi.domain.network.response.ResponseSearch
 
 sealed class ToursInfoEvent {
     class ConfigureArgs(val data: ResponseSearch.Result) : ToursInfoEvent()
+    class FetchHotel(val hotelId: String) : ToursInfoEvent()
 }

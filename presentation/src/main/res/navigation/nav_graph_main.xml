@@ -180,7 +180,7 @@
 
         <argument
                 android:name="tour"
-                app:argType="ru.vsibi.presentation.screens.tours.main.TourModel"/>
+                app:argType="ru.vsibi.domain.network.response.ResponseHotel$Result"/>
     </fragment>
     <fragment
             android:id="@+id/savedFragment"

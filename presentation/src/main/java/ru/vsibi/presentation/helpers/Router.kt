@@ -2,6 +2,7 @@ package ru.vsibi.presentation.helpers
 
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import ru.vsibi.domain.network.response.ResponseHotel
 import ru.vsibi.domain.network.response.ResponseSearch
 import ru.vsibi.presentation.models.PersonalDataModel
 import ru.vsibi.presentation.models.SearchModel
@@ -111,8 +112,7 @@ class Router {
         childNavController?.navigate(OrdersDetailFragmentDirections.actionOrdersDetailFragmentToTicketFragment())
     }
 
-    fun navigateTourMore(tour: TourModel?) {
-        if (tour == null) return
+    fun navigateTourMore(tour: ResponseHotel.Result) {
         childNavController?.navigate(ToursInfoFragmentDirections.actionHotelsInfoFragmentToTourMoreFragment(tour))
     }
 
